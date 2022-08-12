@@ -7,14 +7,9 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
-
   skills
-
   constructor(private profileService:ProfileService) { }
-  
     ngOnInit() {
-     
       this.skills =  this.profileService.skills()
     }
-
 }
