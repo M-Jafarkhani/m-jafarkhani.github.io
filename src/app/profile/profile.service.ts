@@ -1,14 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ProfileService {
-  //baseUrl = environment.baseUrl;
-
   constructor(private http: HttpClient) {}
 
   projects: any = [
@@ -179,13 +176,11 @@ export class ProfileService {
       tech: "HTML, CSS, Bootstrap, Jquery",
     },
   ];
-  about2 = `Software Developer with 2.5+ years of experience .
-  Worked with Software Development Life Cycle(SDLC) and  agile methodologies .
-  Expertise in Angular 2+ All versions, React, Javascript,  Node JS and UI with Responsive Designs .
-  Have good understanding of Python, Jquery, Bootstrap, MongoDB, Firebase, and MYSQL`;
+  about2 = `Software Engineer with 7+ years of experience`;
 
   about =
-    "Lover of innovation and everything related to generate new knowledge.Face problems with a smile and solve them as soon as possible. Very calculated about the time I spend and work I do.";
+    "";
+
   resumeurl =
     "https://drive.google.com/file/d/1XY0xlYDX8aZA1KwCnnjH6Y3G4iTWcV-D/view?usp=sharing";
 
@@ -197,132 +192,64 @@ export class ProfileService {
     },
     {
       id: "2",
-      skill: "NODE JS",
+      skill: "C# and dotNet Technologies",
       progress: "80%",
     },
     {
       id: "3",
-      skill: "JAVASCRIPT JQUERY",
+      skill: "JavaScript",
       progress: "80%",
     },
     {
       id: "4",
-      skill: "SQL , MYSQL,MONOGO, FIREBASE",
+      skill: "SQL Server",
       progress: "75%",
     },
     {
       id: "5",
-      skill: "REACT JS",
-      progress: "75%",
+      skill: "Python",
+      progress: "60%",
     },
     {
       id: "6",
-      skill: "PYTHON,JAVA",
-      progress: "70%",
+      skill: "Swift, Dart",
+      progress: "30%",
     },
   ];
 
-  educationData: any = [
-    {
-      id: "1",
-      from_to_year: "2015 - 2019",
-      education: "Bachelor's Degree",
-      stream: "Bachelor of Engineering",
-      info: `Aditya Silver Oak Institute is GTU Affiliated and ranks 7th in Gujurat
-Completed B.E in Computer Engineering with 9.54 CGPA.  
-Won the Best Student Award 3 times for excellent Academic records at College. 
-Maintained above 9.1 spi in every semester of college academic .`,
-      institution: "ADITYA SILVER OAK INSTITUTE OF TECHNOLOGY, AHMEDABAD",
-    },
-    {
-      id: "2",
-      from_to_year: "2013 - 2015",
-      education: "Higher Secondary",
-      stream: "Science and Mathematics",
-      institution: "GYANDEEEP VIDHYALAYA,AHMEDABAD",
-      info: `The High School was mainly focus on the bases of science, mathematics, and Chemistry
-There was also a good base on physics, mathematics and chemistry.
-Completed my high school with 78%.`,
-    },
-    {
-      id: "3",
-      from_to_year: "2012 - 2013",
-      education: "Secondary  School",
-      stream: "Science and Mathematics",
-      institution: "GYANDEEEP VIDHYALAYA,AHMEDABAD",
-      info: `The Secondary aims at Maths , English , Science, Social Science, Litrature and Languages.
-Completed my Secondary school with 84%.`,
-    },
-  ];
   exprienceData: any = [
     {
-      id: 4,
-      company: "Crest Data System",
-      location: "Ahmedabad",
-      timeline: "Aug 2021 to Present",
-      role: "Software Developer",
-      work: "Working as a full stack developer .Responsible for handling the UI in React and Managing the api calls in python Flask.",
-    },
-    {
-      id: 3,
-      company: "Indianic Info Tech",
-      location: "Ahmedabad",
-      timeline: "Feb 2021 to June 2021",
-      role: "Software Developer",
-      work: `Technologies : Angular , Node JS , MongoDB . 
-      Worked on the web application built in Angular for different business and Campaigns . 
-      Contributed on developing the admin dashboard with different charts and insights for the application.`,
-    },
-
-    {
       id: 2,
-      company: "Growth99",
-      location: "Remote",
-      timeline: "",
-      role: "Frontend  Developer",
-      work: `Technologies : Angular , Node JS , MongoDB . 
-  Worked on the product of Growth99 which allowed other clients to come and integrate our product in their website . 
-  Worked on REST Api , Admin Dashboard , Appointment Booking for services and UI of the application . 
-  Created sections like templates for email, sms, landing pages, clinic, services, providers and triggers Automation. 
-  `,
+      company: "Golrang Systems",
+      location: "Tehran, Iran",
+      timeline: "Sep 2018 - Present",
+      role: "Senior Software Engineer",
+      work: `Technologies : Angular2+, dotNet Core and SQL Server . 
+
+      Design, develop and maintain large-scale, business-driven modules for EPR suite using Microsoft technologies including C#, dotNET Core, SQL, and the specific development environment based on application framework with Angular2+`,
     },
 
     {
       id: 1,
-      company: "Tata Consultancy Services",
-      location: "Gandhinagar and Pune",
-      timeline: "June 2019 - Jan 2021",
-      role: "Assistant System Engineer Trainee",
-      work: `Technologies : Angular , JavaSpring Boot , SQL. Apache Solr . 
-  
-  Project 1 : Worked on uploading two excel sheets with bulk of data and finding the matches for each business . 
-  
-  Project 2 : Worked on indexing the search results inside the application with bulk of data using Apache Solr and configuring the server with cron jobs and shell scripts . 
-  
-  Worked on ranking the search results based on various criteria,features and delivering the accurate results based on generated scores.
-  `,
+      company: "Varanegar Consulting Group",
+      location: "Tehran, Iran",
+      timeline: "July 2016 - Sep 2018",
+      role: "Software Engineer",
+      work: `Technologies : DevExpress, dotNet Core and SQL Server . 
+      
+      Design, develop and maintain sales and distribution channel management software, using Microsoft Technologies including C#, dotNET Core, SQL, and DevExpress suite`,
     },
   ];
-  // contactus(data: any): Observable<any> {
-  //   return this.http.post(this.baseUrl + 'contact', data);
-  // }
 
   skills(): Observable<any> {
-    // return this.http.get(this.baseUrl + 'skills');
     return this.skillsData;
   }
 
   getProjects(): Observable<any> {
-    // return this.http.get(this.baseUrl + 'skills');
     return this.projects;
-  }
-  education(): Observable<any> {
-    // return this.http.get(this.baseUrl + 'education');
-    return this.educationData;
   }
 
   exprience(): Observable<any> {
-    // return this.http.get(this.baseUrl + 'exprience');
     return this.exprienceData;
   }
 }
