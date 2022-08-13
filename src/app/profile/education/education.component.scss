@@ -4,3 +4,29 @@ h4 {
   margin-bottom: 10px;
   margin-top: 2px;
 }
+.aut::before {
+  background-image: url("/assets/images/aut.jpeg");
+  content: "";
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+}
+.uic::before {
+  background-image: url("/assets/images/uic.JPG");
+  content: "";
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+}
+.cc-education-title {
+  position: relative;
+  color: #ffffff;
+}
