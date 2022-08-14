@@ -182,7 +182,7 @@ export class ProfileService {
     "";
 
   resumeurl =
-    "https://drive.google.com/file/d/1XY0xlYDX8aZA1KwCnnjH6Y3G4iTWcV-D/view?usp=sharing";
+    "";
 
   skillsData: any = [
     {
