@@ -26,7 +26,20 @@ h4 {
   left: 0px;
   opacity: 0.25;
 }
+.uot::before {
+  background-image: url("https://www.uni-stuttgart.de/system/modules/de.stuttgart.uni.v3.basics/resources/img/svg/logo-start-en.svg");
+  content: "";
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.25;
+}
 .cc-education-title {
   position: relative;
   color: #ffffff;
 }
+
+
