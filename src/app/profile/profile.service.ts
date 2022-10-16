@@ -222,9 +222,9 @@ export class ProfileService {
       id: 2,
       company: "Golrang Systems",
       location: "Tehran, Iran",
-      timeline: "Sep 2018 - Present",
+      timeline: "Sep 2018 - Feb 2023",
       role: "Senior Software Engineer",
-      work: `Technologies : Angular2+, dotNet Core and SQL Server . 
+      work: `Technologies : Angular2+, dotNet Core and SQL Server .
 
       Design, develop and maintain large-scale, business-driven modules for EPR suite using Microsoft technologies including C#, dotNET Core, SQL, and the specific development environment based on application framework with Angular2+`,
     },
@@ -235,8 +235,8 @@ export class ProfileService {
       location: "Tehran, Iran",
       timeline: "July 2016 - Sep 2018",
       role: "Software Engineer",
-      work: `Technologies : DevExpress, dotNet Core and SQL Server . 
-      
+      work: `Technologies : DevExpress, dotNet Core and SQL Server .
+
       Design, develop and maintain sales and distribution channel management software, using Microsoft Technologies including C#, dotNET Core, SQL, and DevExpress suite`,
     },
   ];
