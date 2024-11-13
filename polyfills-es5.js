@@ -13564,7 +13564,7 @@
 
           var noop = function noop() {};
 
-          var ZoneAwarePromise = /*#__PURE__*/function (_Symbol$toStringTag, _Symbol$species) {
+          var ZoneAwarePromise = /*#__PURE__*/function () {
             function ZoneAwarePromise(executor) {
               _classCallCheck(this, ZoneAwarePromise);
 
@@ -13585,12 +13585,12 @@
             }
 
             _createClass(ZoneAwarePromise, [{
-              key: _Symbol$toStringTag,
+              key: Symbol.toStringTag,
               get: function get() {
                 return 'Promise';
               }
             }, {
-              key: _Symbol$species,
+              key: Symbol.species,
               get: function get() {
                 return ZoneAwarePromise;
               }
@@ -13796,7 +13796,7 @@
             }]);
 
             return ZoneAwarePromise;
-          }(Symbol.toStringTag, Symbol.species); // Protect against aggressive optimizers dropping seemingly unused properties.
+          }(); // Protect against aggressive optimizers dropping seemingly unused properties.
           // E.g. Closure Compiler in advanced mode.
 
 
