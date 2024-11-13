@@ -176,7 +176,9 @@ export class ProfileService {
       tech: "HTML, CSS, Bootstrap, Jquery",
     },
   ];
-  about2 = `Software Engineer with 7+ years of experience`;
+  about2 = `I am persuing Master in Computer Science at the University of Stuttgart. I am in my 4'th semster, 
+  and actively looking for a part-time job as a full-stack software enginner, and hopefully working as a full-time employee after graduation.
+  Before commencing my education in Germany, I worked as a full-stack software engineer for more than 7 years in Iran.`;
 
   about =
     "";
@@ -192,7 +194,7 @@ export class ProfileService {
     },
     {
       id: "2",
-      skill: "C# and dotNet Technologies",
+      skill: "C# and .NET Technologies",
       progress: "80%",
     },
     {
@@ -224,9 +226,8 @@ export class ProfileService {
       location: "Tehran, Iran",
       timeline: "Sep 2018 - Feb 2023",
       role: "Senior Software Engineer",
-      work: `Technologies : Angular2+, dotNet Core and SQL Server .
-
-      Design, develop and maintain large-scale, business-driven modules for EPR suite using Microsoft technologies including C#, dotNET Core, SQL, and the specific development environment based on application framework with Angular2+`,
+      work: `Technologies : Angular2+, DotNET Core and SQL Server .
+      Design, develop and maintain large-scale, business-driven modules for EPR suite using Microsoft technologies including C#, DotNETCore, SQL, and the specific development environment based on application framework with Angular2+`,
     },
 
     {
@@ -235,9 +236,8 @@ export class ProfileService {
       location: "Tehran, Iran",
       timeline: "July 2016 - Sep 2018",
       role: "Software Engineer",
-      work: `Technologies : DevExpress, dotNet Core and SQL Server .
-
-      Design, develop and maintain sales and distribution channel management software, using Microsoft Technologies including C#, dotNET Core, SQL, and DevExpress suite`,
+      work: `Technologies : DevExpress, DotNET Core and SQL Server .
+      Design, develop and maintain sales and distribution channel management software, using Microsoft Technologies including C#, DotNET Core, SQL, and DevExpress suite`,
     },
   ];
 
