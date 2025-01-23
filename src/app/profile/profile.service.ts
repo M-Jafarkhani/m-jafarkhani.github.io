@@ -177,8 +177,7 @@ export class ProfileService {
     },
   ];
   about2 = `I am persuing Master in Computer Science at the University of Stuttgart. I am in my 4'th semster, 
-  and actively looking for a part-time job as a full-stack software enginner, and hopefully working as a full-time employee after graduation.
-  Before commencing my education in Germany, I worked as a full-stack software engineer for more than 7 years in Iran.`;
+  and looking for doing my Master Thesis in the area of Machine Learning.`;
 
   about =
     "";
