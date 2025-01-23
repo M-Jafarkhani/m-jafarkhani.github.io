@@ -1,9 +1,13 @@
 (function () {
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"], {
     /***/
@@ -53,12 +57,10 @@
           _classCallCheck(this, EducationComponent);
         }
 
-        _createClass(EducationComponent, [{
+        return _createClass(EducationComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return EducationComponent;
       }();
 
       EducationComponent.ɵfac = function EducationComponent_Factory(t) {
@@ -285,12 +287,10 @@
           _classCallCheck(this, FooterComponent);
         }
 
-        _createClass(FooterComponent, [{
+        return _createClass(FooterComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return FooterComponent;
       }();
 
       FooterComponent.ɵfac = function FooterComponent_Factory(t) {
@@ -300,9 +300,9 @@
       FooterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
         type: FooterComponent,
         selectors: [["app-footer"]],
-        decls: 8,
+        decls: 6,
         vars: 0,
-        consts: [[1, "footer"], [1, "container", "text-center"], ["href", "https://www.linkedin.com/in/mahdi-jafarkhani-09748291/", "target", "_blank", 1, "cc-linkedin", "btn", "btn-link"], ["aria-hidden", "true", 1, "fa", "fa-linkedin", "fa-2x"], ["href", "https://github.com/m-jafarkhani", "target", "_blank", 1, "cc-github", "btn", "btn-link"], ["aria-hidden", "true", 1, "fa", "fa-github", "fa-2x"], ["href", "https://twitter.com/MahdiJafarkhani", "target", "_blank", 1, "cc-twitter", "btn", "btn-link"], ["aria-hidden", "true", 1, "fa", "fa-twitter", "fa-2x"]],
+        consts: [[1, "footer"], [1, "container", "text-center"], ["href", "https://www.linkedin.com/in/mahdi-jafarkhani-09748291/", "target", "_blank", 1, "cc-linkedin", "btn", "btn-link"], ["aria-hidden", "true", 1, "fa", "fa-linkedin", "fa-2x"], ["href", "https://github.com/m-jafarkhani", "target", "_blank", 1, "cc-github", "btn", "btn-link"], ["aria-hidden", "true", 1, "fa", "fa-github", "fa-2x"]],
         template: function FooterComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "footer", 0);
@@ -318,12 +318,6 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "a", 4);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "i", 5);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 6);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "i", 7);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -516,7 +510,7 @@
             imgUrl: "assets/images/z14.png",
             tech: "HTML, CSS, Bootstrap, Jquery"
           }];
-          this.about2 = "I am persuing Master in Computer Science at the University of Stuttgart. I am in my 4'th semster, \n  and actively looking for a part-time job as a full-stack software enginner, and hopefully working as a full-time employee after graduation.\n  Before commencing my education in Germany, I worked as a full-stack software engineer for more than 7 years in Iran.";
+          this.about2 = "I am persuing Master in Computer Science at the University of Stuttgart. I am in my 4'th semster, \n  and looking for doing my Master Thesis in the area of Machine Learning.";
           this.about = "";
           this.resumeurl = "";
           this.skillsData = [{
@@ -561,7 +555,7 @@
           }];
         }
 
-        _createClass(ProfileService, [{
+        return _createClass(ProfileService, [{
           key: "skills",
           value: function skills() {
             return this.skillsData;
@@ -577,8 +571,6 @@
             return this.exprienceData;
           }
         }]);
-
-        return ProfileService;
       }();
 
       ProfileService.ɵfac = function ProfileService_Factory(t) {
@@ -677,15 +669,13 @@
           this.profileService = profileService;
         }
 
-        _createClass(AboutComponent, [{
+        return _createClass(AboutComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.about1 = this.profileService.about;
             this.about2 = this.profileService.about2;
           }
         }]);
-
-        return AboutComponent;
       }();
 
       AboutComponent.ɵfac = function AboutComponent_Factory(t) {
@@ -697,7 +687,7 @@
         selectors: [["app-about"]],
         decls: 55,
         vars: 4,
-        consts: [["id", "about", 1, "section"], [1, "container"], ["data-aos", "fade-up", "data-aos-offset", "10", 1, "card"], [1, "row"], [1, "col-lg-6", "col-md-12"], [1, "card-body"], [1, "h4", "mt-0", "title"], [2, "text-align", "justify"], [4, "ngFor", "ngForOf"], [1, "col-sm-4"], [1, "text-uppercase"], [1, "col-sm-8"], [1, "row", "mt-3"], ["href", "mailto:mahdi.jafarkhani@ians.uni-stuttgart.de"]],
+        consts: [["id", "about", 1, "section"], [1, "container"], ["data-aos", "fade-up", "data-aos-offset", "10", 1, "card"], [1, "row"], [1, "col-lg-6", "col-md-12"], [1, "card-body"], [1, "h4", "mt-0", "title"], [2, "text-align", "justify"], [4, "ngFor", "ngForOf"], [1, "col-sm-4"], [1, "text-uppercase"], [1, "col-sm-8"], [1, "row", "mt-3"], ["href", "mailto:mahdi.jafarkhani@gmail.com"]],
         template: function AboutComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -786,7 +776,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "a", 13);
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "mahdi.jafarkhani@ians.uni-stuttgart.de");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "mahdi.jafarkhani@gmail.com");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1012,14 +1002,12 @@
           this.profileService = profileService;
         }
 
-        _createClass(SkillsComponent, [{
+        return _createClass(SkillsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.skills = this.profileService.skills();
           }
         }]);
-
-        return SkillsComponent;
       }();
 
       SkillsComponent.ɵfac = function SkillsComponent_Factory(t) {
@@ -1161,7 +1149,7 @@
           _classCallCheck(this, SplitPipe);
         }
 
-        _createClass(SplitPipe, [{
+        return _createClass(SplitPipe, [{
           key: "transform",
           value: function transform(value) {
             if (!value) {
@@ -1171,8 +1159,6 @@
             return value.split(" .");
           }
         }]);
-
-        return SplitPipe;
       }();
 
       SplitPipe.ɵfac = function SplitPipe_Factory(t) {
@@ -1335,14 +1321,12 @@
           this.profileService = profileService;
         }
 
-        _createClass(ExperienceComponent, [{
+        return _createClass(ExperienceComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.workexp = this.profileService.exprience();
           }
         }]);
-
-        return ExperienceComponent;
       }();
 
       ExperienceComponent.ɵfac = function ExperienceComponent_Factory(t) {
@@ -1459,14 +1443,12 @@
           this.profileService = profileService;
         }
 
-        _createClass(IntroComponent, [{
+        return _createClass(IntroComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.cvUrl = this.profileService.resumeurl;
           }
         }]);
-
-        return IntroComponent;
       }();
 
       IntroComponent.ɵfac = function IntroComponent_Factory(t) {
@@ -1476,9 +1458,9 @@
       IntroComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
         type: IntroComponent,
         selectors: [["app-intro"]],
-        decls: 24,
+        decls: 22,
         vars: 0,
-        consts: [[1, "profile-page"], [1, "wrapper"], ["filter-color", "green", 1, "page-header", "page-header-small"], ["data-parallax", "true", 1, "page-header-image", 2, "background-image", "url('assets/images/background.jpg')"], [1, "container"], [1, "content-center"], [1, "cc-profile-image"], ["href", "#"], ["src", "assets/images/Profile.jpg", "alt", "Image"], [1, "h2", "title"], [1, "category", "text-white"], ["href", "https://drive.google.com/file/d/1HNiUMpn3FP1V26lR0kk5o1Nqez6XbI93/view?usp=drive_link", "target", "_blank", "data-aos", "zoom-in", "data-aos-anchor", "data-aos-anchor", 1, "btn", "btn-primary"], [1, "section"], [1, "button-container"], ["href", "https://www.linkedin.com/in/mahdi-jafarkhani-09748291/", "target", "_blank", "rel", "tooltip", "title", "Linkedin", 1, "btn", "btn-default", "btn-round", "btn-lg", "btn-icon"], [1, "fa", "fa-linkedin"], ["href", "https://github.com/m-jafarkhani", "target", "_blank", "rel", "tooltip", "title", "Github", 1, "btn", "btn-default", "btn-round", "btn-lg", "btn-icon"], [1, "fa", "fa-github"], ["href", "https://twitter.com/MahdiJafarkhani", "target", "_blank", "rel", "tooltip", "title", "Twitter", 1, "btn", "btn-default", "btn-round", "btn-lg", "btn-icon"], [1, "fa", "fa-twitter"]],
+        consts: [[1, "profile-page"], [1, "wrapper"], ["filter-color", "green", 1, "page-header", "page-header-small"], ["data-parallax", "true", 1, "page-header-image", 2, "background-image", "url('assets/images/background.jpg')"], [1, "container"], [1, "content-center"], [1, "cc-profile-image"], ["href", "#"], ["src", "assets/images/Profile.jpg", "alt", "Image"], [1, "h2", "title"], [1, "category", "text-white"], ["href", "https://drive.google.com/file/d/1HNiUMpn3FP1V26lR0kk5o1Nqez6XbI93/view?usp=drive_link", "target", "_blank", "data-aos", "zoom-in", "data-aos-anchor", "data-aos-anchor", 1, "btn", "btn-primary"], [1, "section"], [1, "button-container"], ["href", "https://www.linkedin.com/in/mahdi-jafarkhani-09748291/", "target", "_blank", "rel", "tooltip", "title", "Linkedin", 1, "btn", "btn-default", "btn-round", "btn-lg", "btn-icon"], [1, "fa", "fa-linkedin"], ["href", "https://github.com/m-jafarkhani", "target", "_blank", "rel", "tooltip", "title", "Github", 1, "btn", "btn-default", "btn-round", "btn-lg", "btn-icon"], [1, "fa", "fa-github"]],
         template: function IntroComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -1540,12 +1522,6 @@
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 16);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "i", 17);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "a", 18);
-
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "i", 19);
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -1683,12 +1659,10 @@
           _classCallCheck(this, PortfolioComponent);
         }
 
-        _createClass(PortfolioComponent, [{
+        return _createClass(PortfolioComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return PortfolioComponent;
       }();
 
       PortfolioComponent.ɵfac = function PortfolioComponent_Factory(t) {
@@ -1921,12 +1895,10 @@
           _classCallCheck(this, ProfileComponent);
         }
 
-        _createClass(ProfileComponent, [{
+        return _createClass(ProfileComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return ProfileComponent;
       }();
 
       ProfileComponent.ɵfac = function ProfileComponent_Factory(t) {
@@ -2248,7 +2220,7 @@
           this.projects = [];
         }
 
-        _createClass(ProjectsComponent, [{
+        return _createClass(ProjectsComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this.projects = this.profileService.getProjects();
@@ -2265,8 +2237,6 @@
             this.config.currentPage = event;
           }
         }]);
-
-        return ProjectsComponent;
       }();
 
       ProjectsComponent.ɵfac = function ProjectsComponent_Factory(t) {
@@ -2401,12 +2371,10 @@
           this.model = {};
         }
 
-        _createClass(ContactComponent, [{
+        return _createClass(ContactComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return ContactComponent;
       }();
 
       ContactComponent.ɵfac = function ContactComponent_Factory(t) {
@@ -2620,7 +2588,7 @@
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "p");
 
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "mahdi.jafarkhani@ians.uni-stuttgart.de");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "mahdi.jafarkhani@gmail.com");
 
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -2883,12 +2851,10 @@
           _classCallCheck(this, ReferenceComponent);
         }
 
-        _createClass(ReferenceComponent, [{
+        return _createClass(ReferenceComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return ReferenceComponent;
       }();
 
       ReferenceComponent.ɵfac = function ReferenceComponent_Factory(t) {
@@ -3073,12 +3039,10 @@
           _classCallCheck(this, HeaderComponent);
         }
 
-        _createClass(HeaderComponent, [{
+        return _createClass(HeaderComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {}
         }]);
-
-        return HeaderComponent;
       }();
 
       HeaderComponent.ɵfac = function HeaderComponent_Factory(t) {

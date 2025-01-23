@@ -1,55 +1,63 @@
 (function () {
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _readOnlyError(r) { throw new TypeError('"' + r + '" is read-only'); }
 
-  function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
+  function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 
-  function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+  function _toArray(r) { return _arrayWithHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableRest(); }
 
-  function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+  function _construct(t, e, r) { if (_isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments); var o = [null]; o.push.apply(o, e); var p = new (t.bind.apply(t, o))(); return r && _setPrototypeOf(p, r.prototype), p; }
+
+  function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 
   function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-  function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 
-  function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+  function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
-  function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+  function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
 
-  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+  function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
 
   function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+  function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 
-  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+  function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
 
-  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+  function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 
-  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+  function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 
-  function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
 
-  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+  function _possibleConstructorReturn(t, e) { if (e && ("object" == typeof e || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
 
-  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
 
-  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+  function _superPropGet(t, o, e, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), o, e); return 2 & r && "function" == typeof p ? function (t) { return p.apply(e, t); } : p; }
 
-  function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
 
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
 
-  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+  function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
 
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
 
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
 
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 
-  function _createClass2(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+
+  function _createClass2(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
   (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendor"], {
     /***/
@@ -61,7 +69,7 @@
     /*! exports provided: repeat */
 
     /***/
-    function d8p(module, __webpack_exports__, __webpack_require__) {
+    function _d8p(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -105,33 +113,29 @@
           this.source = source;
         }
 
-        _createClass2(RepeatOperator, [{
+        return _createClass2(RepeatOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new RepeatSubscriber(subscriber, this.count, this.source));
           }
         }]);
-
-        return RepeatOperator;
       }();
 
       var RepeatSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_) {
-        _inherits(RepeatSubscriber, _Subscriber__WEBPACK_);
-
-        var _super = _createSuper(RepeatSubscriber);
-
         function RepeatSubscriber(destination, count, source) {
           var _this2;
 
           _classCallCheck(this, RepeatSubscriber);
 
-          _this2 = _super.call(this, destination);
+          _this2 = _callSuper(this, RepeatSubscriber, [destination]);
           _this2.count = count;
           _this2.source = source;
           return _this2;
         }
 
-        _createClass2(RepeatSubscriber, [{
+        _inherits(RepeatSubscriber, _Subscriber__WEBPACK_);
+
+        return _createClass2(RepeatSubscriber, [{
           key: "complete",
           value: function complete() {
             if (!this.isStopped) {
@@ -139,7 +143,7 @@
                   count = this.count;
 
               if (count === 0) {
-                return _get(_getPrototypeOf(RepeatSubscriber.prototype), "complete", this).call(this);
+                return _superPropGet(RepeatSubscriber, "complete", this, 3)([]);
               } else if (count > -1) {
                 this.count = count - 1;
               }
@@ -148,8 +152,6 @@
             }
           }
         }]);
-
-        return RepeatSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=repeat.js.map
 
       /***/
@@ -165,7 +167,7 @@
     /*! exports provided: distinctUntilChanged */
 
     /***/
-    function uUt(module, __webpack_exports__, __webpack_require__) {
+    function _uUt(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -196,27 +198,21 @@
           this.keySelector = keySelector;
         }
 
-        _createClass2(DistinctUntilChangedOperator, [{
+        return _createClass2(DistinctUntilChangedOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DistinctUntilChangedSubscriber(subscriber, this.compare, this.keySelector));
           }
         }]);
-
-        return DistinctUntilChangedOperator;
       }();
 
       var DistinctUntilChangedSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_2) {
-        _inherits(DistinctUntilChangedSubscriber, _Subscriber__WEBPACK_2);
-
-        var _super2 = _createSuper(DistinctUntilChangedSubscriber);
-
         function DistinctUntilChangedSubscriber(destination, compare, keySelector) {
           var _this3;
 
           _classCallCheck(this, DistinctUntilChangedSubscriber);
 
-          _this3 = _super2.call(this, destination);
+          _this3 = _callSuper(this, DistinctUntilChangedSubscriber, [destination]);
           _this3.keySelector = keySelector;
           _this3.hasKey = false;
 
@@ -227,7 +223,9 @@
           return _this3;
         }
 
-        _createClass2(DistinctUntilChangedSubscriber, [{
+        _inherits(DistinctUntilChangedSubscriber, _Subscriber__WEBPACK_2);
+
+        return _createClass2(DistinctUntilChangedSubscriber, [{
           key: "compare",
           value: function compare(x, y) {
             return x === y;
@@ -263,8 +261,6 @@
             }
           }
         }]);
-
-        return DistinctUntilChangedSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=distinctUntilChanged.js.map
 
       /***/
@@ -317,38 +313,34 @@
           this.flushes = flushes;
         }
 
-        _createClass2(DistinctOperator, [{
+        return _createClass2(DistinctOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DistinctSubscriber(subscriber, this.keySelector, this.flushes));
           }
         }]);
-
-        return DistinctOperator;
       }();
 
       var DistinctSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP) {
-        _inherits(DistinctSubscriber, _innerSubscribe__WEBP);
-
-        var _super3 = _createSuper(DistinctSubscriber);
-
         function DistinctSubscriber(destination, keySelector, flushes) {
           var _this4;
 
           _classCallCheck(this, DistinctSubscriber);
 
-          _this4 = _super3.call(this, destination);
+          _this4 = _callSuper(this, DistinctSubscriber, [destination]);
           _this4.keySelector = keySelector;
           _this4.values = new Set();
 
           if (flushes) {
-            _this4.add(Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["innerSubscribe"])(flushes, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_assertThisInitialized(_this4))));
+            _this4.add(Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["innerSubscribe"])(flushes, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_this4)));
           }
 
           return _this4;
         }
 
-        _createClass2(DistinctSubscriber, [{
+        _inherits(DistinctSubscriber, _innerSubscribe__WEBP);
+
+        return _createClass2(DistinctSubscriber, [{
           key: "notifyNext",
           value: function notifyNext() {
             this.values.clear();
@@ -393,8 +385,6 @@
             }
           }
         }]);
-
-        return DistinctSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=distinct.js.map
 
       /***/
@@ -715,7 +705,7 @@
           this.notifier = notifier;
         }
 
-        _createClass2(TakeUntilOperator, [{
+        return _createClass2(TakeUntilOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var takeUntilSubscriber = new TakeUntilSubscriber(subscriber);
@@ -729,26 +719,22 @@
             return takeUntilSubscriber;
           }
         }]);
-
-        return TakeUntilOperator;
       }();
 
       var TakeUntilSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP2) {
-        _inherits(TakeUntilSubscriber, _innerSubscribe__WEBP2);
-
-        var _super4 = _createSuper(TakeUntilSubscriber);
-
         function TakeUntilSubscriber(destination) {
           var _this5;
 
           _classCallCheck(this, TakeUntilSubscriber);
 
-          _this5 = _super4.call(this, destination);
+          _this5 = _callSuper(this, TakeUntilSubscriber, [destination]);
           _this5.seenValue = false;
           return _this5;
         }
 
-        _createClass2(TakeUntilSubscriber, [{
+        _inherits(TakeUntilSubscriber, _innerSubscribe__WEBP2);
+
+        return _createClass2(TakeUntilSubscriber, [{
           key: "notifyNext",
           value: function notifyNext() {
             this.seenValue = true;
@@ -758,8 +744,6 @@
           key: "notifyComplete",
           value: function notifyComplete() {}
         }]);
-
-        return TakeUntilSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=takeUntil.js.map
 
       /***/
@@ -813,40 +797,36 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(SampleTimeOperator, [{
+        return _createClass2(SampleTimeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SampleTimeSubscriber(subscriber, this.period, this.scheduler));
           }
         }]);
-
-        return SampleTimeOperator;
       }();
 
       var SampleTimeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_3) {
-        _inherits(SampleTimeSubscriber, _Subscriber__WEBPACK_3);
-
-        var _super5 = _createSuper(SampleTimeSubscriber);
-
         function SampleTimeSubscriber(destination, period, scheduler) {
           var _this6;
 
           _classCallCheck(this, SampleTimeSubscriber);
 
-          _this6 = _super5.call(this, destination);
+          _this6 = _callSuper(this, SampleTimeSubscriber, [destination]);
           _this6.period = period;
           _this6.scheduler = scheduler;
           _this6.hasValue = false;
 
           _this6.add(scheduler.schedule(dispatchNotification, period, {
-            subscriber: _assertThisInitialized(_this6),
+            subscriber: _this6,
             period: period
           }));
 
           return _this6;
         }
 
-        _createClass2(SampleTimeSubscriber, [{
+        _inherits(SampleTimeSubscriber, _Subscriber__WEBPACK_3);
+
+        return _createClass2(SampleTimeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.lastValue = value;
@@ -861,8 +841,6 @@
             }
           }
         }]);
-
-        return SampleTimeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       function dispatchNotification(state) {
@@ -959,21 +937,15 @@
           this.resultSelector = resultSelector;
         }
 
-        _createClass2(ZipOperator, [{
+        return _createClass2(ZipOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ZipSubscriber(subscriber, this.resultSelector));
           }
         }]);
-
-        return ZipOperator;
       }();
 
       var ZipSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_4) {
-        _inherits(ZipSubscriber, _Subscriber__WEBPACK_4);
-
-        var _super6 = _createSuper(ZipSubscriber);
-
         function ZipSubscriber(destination, resultSelector) {
           var _this7;
 
@@ -981,7 +953,7 @@
 
           _classCallCheck(this, ZipSubscriber);
 
-          _this7 = _super6.call(this, destination);
+          _this7 = _callSuper(this, ZipSubscriber, [destination]);
           _this7.resultSelector = resultSelector;
           _this7.iterators = [];
           _this7.active = 0;
@@ -989,7 +961,9 @@
           return _this7;
         }
 
-        _createClass2(ZipSubscriber, [{
+        _inherits(ZipSubscriber, _Subscriber__WEBPACK_4);
+
+        return _createClass2(ZipSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var iterators = this.iterators;
@@ -1096,8 +1070,6 @@
             this.destination.next(result);
           }
         }]);
-
-        return ZipSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_2__["Subscriber"]);
 
       var StaticIterator = /*#__PURE__*/function () {
@@ -1108,7 +1080,7 @@
           this.nextResult = iterator.next();
         }
 
-        _createClass2(StaticIterator, [{
+        return _createClass2(StaticIterator, [{
           key: "hasValue",
           value: function hasValue() {
             return true;
@@ -1127,8 +1099,6 @@
             return Boolean(nextResult && nextResult.done);
           }
         }]);
-
-        return StaticIterator;
       }();
 
       var StaticArrayIterator = /*#__PURE__*/function (_internal_symbol_iter) {
@@ -1141,7 +1111,7 @@
           this.length = array.length;
         }
 
-        _createClass2(StaticArrayIterator, [{
+        return _createClass2(StaticArrayIterator, [{
           key: _internal_symbol_iter,
           value: function value() {
             return this;
@@ -1170,21 +1140,15 @@
             return this.array.length === this.index;
           }
         }]);
-
-        return StaticArrayIterator;
       }(_internal_symbol_iterator__WEBPACK_IMPORTED_MODULE_3__["iterator"]);
 
       var ZipBufferIterator = /*#__PURE__*/function (_innerSubscribe__WEBP3, _internal_symbol_iter2) {
-        _inherits(ZipBufferIterator, _innerSubscribe__WEBP3);
-
-        var _super7 = _createSuper(ZipBufferIterator);
-
         function ZipBufferIterator(destination, parent, observable) {
           var _this8;
 
           _classCallCheck(this, ZipBufferIterator);
 
-          _this8 = _super7.call(this, destination);
+          _this8 = _callSuper(this, ZipBufferIterator, [destination]);
           _this8.parent = parent;
           _this8.observable = observable;
           _this8.stillUnsubscribed = true;
@@ -1193,7 +1157,9 @@
           return _this8;
         }
 
-        _createClass2(ZipBufferIterator, [{
+        _inherits(ZipBufferIterator, _innerSubscribe__WEBP3);
+
+        return _createClass2(ZipBufferIterator, [{
           key: _internal_symbol_iter2,
           value: function value() {
             return this;
@@ -1247,8 +1213,6 @@
             return Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_4__["innerSubscribe"])(this.observable, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_4__["SimpleInnerSubscriber"](this));
           }
         }]);
-
-        return ZipBufferIterator;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_4__["SimpleOuterSubscriber"], _internal_symbol_iterator__WEBPACK_IMPORTED_MODULE_3__["iterator"]); //# sourceMappingURL=zip.js.map
 
       /***/
@@ -1375,21 +1339,19 @@
       "9ppp");
 
       var BehaviorSubject = /*#__PURE__*/function (_Subject__WEBPACK_IMP) {
-        _inherits(BehaviorSubject, _Subject__WEBPACK_IMP);
-
-        var _super8 = _createSuper(BehaviorSubject);
-
         function BehaviorSubject(_value) {
           var _this9;
 
           _classCallCheck(this, BehaviorSubject);
 
-          _this9 = _super8.call(this);
+          _this9 = _callSuper(this, BehaviorSubject);
           _this9._value = _value;
           return _this9;
         }
 
-        _createClass2(BehaviorSubject, [{
+        _inherits(BehaviorSubject, _Subject__WEBPACK_IMP);
+
+        return _createClass2(BehaviorSubject, [{
           key: "value",
           get: function get() {
             return this.getValue();
@@ -1397,7 +1359,7 @@
         }, {
           key: "_subscribe",
           value: function _subscribe(subscriber) {
-            var subscription = _get(_getPrototypeOf(BehaviorSubject.prototype), "_subscribe", this).call(this, subscriber);
+            var subscription = _superPropGet(BehaviorSubject, "_subscribe", this, 3)([subscriber]);
 
             if (subscription && !subscription.closed) {
               subscriber.next(this._value);
@@ -1419,11 +1381,9 @@
         }, {
           key: "next",
           value: function next(value) {
-            _get(_getPrototypeOf(BehaviorSubject.prototype), "next", this).call(this, this._value = value);
+            _superPropGet(BehaviorSubject, "next", this, 3)([this._value = value]);
           }
         }]);
-
-        return BehaviorSubject;
       }(_Subject__WEBPACK_IMPORTED_MODULE_0__["Subject"]); //# sourceMappingURL=BehaviorSubject.js.map
 
       /***/
@@ -1513,34 +1473,30 @@
           this.predicate = predicate;
         }
 
-        _createClass2(SkipWhileOperator, [{
+        return _createClass2(SkipWhileOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SkipWhileSubscriber(subscriber, this.predicate));
           }
         }]);
-
-        return SkipWhileOperator;
       }();
 
       var SkipWhileSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_5) {
-        _inherits(SkipWhileSubscriber, _Subscriber__WEBPACK_5);
-
-        var _super9 = _createSuper(SkipWhileSubscriber);
-
         function SkipWhileSubscriber(destination, predicate) {
           var _this10;
 
           _classCallCheck(this, SkipWhileSubscriber);
 
-          _this10 = _super9.call(this, destination);
+          _this10 = _callSuper(this, SkipWhileSubscriber, [destination]);
           _this10.predicate = predicate;
           _this10.skipping = true;
           _this10.index = 0;
           return _this10;
         }
 
-        _createClass2(SkipWhileSubscriber, [{
+        _inherits(SkipWhileSubscriber, _Subscriber__WEBPACK_5);
+
+        return _createClass2(SkipWhileSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var destination = this.destination;
@@ -1564,8 +1520,6 @@
             }
           }
         }]);
-
-        return SkipWhileSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=skipWhile.js.map
 
       /***/
@@ -1581,7 +1535,7 @@
     /*! exports provided: delay */
 
     /***/
-    function E0(module, __webpack_exports__, __webpack_require__) {
+    function E0_(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -1633,27 +1587,21 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(DelayOperator, [{
+        return _createClass2(DelayOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DelaySubscriber(subscriber, this.delay, this.scheduler));
           }
         }]);
-
-        return DelayOperator;
       }();
 
       var DelaySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_6) {
-        _inherits(DelaySubscriber, _Subscriber__WEBPACK_6);
-
-        var _super10 = _createSuper(DelaySubscriber);
-
         function DelaySubscriber(destination, delay, scheduler) {
           var _this11;
 
           _classCallCheck(this, DelaySubscriber);
 
-          _this11 = _super10.call(this, destination);
+          _this11 = _callSuper(this, DelaySubscriber, [destination]);
           _this11.delay = delay;
           _this11.scheduler = scheduler;
           _this11.queue = [];
@@ -1662,7 +1610,9 @@
           return _this11;
         }
 
-        _createClass2(DelaySubscriber, [{
+        _inherits(DelaySubscriber, _Subscriber__WEBPACK_6);
+
+        return _createClass2(DelaySubscriber, [{
           key: "_schedule",
           value: function _schedule(scheduler) {
             this.active = true;
@@ -1729,8 +1679,6 @@
             }
           }
         }]);
-
-        return DelaySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_2__["Subscriber"]);
 
       var DelayMessage = /*#__PURE__*/_createClass2(function DelayMessage(time, notification) {
@@ -1771,23 +1719,21 @@
       "7ve7");
 
       var AsyncAction = /*#__PURE__*/function (_Action__WEBPACK_IMPO) {
-        _inherits(AsyncAction, _Action__WEBPACK_IMPO);
-
-        var _super11 = _createSuper(AsyncAction);
-
         function AsyncAction(scheduler, work) {
           var _this12;
 
           _classCallCheck(this, AsyncAction);
 
-          _this12 = _super11.call(this, scheduler, work);
+          _this12 = _callSuper(this, AsyncAction, [scheduler, work]);
           _this12.scheduler = scheduler;
           _this12.work = work;
           _this12.pending = false;
           return _this12;
         }
 
-        _createClass2(AsyncAction, [{
+        _inherits(AsyncAction, _Action__WEBPACK_IMPO);
+
+        return _createClass2(AsyncAction, [{
           key: "schedule",
           value: function schedule(state) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -1885,8 +1831,6 @@
             this.delay = null;
           }
         }]);
-
-        return AsyncAction;
       }(_Action__WEBPACK_IMPORTED_MODULE_0__["Action"]); //# sourceMappingURL=AsyncAction.js.map
 
       /***/
@@ -2469,7 +2413,7 @@
          */
 
 
-        _createClass2(CheckboxControlValueAccessor, [{
+        return _createClass2(CheckboxControlValueAccessor, [{
           key: "writeValue",
           value: function writeValue(value) {
             this._renderer.setProperty(this._elementRef.nativeElement, 'checked', value);
@@ -2505,8 +2449,6 @@
             this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
           }
         }]);
-
-        return CheckboxControlValueAccessor;
       }();
 
       CheckboxControlValueAccessor.ɵfac = function CheckboxControlValueAccessor_Factory(t) {
@@ -2664,7 +2606,7 @@
          */
 
 
-        _createClass2(DefaultValueAccessor, [{
+        return _createClass2(DefaultValueAccessor, [{
           key: "writeValue",
           value: function writeValue(value) {
             var normalizedValue = value == null ? '' : value;
@@ -2726,8 +2668,6 @@
             this._compositionMode && this.onChange(value);
           }
         }]);
-
-        return DefaultValueAccessor;
       }();
 
       DefaultValueAccessor.ɵfac = function DefaultValueAccessor_Factory(t) {
@@ -2826,7 +2766,7 @@
           _classCallCheck(this, AbstractControlDirective);
         }
 
-        _createClass2(AbstractControlDirective, [{
+        return _createClass2(AbstractControlDirective, [{
           key: "value",
           get:
           /**
@@ -3075,8 +3015,6 @@
             return this.control ? this.control.getError(errorCode, path) : null;
           }
         }]);
-
-        return AbstractControlDirective;
       }();
 
       AbstractControlDirective.ɵfac = function AbstractControlDirective_Factory(t) {
@@ -3103,17 +3041,15 @@
        */
 
       var ControlContainer = /*#__PURE__*/function (_AbstractControlDirec) {
-        _inherits(ControlContainer, _AbstractControlDirec);
-
-        var _super12 = _createSuper(ControlContainer);
-
         function ControlContainer() {
           _classCallCheck(this, ControlContainer);
 
-          return _super12.apply(this, arguments);
+          return _callSuper(this, ControlContainer, arguments);
         }
 
-        _createClass2(ControlContainer, [{
+        _inherits(ControlContainer, _AbstractControlDirec);
+
+        return _createClass2(ControlContainer, [{
           key: "formDirective",
           get:
           /**
@@ -3134,8 +3070,6 @@
             return null;
           }
         }]);
-
-        return ControlContainer;
       }(AbstractControlDirective);
 
       ControlContainer.ɵfac = function ControlContainer_Factory(t) {
@@ -3172,16 +3106,12 @@
 
 
       var NgControl = /*#__PURE__*/function (_AbstractControlDirec2) {
-        _inherits(NgControl, _AbstractControlDirec2);
-
-        var _super13 = _createSuper(NgControl);
-
         function NgControl() {
           var _this13;
 
           _classCallCheck(this, NgControl);
 
-          _this13 = _super13.apply(this, arguments);
+          _this13 = _callSuper(this, NgControl, arguments);
           /**
            * @description
            * The parent form for the control.
@@ -3228,7 +3158,9 @@
          */
 
 
-        _createClass2(NgControl, [{
+        _inherits(NgControl, _AbstractControlDirec2);
+
+        return _createClass2(NgControl, [{
           key: "validator",
           get: function get() {
             return unimplemented();
@@ -3246,8 +3178,6 @@
             return unimplemented();
           }
         }]);
-
-        return NgControl;
       }(AbstractControlDirective);
       /**
        * @license
@@ -3265,7 +3195,7 @@
           this._cd = cd;
         }
 
-        _createClass2(AbstractControlStatus, [{
+        return _createClass2(AbstractControlStatus, [{
           key: "ngClassUntouched",
           get: function get() {
             return this._cd.control ? this._cd.control.untouched : false;
@@ -3301,8 +3231,6 @@
             return this._cd.control ? this._cd.control.pending : false;
           }
         }]);
-
-        return AbstractControlStatus;
       }();
 
       var ngControlStatusHost = {
@@ -3339,15 +3267,13 @@
        */
 
       var NgControlStatus = /*#__PURE__*/function (_AbstractControlStatu) {
-        _inherits(NgControlStatus, _AbstractControlStatu);
-
-        var _super14 = _createSuper(NgControlStatus);
-
         function NgControlStatus(cd) {
           _classCallCheck(this, NgControlStatus);
 
-          return _super14.call(this, cd);
+          return _callSuper(this, NgControlStatus, [cd]);
         }
+
+        _inherits(NgControlStatus, _AbstractControlStatu);
 
         return _createClass2(NgControlStatus);
       }(AbstractControlStatus);
@@ -3409,15 +3335,13 @@
 
 
       var NgControlStatusGroup = /*#__PURE__*/function (_AbstractControlStatu2) {
-        _inherits(NgControlStatusGroup, _AbstractControlStatu2);
-
-        var _super15 = _createSuper(NgControlStatusGroup);
-
         function NgControlStatusGroup(cd) {
           _classCallCheck(this, NgControlStatusGroup);
 
-          return _super15.call(this, cd);
+          return _callSuper(this, NgControlStatusGroup, [cd]);
         }
+
+        _inherits(NgControlStatusGroup, _AbstractControlStatu2);
 
         return _createClass2(NgControlStatusGroup);
       }(AbstractControlStatus);
@@ -3574,7 +3498,7 @@
           _classCallCheck(this, Validators);
         }
 
-        _createClass2(Validators, null, [{
+        return _createClass2(Validators, null, [{
           key: "min",
           value:
           /**
@@ -3979,8 +3903,6 @@
             };
           }
         }]);
-
-        return Validators;
       }();
 
       function isPresent(o) {
@@ -4101,7 +4023,7 @@
          */
 
 
-        _createClass2(NumberValueAccessor, [{
+        return _createClass2(NumberValueAccessor, [{
           key: "writeValue",
           value: function writeValue(value) {
             // The value needs to be normalized for IE9, otherwise it is set to 'null' when null
@@ -4142,8 +4064,6 @@
             this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
           }
         }]);
-
-        return NumberValueAccessor;
       }();
 
       NumberValueAccessor.ɵfac = function NumberValueAccessor_Factory(t) {
@@ -4232,7 +4152,7 @@
          */
 
 
-        _createClass2(RadioControlRegistry, [{
+        return _createClass2(RadioControlRegistry, [{
           key: "add",
           value: function add(control, accessor) {
             this._accessors.push([control, accessor]);
@@ -4276,8 +4196,6 @@
             return controlPair[0]._parent === accessor._control._parent && controlPair[1].name === accessor.name;
           }
         }]);
-
-        return RadioControlRegistry;
       }();
 
       RadioControlRegistry.ɵfac = function RadioControlRegistry_Factory(t) {
@@ -4344,7 +4262,7 @@
         /** @nodoc */
 
 
-        _createClass2(RadioControlValueAccessor, [{
+        return _createClass2(RadioControlValueAccessor, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this._control = this._injector.get(NgControl);
@@ -4431,8 +4349,6 @@
             if (!this.name && this.formControlName) this.name = this.formControlName;
           }
         }]);
-
-        return RadioControlValueAccessor;
       }();
 
       RadioControlValueAccessor.ɵfac = function RadioControlValueAccessor_Factory(t) {
@@ -4585,7 +4501,7 @@
          */
 
 
-        _createClass2(RangeValueAccessor, [{
+        return _createClass2(RangeValueAccessor, [{
           key: "writeValue",
           value: function writeValue(value) {
             this._renderer.setProperty(this._elementRef.nativeElement, 'value', parseFloat(value));
@@ -4623,8 +4539,6 @@
             this._renderer.setProperty(this._elementRef.nativeElement, 'disabled', isDisabled);
           }
         }]);
-
-        return RangeValueAccessor;
       }();
 
       RangeValueAccessor.ɵfac = function RangeValueAccessor_Factory(t) {
@@ -4707,7 +4621,7 @@
           _classCallCheck(this, ReactiveErrors);
         }
 
-        _createClass2(ReactiveErrors, null, [{
+        return _createClass2(ReactiveErrors, null, [{
           key: "controlParentException",
           value: function controlParentException() {
             throw new Error("formControlName must be used with a parent formGroup directive.  You'll want to add a formGroup\n       directive and pass it an existing FormGroup instance (you can create one in your class).\n\n      Example:\n\n      ".concat(FormErrorExamples.formControlName));
@@ -4743,8 +4657,6 @@
             console.warn("\n    It looks like you're using ngModel on the same form field as ".concat(directiveName, ".\n    Support for using the ngModel input property and ngModelChange event with\n    reactive form directives has been deprecated in Angular v6 and will be removed\n    in a future version of Angular.\n\n    For more information on this, see our API docs here:\n    https://angular.io/api/forms/").concat(directiveName === 'formControl' ? 'FormControlDirective' : 'FormControlName', "#use-with-ngmodel\n    "));
           }
         }]);
-
-        return ReactiveErrors;
       }();
       /**
        * @license
@@ -4866,7 +4778,7 @@
          */
 
 
-        _createClass2(SelectControlValueAccessor, [{
+        return _createClass2(SelectControlValueAccessor, [{
           key: "compareWith",
           set: function set(fn) {
             if (typeof fn !== 'function' && (typeof ngDevMode === 'undefined' || ngDevMode)) {
@@ -4960,8 +4872,6 @@
             return this._optionMap.has(id) ? this._optionMap.get(id) : valueString;
           }
         }]);
-
-        return SelectControlValueAccessor;
       }();
 
       SelectControlValueAccessor.ɵfac = function SelectControlValueAccessor_Factory(t) {
@@ -5052,7 +4962,7 @@
          */
 
 
-        _createClass2(NgSelectOption, [{
+        return _createClass2(NgSelectOption, [{
           key: "ngValue",
           set: function set(value) {
             if (this._select == null) return;
@@ -5095,8 +5005,6 @@
             }
           }
         }]);
-
-        return NgSelectOption;
       }();
 
       NgSelectOption.ɵfac = function NgSelectOption_Factory(t) {
@@ -5274,7 +5182,7 @@
          */
 
 
-        _createClass2(SelectMultipleControlValueAccessor, [{
+        return _createClass2(SelectMultipleControlValueAccessor, [{
           key: "compareWith",
           set: function set(fn) {
             if (typeof fn !== 'function' && (typeof ngDevMode === 'undefined' || ngDevMode)) {
@@ -5409,8 +5317,6 @@
             return this._optionMap.has(id) ? this._optionMap.get(id)._value : valueString;
           }
         }]);
-
-        return SelectMultipleControlValueAccessor;
       }();
 
       SelectMultipleControlValueAccessor.ɵfac = function SelectMultipleControlValueAccessor_Factory(t) {
@@ -5504,7 +5410,7 @@
          */
 
 
-        _createClass2(ɵNgSelectMultipleOption, [{
+        return _createClass2(ɵNgSelectMultipleOption, [{
           key: "ngValue",
           set: function set(value) {
             if (this._select == null) return;
@@ -5559,8 +5465,6 @@
             }
           }
         }]);
-
-        return ɵNgSelectMultipleOption;
       }();
 
       ɵNgSelectMultipleOption.ɵfac = function ɵNgSelectMultipleOption_Factory(t) {
@@ -6014,7 +5918,7 @@
          */
 
 
-        _createClass2(AbstractControl, [{
+        return _createClass2(AbstractControl, [{
           key: "validator",
           get: function get() {
             return this._composedValidatorFn;
@@ -6854,8 +6758,6 @@
             return !onlySelf && parentDirty && !this._parent._anyControlsDirty();
           }
         }]);
-
-        return AbstractControl;
       }();
       /**
        * Tracks the value and validation status of an individual form control.
@@ -6957,10 +6859,6 @@
 
 
       var FormControl = /*#__PURE__*/function (_AbstractControl) {
-        _inherits(FormControl, _AbstractControl);
-
-        var _super16 = _createSuper(FormControl);
-
         /**
          * Creates a new `FormControl` instance.
          *
@@ -6983,7 +6881,7 @@
 
           _classCallCheck(this, FormControl);
 
-          _this20 = _super16.call(this, pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts));
+          _this20 = _callSuper(this, FormControl, [pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts)]);
           /** @internal */
 
           _this20._onChange = [];
@@ -7026,7 +6924,9 @@
          */
 
 
-        _createClass2(FormControl, [{
+        _inherits(FormControl, _AbstractControl);
+
+        return _createClass2(FormControl, [{
           key: "setValue",
           value: function setValue(value) {
             var _this21 = this;
@@ -7193,8 +7093,6 @@
             }
           }
         }]);
-
-        return FormControl;
       }(AbstractControl);
       /**
        * Tracks the value and validity state of a group of `FormControl` instances.
@@ -7271,10 +7169,6 @@
 
 
       var FormGroup = /*#__PURE__*/function (_AbstractControl2) {
-        _inherits(FormGroup, _AbstractControl2);
-
-        var _super17 = _createSuper(FormGroup);
-
         /**
          * Creates a new `FormGroup` instance.
          *
@@ -7293,7 +7187,7 @@
 
           _classCallCheck(this, FormGroup);
 
-          _this22 = _super17.call(this, pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts));
+          _this22 = _callSuper(this, FormGroup, [pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts)]);
           _this22.controls = controls;
 
           _this22._initObservables();
@@ -7320,7 +7214,9 @@
          */
 
 
-        _createClass2(FormGroup, [{
+        _inherits(FormGroup, _AbstractControl2);
+
+        return _createClass2(FormGroup, [{
           key: "registerControl",
           value: function registerControl(name, control) {
             if (this.controls[name]) return this.controls[name];
@@ -7723,8 +7619,6 @@
             });
           }
         }]);
-
-        return FormGroup;
       }(AbstractControl);
       /**
        * Tracks the value and validity state of an array of `FormControl`,
@@ -7793,10 +7687,6 @@
 
 
       var FormArray = /*#__PURE__*/function (_AbstractControl3) {
-        _inherits(FormArray, _AbstractControl3);
-
-        var _super18 = _createSuper(FormArray);
-
         /**
          * Creates a new `FormArray` instance.
          *
@@ -7815,7 +7705,7 @@
 
           _classCallCheck(this, FormArray);
 
-          _this28 = _super18.call(this, pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts));
+          _this28 = _callSuper(this, FormArray, [pickValidators(validatorOrOpts), pickAsyncValidators(asyncValidator, validatorOrOpts)]);
           _this28.controls = controls;
 
           _this28._initObservables();
@@ -7838,7 +7728,9 @@
          */
 
 
-        _createClass2(FormArray, [{
+        _inherits(FormArray, _AbstractControl3);
+
+        return _createClass2(FormArray, [{
           key: "at",
           value: function at(index) {
             return this.controls[index];
@@ -8258,8 +8150,6 @@
             control._registerOnCollectionChange(this._onCollectionChange);
           }
         }]);
-
-        return FormArray;
       }(AbstractControl);
       /**
        * @license
@@ -8348,16 +8238,12 @@
        */
 
       var NgForm = /*#__PURE__*/function (_ControlContainer) {
-        _inherits(NgForm, _ControlContainer);
-
-        var _super19 = _createSuper(NgForm);
-
         function NgForm(validators, asyncValidators) {
           var _this33;
 
           _classCallCheck(this, NgForm);
 
-          _this33 = _super19.call(this);
+          _this33 = _callSuper(this, NgForm);
           /**
            * @description
            * Returns whether the form submission has been triggered.
@@ -8377,7 +8263,9 @@
         /** @nodoc */
 
 
-        _createClass2(NgForm, [{
+        _inherits(NgForm, _ControlContainer);
+
+        return _createClass2(NgForm, [{
           key: "ngAfterViewInit",
           value: function ngAfterViewInit() {
             this._setUpdateStrategy();
@@ -8623,8 +8511,6 @@
             return path.length ? this.form.get(path) : this.form;
           }
         }]);
-
-        return NgForm;
       }(ControlContainer);
 
       NgForm.ɵfac = function NgForm_Factory(t) {
@@ -8744,17 +8630,15 @@
 
 
       var AbstractFormGroupDirective = /*#__PURE__*/function (_ControlContainer2) {
-        _inherits(AbstractFormGroupDirective, _ControlContainer2);
-
-        var _super20 = _createSuper(AbstractFormGroupDirective);
-
         function AbstractFormGroupDirective() {
           _classCallCheck(this, AbstractFormGroupDirective);
 
-          return _super20.apply(this, arguments);
+          return _callSuper(this, AbstractFormGroupDirective, arguments);
         }
 
-        _createClass2(AbstractFormGroupDirective, [{
+        _inherits(AbstractFormGroupDirective, _ControlContainer2);
+
+        return _createClass2(AbstractFormGroupDirective, [{
           key: "ngOnInit",
           value:
           /** @nodoc */
@@ -8830,8 +8714,6 @@
           key: "_checkParentType",
           value: function _checkParentType() {}
         }]);
-
-        return AbstractFormGroupDirective;
       }(ControlContainer);
 
       AbstractFormGroupDirective.ɵfac = function AbstractFormGroupDirective_Factory(t) {
@@ -8866,7 +8748,7 @@
           _classCallCheck(this, TemplateDrivenErrors);
         }
 
-        _createClass2(TemplateDrivenErrors, null, [{
+        return _createClass2(TemplateDrivenErrors, null, [{
           key: "modelParentException",
           value: function modelParentException() {
             throw new Error("\n      ngModel cannot be used to register form controls with a parent formGroup directive.  Try using\n      formGroup's partner directive \"formControlName\" instead.  Example:\n\n      ".concat(FormErrorExamples.formControlName, "\n\n      Or, if you'd like to avoid registering this form control, indicate that it's standalone in ngModelOptions:\n\n      Example:\n\n      ").concat(FormErrorExamples.ngModelWithFormGroup));
@@ -8887,8 +8769,6 @@
             throw new Error("\n      ngModelGroup cannot be used with a parent formGroup directive.\n\n      Option 1: Use formGroupName instead of ngModelGroup (reactive strategy):\n\n      ".concat(FormErrorExamples.formGroupName, "\n\n      Option 2:  Use a regular form tag instead of the formGroup directive (template-driven strategy):\n\n      ").concat(FormErrorExamples.ngModelGroup));
           }
         }]);
-
-        return TemplateDrivenErrors;
       }();
       /**
        * @license
@@ -8933,16 +8813,12 @@
        */
 
       var NgModelGroup = /*#__PURE__*/function (_AbstractFormGroupDir) {
-        _inherits(NgModelGroup, _AbstractFormGroupDir);
-
-        var _super21 = _createSuper(NgModelGroup);
-
         function NgModelGroup(parent, validators, asyncValidators) {
           var _this39;
 
           _classCallCheck(this, NgModelGroup);
 
-          _this39 = _super21.call(this);
+          _this39 = _callSuper(this, NgModelGroup);
           _this39._parent = parent;
           _this39._validators = validators;
           _this39._asyncValidators = asyncValidators;
@@ -8951,7 +8827,9 @@
         /** @internal */
 
 
-        _createClass2(NgModelGroup, [{
+        _inherits(NgModelGroup, _AbstractFormGroupDir);
+
+        return _createClass2(NgModelGroup, [{
           key: "_checkParentType",
           value: function _checkParentType() {
             if (!(this._parent instanceof NgModelGroup) && !(this._parent instanceof NgForm) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
@@ -8959,8 +8837,6 @@
             }
           }
         }]);
-
-        return NgModelGroup;
       }(AbstractFormGroupDirective);
 
       NgModelGroup.ɵfac = function NgModelGroup_Factory(t) {
@@ -9186,16 +9062,12 @@
        */
 
       var NgModel = /*#__PURE__*/function (_NgControl) {
-        _inherits(NgModel, _NgControl);
-
-        var _super22 = _createSuper(NgModel);
-
         function NgModel(parent, validators, asyncValidators, valueAccessors) {
           var _this40;
 
           _classCallCheck(this, NgModel);
 
-          _this40 = _super22.call(this);
+          _this40 = _callSuper(this, NgModel);
           _this40.control = new FormControl();
           /** @internal */
 
@@ -9210,13 +9082,15 @@
           _this40._parent = parent;
           _this40._rawValidators = validators || [];
           _this40._rawAsyncValidators = asyncValidators || [];
-          _this40.valueAccessor = selectValueAccessor(_assertThisInitialized(_this40), valueAccessors);
+          _this40.valueAccessor = selectValueAccessor(_this40, valueAccessors);
           return _this40;
         }
         /** @nodoc */
 
 
-        _createClass2(NgModel, [{
+        _inherits(NgModel, _NgControl);
+
+        return _createClass2(NgModel, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             this._checkForErrors();
@@ -9380,8 +9254,6 @@
             });
           }
         }]);
-
-        return NgModel;
       }(NgControl);
 
       NgModel.ɵfac = function NgModel_Factory(t) {
@@ -9634,16 +9506,12 @@
        */
 
       var FormControlDirective = /*#__PURE__*/function (_NgControl2) {
-        _inherits(FormControlDirective, _NgControl2);
-
-        var _super23 = _createSuper(FormControlDirective);
-
         function FormControlDirective(validators, asyncValidators, valueAccessors, _ngModelWarningConfig) {
           var _this43;
 
           _classCallCheck(this, FormControlDirective);
 
-          _this43 = _super23.call(this);
+          _this43 = _callSuper(this, FormControlDirective);
           _this43._ngModelWarningConfig = _ngModelWarningConfig;
           /** @deprecated as of v6 */
 
@@ -9659,7 +9527,7 @@
           _this43._ngModelWarningSent = false;
           _this43._rawValidators = validators || [];
           _this43._rawAsyncValidators = asyncValidators || [];
-          _this43.valueAccessor = selectValueAccessor(_assertThisInitialized(_this43), valueAccessors);
+          _this43.valueAccessor = selectValueAccessor(_this43, valueAccessors);
           return _this43;
         }
         /**
@@ -9668,7 +9536,9 @@
          */
 
 
-        _createClass2(FormControlDirective, [{
+        _inherits(FormControlDirective, _NgControl2);
+
+        return _createClass2(FormControlDirective, [{
           key: "isDisabled",
           set: function set(isDisabled) {
             if (typeof ngDevMode === 'undefined' || ngDevMode) {
@@ -9761,8 +9631,6 @@
             return changes.hasOwnProperty('form');
           }
         }]);
-
-        return FormControlDirective;
       }(NgControl);
 
       FormControlDirective.ɵfac = function FormControlDirective_Factory(t) {
@@ -9962,16 +9830,12 @@
        */
 
       var FormGroupDirective = /*#__PURE__*/function (_ControlContainer3) {
-        _inherits(FormGroupDirective, _ControlContainer3);
-
-        var _super24 = _createSuper(FormGroupDirective);
-
         function FormGroupDirective(_validators, _asyncValidators) {
           var _this44;
 
           _classCallCheck(this, FormGroupDirective);
 
-          _this44 = _super24.call(this);
+          _this44 = _callSuper(this, FormGroupDirective);
           _this44._validators = _validators;
           _this44._asyncValidators = _asyncValidators;
           /**
@@ -10003,7 +9867,9 @@
         /** @nodoc */
 
 
-        _createClass2(FormGroupDirective, [{
+        _inherits(FormGroupDirective, _ControlContainer3);
+
+        return _createClass2(FormGroupDirective, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             this._checkFormPresent();
@@ -10264,8 +10130,6 @@
             }
           }
         }]);
-
-        return FormGroupDirective;
       }(ControlContainer);
 
       FormGroupDirective.ɵfac = function FormGroupDirective_Factory(t) {
@@ -10437,16 +10301,12 @@
        */
 
       var FormGroupName = /*#__PURE__*/function (_AbstractFormGroupDir2) {
-        _inherits(FormGroupName, _AbstractFormGroupDir2);
-
-        var _super25 = _createSuper(FormGroupName);
-
         function FormGroupName(parent, validators, asyncValidators) {
           var _this47;
 
           _classCallCheck(this, FormGroupName);
 
-          _this47 = _super25.call(this);
+          _this47 = _callSuper(this, FormGroupName);
           _this47._parent = parent;
           _this47._validators = validators;
           _this47._asyncValidators = asyncValidators;
@@ -10455,7 +10315,9 @@
         /** @internal */
 
 
-        _createClass2(FormGroupName, [{
+        _inherits(FormGroupName, _AbstractFormGroupDir2);
+
+        return _createClass2(FormGroupName, [{
           key: "_checkParentType",
           value: function _checkParentType() {
             if (_hasInvalidParent(this._parent) && (typeof ngDevMode === 'undefined' || ngDevMode)) {
@@ -10463,8 +10325,6 @@
             }
           }
         }]);
-
-        return FormGroupName;
       }(AbstractFormGroupDirective);
 
       FormGroupName.ɵfac = function FormGroupName_Factory(t) {
@@ -10599,16 +10459,12 @@
        */
 
       var FormArrayName = /*#__PURE__*/function (_ControlContainer4) {
-        _inherits(FormArrayName, _ControlContainer4);
-
-        var _super26 = _createSuper(FormArrayName);
-
         function FormArrayName(parent, validators, asyncValidators) {
           var _this48;
 
           _classCallCheck(this, FormArrayName);
 
-          _this48 = _super26.call(this);
+          _this48 = _callSuper(this, FormArrayName);
           _this48._parent = parent;
           _this48._validators = validators;
           _this48._asyncValidators = asyncValidators;
@@ -10621,7 +10477,9 @@
          */
 
 
-        _createClass2(FormArrayName, [{
+        _inherits(FormArrayName, _ControlContainer4);
+
+        return _createClass2(FormArrayName, [{
           key: "ngOnInit",
           value: function ngOnInit() {
             this._checkParentType();
@@ -10700,8 +10558,6 @@
             }
           }
         }]);
-
-        return FormArrayName;
       }(ControlContainer);
 
       FormArrayName.ɵfac = function FormArrayName_Factory(t) {
@@ -10858,16 +10714,12 @@
        */
 
       var FormControlName = /*#__PURE__*/function (_NgControl3) {
-        _inherits(FormControlName, _NgControl3);
-
-        var _super27 = _createSuper(FormControlName);
-
         function FormControlName(parent, validators, asyncValidators, valueAccessors, _ngModelWarningConfig) {
           var _this49;
 
           _classCallCheck(this, FormControlName);
 
-          _this49 = _super27.call(this);
+          _this49 = _callSuper(this, FormControlName);
           _this49._ngModelWarningConfig = _ngModelWarningConfig;
           _this49._added = false;
           /** @deprecated as of v6 */
@@ -10885,7 +10737,7 @@
           _this49._parent = parent;
           _this49._rawValidators = validators || [];
           _this49._rawAsyncValidators = asyncValidators || [];
-          _this49.valueAccessor = selectValueAccessor(_assertThisInitialized(_this49), valueAccessors);
+          _this49.valueAccessor = selectValueAccessor(_this49, valueAccessors);
           return _this49;
         }
         /**
@@ -10894,7 +10746,9 @@
          */
 
 
-        _createClass2(FormControlName, [{
+        _inherits(FormControlName, _NgControl3);
+
+        return _createClass2(FormControlName, [{
           key: "isDisabled",
           set: function set(isDisabled) {
             if (typeof ngDevMode === 'undefined' || ngDevMode) {
@@ -11005,8 +10859,6 @@
             this._added = true;
           }
         }]);
-
-        return FormControlName;
       }(NgControl);
 
       FormControlName.ɵfac = function FormControlName_Factory(t) {
@@ -11247,7 +11099,7 @@
          */
 
 
-        _createClass2(RequiredValidator, [{
+        return _createClass2(RequiredValidator, [{
           key: "required",
           get: function get() {
             return this._required;
@@ -11278,8 +11130,6 @@
             this._onChange = fn;
           }
         }]);
-
-        return RequiredValidator;
       }();
 
       RequiredValidator.ɵfac = function RequiredValidator_Factory(t) {
@@ -11349,17 +11199,15 @@
 
 
       var CheckboxRequiredValidator = /*#__PURE__*/function (_RequiredValidator) {
-        _inherits(CheckboxRequiredValidator, _RequiredValidator);
-
-        var _super28 = _createSuper(CheckboxRequiredValidator);
-
         function CheckboxRequiredValidator() {
           _classCallCheck(this, CheckboxRequiredValidator);
 
-          return _super28.apply(this, arguments);
+          return _callSuper(this, CheckboxRequiredValidator, arguments);
         }
 
-        _createClass2(CheckboxRequiredValidator, [{
+        _inherits(CheckboxRequiredValidator, _RequiredValidator);
+
+        return _createClass2(CheckboxRequiredValidator, [{
           key: "validate",
           value:
           /**
@@ -11371,8 +11219,6 @@
             return this.required ? Validators.requiredTrue(control) : null;
           }
         }]);
-
-        return CheckboxRequiredValidator;
       }(RequiredValidator);
 
       CheckboxRequiredValidator.ɵfac = function CheckboxRequiredValidator_Factory(t) {
@@ -11456,7 +11302,7 @@
          */
 
 
-        _createClass2(EmailValidator, [{
+        return _createClass2(EmailValidator, [{
           key: "email",
           set: function set(value) {
             this._enabled = value === '' || value === true || value === 'true';
@@ -11484,8 +11330,6 @@
             this._onChange = fn;
           }
         }]);
-
-        return EmailValidator;
       }();
 
       EmailValidator.ɵfac = function EmailValidator_Factory(t) {
@@ -11566,7 +11410,7 @@
         /** @nodoc */
 
 
-        _createClass2(MinLengthValidator, [{
+        return _createClass2(MinLengthValidator, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             if ('minlength' in changes) {
@@ -11602,8 +11446,6 @@
             this._validator = Validators.minLength(typeof this.minlength === 'number' ? this.minlength : parseInt(this.minlength, 10));
           }
         }]);
-
-        return MinLengthValidator;
       }();
 
       MinLengthValidator.ɵfac = function MinLengthValidator_Factory(t) {
@@ -11693,7 +11535,7 @@
         /** @nodoc */
 
 
-        _createClass2(MaxLengthValidator, [{
+        return _createClass2(MaxLengthValidator, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             if ('maxlength' in changes) {
@@ -11728,8 +11570,6 @@
             this._validator = Validators.maxLength(typeof this.maxlength === 'number' ? this.maxlength : parseInt(this.maxlength, 10));
           }
         }]);
-
-        return MaxLengthValidator;
       }();
 
       MaxLengthValidator.ɵfac = function MaxLengthValidator_Factory(t) {
@@ -11821,7 +11661,7 @@
         /** @nodoc */
 
 
-        _createClass2(PatternValidator, [{
+        return _createClass2(PatternValidator, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             if ('pattern' in changes) {
@@ -11856,8 +11696,6 @@
             this._validator = Validators.pattern(this.pattern);
           }
         }]);
-
-        return PatternValidator;
       }();
 
       PatternValidator.ɵfac = function PatternValidator_Factory(t) {
@@ -11981,7 +11819,7 @@
           _classCallCheck(this, FormBuilder);
         }
 
-        _createClass2(FormBuilder, [{
+        return _createClass2(FormBuilder, [{
           key: "group",
           value:
           /**
@@ -12117,8 +11955,6 @@
             }
           }
         }]);
-
-        return FormBuilder;
       }();
 
       FormBuilder.ɵfac = function FormBuilder_Factory(t) {
@@ -12218,7 +12054,7 @@
           _classCallCheck(this, ReactiveFormsModule);
         }
 
-        _createClass2(ReactiveFormsModule, null, [{
+        return _createClass2(ReactiveFormsModule, null, [{
           key: "withConfig",
           value:
           /**
@@ -12239,8 +12075,6 @@
             };
           }
         }]);
-
-        return ReactiveFormsModule;
       }();
 
       ReactiveFormsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
@@ -12393,33 +12227,27 @@
           _classCallCheck(this, IgnoreElementsOperator);
         }
 
-        _createClass2(IgnoreElementsOperator, [{
+        return _createClass2(IgnoreElementsOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new IgnoreElementsSubscriber(subscriber));
           }
         }]);
-
-        return IgnoreElementsOperator;
       }();
 
       var IgnoreElementsSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_7) {
-        _inherits(IgnoreElementsSubscriber, _Subscriber__WEBPACK_7);
-
-        var _super29 = _createSuper(IgnoreElementsSubscriber);
-
         function IgnoreElementsSubscriber() {
           _classCallCheck(this, IgnoreElementsSubscriber);
 
-          return _super29.apply(this, arguments);
+          return _callSuper(this, IgnoreElementsSubscriber, arguments);
         }
 
-        _createClass2(IgnoreElementsSubscriber, [{
+        _inherits(IgnoreElementsSubscriber, _Subscriber__WEBPACK_7);
+
+        return _createClass2(IgnoreElementsSubscriber, [{
           key: "_next",
           value: function _next(unused) {}
         }]);
-
-        return IgnoreElementsSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=ignoreElements.js.map
 
       /***/
@@ -12936,21 +12764,15 @@
           this.concurrent = concurrent;
         }
 
-        _createClass2(MergeMapOperator, [{
+        return _createClass2(MergeMapOperator, [{
           key: "call",
           value: function call(observer, source) {
             return source.subscribe(new MergeMapSubscriber(observer, this.project, this.concurrent));
           }
         }]);
-
-        return MergeMapOperator;
       }();
 
       var MergeMapSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP4) {
-        _inherits(MergeMapSubscriber, _innerSubscribe__WEBP4);
-
-        var _super30 = _createSuper(MergeMapSubscriber);
-
         function MergeMapSubscriber(destination, project) {
           var _this53;
 
@@ -12958,7 +12780,7 @@
 
           _classCallCheck(this, MergeMapSubscriber);
 
-          _this53 = _super30.call(this, destination);
+          _this53 = _callSuper(this, MergeMapSubscriber, [destination]);
           _this53.project = project;
           _this53.concurrent = concurrent;
           _this53.hasCompleted = false;
@@ -12968,7 +12790,9 @@
           return _this53;
         }
 
-        _createClass2(MergeMapSubscriber, [{
+        _inherits(MergeMapSubscriber, _innerSubscribe__WEBP4);
+
+        return _createClass2(MergeMapSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this.active < this.concurrent) {
@@ -13035,8 +12859,6 @@
             }
           }
         }]);
-
-        return MergeMapSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleOuterSubscriber"]);
 
       var flatMap = mergeMap; //# sourceMappingURL=mergeMap.js.map
@@ -13098,27 +12920,21 @@
           this.concurrent = concurrent;
         }
 
-        _createClass2(MergeScanOperator, [{
+        return _createClass2(MergeScanOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new MergeScanSubscriber(subscriber, this.accumulator, this.seed, this.concurrent));
           }
         }]);
-
-        return MergeScanOperator;
       }();
 
       var MergeScanSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP5) {
-        _inherits(MergeScanSubscriber, _innerSubscribe__WEBP5);
-
-        var _super31 = _createSuper(MergeScanSubscriber);
-
         function MergeScanSubscriber(destination, accumulator, acc, concurrent) {
           var _this54;
 
           _classCallCheck(this, MergeScanSubscriber);
 
-          _this54 = _super31.call(this, destination);
+          _this54 = _callSuper(this, MergeScanSubscriber, [destination]);
           _this54.accumulator = accumulator;
           _this54.acc = acc;
           _this54.concurrent = concurrent;
@@ -13130,7 +12946,9 @@
           return _this54;
         }
 
-        _createClass2(MergeScanSubscriber, [{
+        _inherits(MergeScanSubscriber, _innerSubscribe__WEBP5);
+
+        return _createClass2(MergeScanSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this.active < this.concurrent) {
@@ -13204,8 +13022,6 @@
             }
           }
         }]);
-
-        return MergeScanSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=mergeScan.js.map
 
       /***/
@@ -13239,16 +13055,12 @@
       "7o/Q");
 
       var InnerSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_8) {
-        _inherits(InnerSubscriber, _Subscriber__WEBPACK_8);
-
-        var _super32 = _createSuper(InnerSubscriber);
-
         function InnerSubscriber(parent, outerValue, outerIndex) {
           var _this55;
 
           _classCallCheck(this, InnerSubscriber);
 
-          _this55 = _super32.call(this);
+          _this55 = _callSuper(this, InnerSubscriber);
           _this55.parent = parent;
           _this55.outerValue = outerValue;
           _this55.outerIndex = outerIndex;
@@ -13256,7 +13068,9 @@
           return _this55;
         }
 
-        _createClass2(InnerSubscriber, [{
+        _inherits(InnerSubscriber, _Subscriber__WEBPACK_8);
+
+        return _createClass2(InnerSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.parent.notifyNext(this.outerValue, value, this.outerIndex, this.index++, this);
@@ -13274,8 +13088,6 @@
             this.unsubscribe();
           }
         }]);
-
-        return InnerSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=InnerSubscriber.js.map
 
       /***/
@@ -13439,33 +13251,29 @@
           this.durationSelector = durationSelector;
         }
 
-        _createClass2(DebounceOperator, [{
+        return _createClass2(DebounceOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DebounceSubscriber(subscriber, this.durationSelector));
           }
         }]);
-
-        return DebounceOperator;
       }();
 
       var DebounceSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP6) {
-        _inherits(DebounceSubscriber, _innerSubscribe__WEBP6);
-
-        var _super33 = _createSuper(DebounceSubscriber);
-
         function DebounceSubscriber(destination, durationSelector) {
           var _this56;
 
           _classCallCheck(this, DebounceSubscriber);
 
-          _this56 = _super33.call(this, destination);
+          _this56 = _callSuper(this, DebounceSubscriber, [destination]);
           _this56.durationSelector = durationSelector;
           _this56.hasValue = false;
           return _this56;
         }
 
-        _createClass2(DebounceSubscriber, [{
+        _inherits(DebounceSubscriber, _innerSubscribe__WEBP6);
+
+        return _createClass2(DebounceSubscriber, [{
           key: "_next",
           value: function _next(value) {
             try {
@@ -13528,12 +13336,10 @@
               this.value = undefined;
               this.hasValue = false;
 
-              _get(_getPrototypeOf(DebounceSubscriber.prototype), "_next", this).call(this, value);
+              _superPropGet(DebounceSubscriber, "_next", this, 3)([value]);
             }
           }
         }]);
-
-        return DebounceSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=debounce.js.map
 
       /***/
@@ -13715,7 +13521,7 @@
     /*! exports provided: Subscriber, SafeSubscriber */
 
     /***/
-    function oQ(module, __webpack_exports__, __webpack_require__) {
+    function o_Q(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -13769,16 +13575,12 @@
       "NJ4a");
 
       var Subscriber = /*#__PURE__*/function (_Subscription__WEBPAC, _internal_symbol_rxSu) {
-        _inherits(Subscriber, _Subscription__WEBPAC);
-
-        var _super34 = _createSuper(Subscriber);
-
         function Subscriber(destinationOrNext, error, complete) {
           var _this57;
 
           _classCallCheck(this, Subscriber);
 
-          _this57 = _super34.call(this);
+          _this57 = _callSuper(this, Subscriber);
           _this57.syncErrorValue = null;
           _this57.syncErrorThrown = false;
           _this57.syncErrorThrowable = false;
@@ -13799,10 +13601,10 @@
                 if (destinationOrNext instanceof Subscriber) {
                   _this57.syncErrorThrowable = destinationOrNext.syncErrorThrowable;
                   _this57.destination = destinationOrNext;
-                  destinationOrNext.add(_assertThisInitialized(_this57));
+                  destinationOrNext.add(_this57);
                 } else {
                   _this57.syncErrorThrowable = true;
-                  _this57.destination = new SafeSubscriber(_assertThisInitialized(_this57), destinationOrNext);
+                  _this57.destination = new SafeSubscriber(_this57, destinationOrNext);
                 }
 
                 break;
@@ -13810,14 +13612,16 @@
 
             default:
               _this57.syncErrorThrowable = true;
-              _this57.destination = new SafeSubscriber(_assertThisInitialized(_this57), destinationOrNext, error, complete);
+              _this57.destination = new SafeSubscriber(_this57, destinationOrNext, error, complete);
               break;
           }
 
           return _this57;
         }
 
-        _createClass2(Subscriber, [{
+        _inherits(Subscriber, _Subscription__WEBPAC);
+
+        return _createClass2(Subscriber, [{
           key: _internal_symbol_rxSu,
           value: function value() {
             return this;
@@ -13856,7 +13660,7 @@
 
             this.isStopped = true;
 
-            _get(_getPrototypeOf(Subscriber.prototype), "unsubscribe", this).call(this);
+            _superPropGet(Subscriber, "unsubscribe", this, 3)([]);
           }
         }, {
           key: "_next",
@@ -13894,25 +13698,18 @@
             return subscriber;
           }
         }]);
-
-        return Subscriber;
       }(_Subscription__WEBPACK_IMPORTED_MODULE_2__["Subscription"], _internal_symbol_rxSubscriber__WEBPACK_IMPORTED_MODULE_3__["rxSubscriber"]);
 
       var SafeSubscriber = /*#__PURE__*/function (_Subscriber) {
-        _inherits(SafeSubscriber, _Subscriber);
-
-        var _super35 = _createSuper(SafeSubscriber);
-
         function SafeSubscriber(_parentSubscriber, observerOrNext, error, complete) {
           var _this58;
 
           _classCallCheck(this, SafeSubscriber);
 
-          _this58 = _super35.call(this);
+          _this58 = _callSuper(this, SafeSubscriber);
           _this58._parentSubscriber = _parentSubscriber;
           var next;
-
-          var context = _assertThisInitialized(_this58);
+          var context = _this58;
 
           if (Object(_util_isFunction__WEBPACK_IMPORTED_MODULE_0__["isFunction"])(observerOrNext)) {
             next = observerOrNext;
@@ -13928,7 +13725,7 @@
                 _this58.add(context.unsubscribe.bind(context));
               }
 
-              context.unsubscribe = _this58.unsubscribe.bind(_assertThisInitialized(_this58));
+              context.unsubscribe = _this58.unsubscribe.bind(_this58);
             }
           }
 
@@ -13939,7 +13736,9 @@
           return _this58;
         }
 
-        _createClass2(SafeSubscriber, [{
+        _inherits(SafeSubscriber, _Subscriber);
+
+        return _createClass2(SafeSubscriber, [{
           key: "next",
           value: function next(value) {
             if (!this.isStopped && this._next) {
@@ -14063,8 +13862,6 @@
             _parentSubscriber.unsubscribe();
           }
         }]);
-
-        return SafeSubscriber;
       }(Subscriber); //# sourceMappingURL=Subscriber.js.map
 
       /***/
@@ -14098,25 +13895,21 @@
       "quSY");
 
       var Action = /*#__PURE__*/function (_Subscription__WEBPAC2) {
-        _inherits(Action, _Subscription__WEBPAC2);
-
-        var _super36 = _createSuper(Action);
-
         function Action(scheduler, work) {
           _classCallCheck(this, Action);
 
-          return _super36.call(this);
+          return _callSuper(this, Action);
         }
 
-        _createClass2(Action, [{
+        _inherits(Action, _Subscription__WEBPAC2);
+
+        return _createClass2(Action, [{
           key: "schedule",
           value: function schedule(state) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
             return this;
           }
         }]);
-
-        return Action;
       }(_Subscription__WEBPACK_IMPORTED_MODULE_0__["Subscription"]); //# sourceMappingURL=Action.js.map
 
       /***/
@@ -14255,33 +14048,29 @@
           }
         }
 
-        _createClass2(BufferCountOperator, [{
+        return _createClass2(BufferCountOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new this.subscriberClass(subscriber, this.bufferSize, this.startBufferEvery));
           }
         }]);
-
-        return BufferCountOperator;
       }();
 
       var BufferCountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_9) {
-        _inherits(BufferCountSubscriber, _Subscriber__WEBPACK_9);
-
-        var _super37 = _createSuper(BufferCountSubscriber);
-
         function BufferCountSubscriber(destination, bufferSize) {
           var _this60;
 
           _classCallCheck(this, BufferCountSubscriber);
 
-          _this60 = _super37.call(this, destination);
+          _this60 = _callSuper(this, BufferCountSubscriber, [destination]);
           _this60.bufferSize = bufferSize;
           _this60.buffer = [];
           return _this60;
         }
 
-        _createClass2(BufferCountSubscriber, [{
+        _inherits(BufferCountSubscriber, _Subscriber__WEBPACK_9);
+
+        return _createClass2(BufferCountSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var buffer = this.buffer;
@@ -14301,24 +14090,18 @@
               this.destination.next(buffer);
             }
 
-            _get(_getPrototypeOf(BufferCountSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(BufferCountSubscriber, "_complete", this, 3)([]);
           }
         }]);
-
-        return BufferCountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var BufferSkipCountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_10) {
-        _inherits(BufferSkipCountSubscriber, _Subscriber__WEBPACK_10);
-
-        var _super38 = _createSuper(BufferSkipCountSubscriber);
-
         function BufferSkipCountSubscriber(destination, bufferSize, startBufferEvery) {
           var _this61;
 
           _classCallCheck(this, BufferSkipCountSubscriber);
 
-          _this61 = _super38.call(this, destination);
+          _this61 = _callSuper(this, BufferSkipCountSubscriber, [destination]);
           _this61.bufferSize = bufferSize;
           _this61.startBufferEvery = startBufferEvery;
           _this61.buffers = [];
@@ -14326,7 +14109,9 @@
           return _this61;
         }
 
-        _createClass2(BufferSkipCountSubscriber, [{
+        _inherits(BufferSkipCountSubscriber, _Subscriber__WEBPACK_10);
+
+        return _createClass2(BufferSkipCountSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var bufferSize = this.bufferSize,
@@ -14363,11 +14148,9 @@
               }
             }
 
-            _get(_getPrototypeOf(BufferSkipCountSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(BufferSkipCountSubscriber, "_complete", this, 3)([]);
           }
         }]);
-
-        return BufferSkipCountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=bufferCount.js.map
 
       /***/
@@ -14581,34 +14364,30 @@
           }
         }
 
-        _createClass2(TakeLastOperator, [{
+        return _createClass2(TakeLastOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new TakeLastSubscriber(subscriber, this.total));
           }
         }]);
-
-        return TakeLastOperator;
       }();
 
       var TakeLastSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_11) {
-        _inherits(TakeLastSubscriber, _Subscriber__WEBPACK_11);
-
-        var _super39 = _createSuper(TakeLastSubscriber);
-
         function TakeLastSubscriber(destination, total) {
           var _this62;
 
           _classCallCheck(this, TakeLastSubscriber);
 
-          _this62 = _super39.call(this, destination);
+          _this62 = _callSuper(this, TakeLastSubscriber, [destination]);
           _this62.total = total;
           _this62.ring = new Array();
           _this62.count = 0;
           return _this62;
         }
 
-        _createClass2(TakeLastSubscriber, [{
+        _inherits(TakeLastSubscriber, _Subscriber__WEBPACK_11);
+
+        return _createClass2(TakeLastSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var ring = this.ring;
@@ -14641,8 +14420,6 @@
             destination.complete();
           }
         }]);
-
-        return TakeLastSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=takeLast.js.map
 
       /***/
@@ -14818,39 +14595,33 @@
           this.value = value;
         }
 
-        _createClass2(MapToOperator, [{
+        return _createClass2(MapToOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new MapToSubscriber(subscriber, this.value));
           }
         }]);
-
-        return MapToOperator;
       }();
 
       var MapToSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_12) {
-        _inherits(MapToSubscriber, _Subscriber__WEBPACK_12);
-
-        var _super40 = _createSuper(MapToSubscriber);
-
         function MapToSubscriber(destination, value) {
           var _this63;
 
           _classCallCheck(this, MapToSubscriber);
 
-          _this63 = _super40.call(this, destination);
+          _this63 = _callSuper(this, MapToSubscriber, [destination]);
           _this63.value = value;
           return _this63;
         }
 
-        _createClass2(MapToSubscriber, [{
+        _inherits(MapToSubscriber, _Subscriber__WEBPACK_12);
+
+        return _createClass2(MapToSubscriber, [{
           key: "_next",
           value: function _next(x) {
             this.destination.next(this.value);
           }
         }]);
-
-        return MapToSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=mapTo.js.map
 
       /***/
@@ -14988,16 +14759,12 @@
       "x+ZX");
 
       var ConnectableObservable = /*#__PURE__*/function (_Observable__WEBPACK_) {
-        _inherits(ConnectableObservable, _Observable__WEBPACK_);
-
-        var _super41 = _createSuper(ConnectableObservable);
-
         function ConnectableObservable(source, subjectFactory) {
           var _this64;
 
           _classCallCheck(this, ConnectableObservable);
 
-          _this64 = _super41.call(this);
+          _this64 = _callSuper(this, ConnectableObservable);
           _this64.source = source;
           _this64.subjectFactory = subjectFactory;
           _this64._refCount = 0;
@@ -15005,7 +14772,9 @@
           return _this64;
         }
 
-        _createClass2(ConnectableObservable, [{
+        _inherits(ConnectableObservable, _Observable__WEBPACK_);
+
+        return _createClass2(ConnectableObservable, [{
           key: "_subscribe",
           value: function _subscribe(subscriber) {
             return this.getSubject().subscribe(subscriber);
@@ -15045,8 +14814,6 @@
             return Object(_operators_refCount__WEBPACK_IMPORTED_MODULE_4__["refCount"])()(this);
           }
         }]);
-
-        return ConnectableObservable;
       }(_Observable__WEBPACK_IMPORTED_MODULE_1__["Observable"]);
 
       var connectableObservableDescriptor = function () {
@@ -15087,26 +14854,24 @@
       }();
 
       var ConnectableSubscriber = /*#__PURE__*/function (_Subject__WEBPACK_IMP2) {
-        _inherits(ConnectableSubscriber, _Subject__WEBPACK_IMP2);
-
-        var _super42 = _createSuper(ConnectableSubscriber);
-
         function ConnectableSubscriber(destination, connectable) {
           var _this65;
 
           _classCallCheck(this, ConnectableSubscriber);
 
-          _this65 = _super42.call(this, destination);
+          _this65 = _callSuper(this, ConnectableSubscriber, [destination]);
           _this65.connectable = connectable;
           return _this65;
         }
 
-        _createClass2(ConnectableSubscriber, [{
+        _inherits(ConnectableSubscriber, _Subject__WEBPACK_IMP2);
+
+        return _createClass2(ConnectableSubscriber, [{
           key: "_error",
           value: function _error(err) {
             this._unsubscribe();
 
-            _get(_getPrototypeOf(ConnectableSubscriber.prototype), "_error", this).call(this, err);
+            _superPropGet(ConnectableSubscriber, "_error", this, 3)([err]);
           }
         }, {
           key: "_complete",
@@ -15115,7 +14880,7 @@
 
             this._unsubscribe();
 
-            _get(_getPrototypeOf(ConnectableSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(ConnectableSubscriber, "_complete", this, 3)([]);
           }
         }, {
           key: "_unsubscribe",
@@ -15135,8 +14900,6 @@
             }
           }
         }]);
-
-        return ConnectableSubscriber;
       }(_Subject__WEBPACK_IMPORTED_MODULE_0__["SubjectSubscriber"]);
 
       var RefCountOperator = /*#__PURE__*/function () {
@@ -15146,7 +14909,7 @@
           this.connectable = connectable;
         }
 
-        _createClass2(RefCountOperator, [{
+        return _createClass2(RefCountOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var connectable = this.connectable;
@@ -15161,26 +14924,22 @@
             return subscription;
           }
         }]);
-
-        return RefCountOperator;
       }();
 
       var RefCountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_13) {
-        _inherits(RefCountSubscriber, _Subscriber__WEBPACK_13);
-
-        var _super43 = _createSuper(RefCountSubscriber);
-
         function RefCountSubscriber(destination, connectable) {
           var _this66;
 
           _classCallCheck(this, RefCountSubscriber);
 
-          _this66 = _super43.call(this, destination);
+          _this66 = _callSuper(this, RefCountSubscriber, [destination]);
           _this66.connectable = connectable;
           return _this66;
         }
 
-        _createClass2(RefCountSubscriber, [{
+        _inherits(RefCountSubscriber, _Subscriber__WEBPACK_13);
+
+        return _createClass2(RefCountSubscriber, [{
           key: "_unsubscribe",
           value: function _unsubscribe() {
             var connectable = this.connectable;
@@ -15214,8 +14973,6 @@
             }
           }
         }]);
-
-        return RefCountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_2__["Subscriber"]); //# sourceMappingURL=ConnectableObservable.js.map
 
       /***/
@@ -15283,7 +15040,7 @@
     /*! exports provided: not */
 
     /***/
-    function F97(module, __webpack_exports__, __webpack_require__) {
+    function F97_(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -15360,36 +15117,32 @@
           this.closingSelector = closingSelector;
         }
 
-        _createClass2(BufferToggleOperator, [{
+        return _createClass2(BufferToggleOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new BufferToggleSubscriber(subscriber, this.openings, this.closingSelector));
           }
         }]);
-
-        return BufferToggleOperator;
       }();
 
       var BufferToggleSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB) {
-        _inherits(BufferToggleSubscriber, _OuterSubscriber__WEB);
-
-        var _super44 = _createSuper(BufferToggleSubscriber);
-
         function BufferToggleSubscriber(destination, openings, closingSelector) {
           var _this67;
 
           _classCallCheck(this, BufferToggleSubscriber);
 
-          _this67 = _super44.call(this, destination);
+          _this67 = _callSuper(this, BufferToggleSubscriber, [destination]);
           _this67.closingSelector = closingSelector;
           _this67.contexts = [];
 
-          _this67.add(Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_1__["subscribeToResult"])(_assertThisInitialized(_this67), openings));
+          _this67.add(Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_1__["subscribeToResult"])(_this67, openings));
 
           return _this67;
         }
 
-        _createClass2(BufferToggleSubscriber, [{
+        _inherits(BufferToggleSubscriber, _OuterSubscriber__WEB);
+
+        return _createClass2(BufferToggleSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var contexts = this.contexts;
@@ -15413,7 +15166,7 @@
 
             this.contexts = null;
 
-            _get(_getPrototypeOf(BufferToggleSubscriber.prototype), "_error", this).call(this, err);
+            _superPropGet(BufferToggleSubscriber, "_error", this, 3)([err]);
           }
         }, {
           key: "_complete",
@@ -15430,7 +15183,7 @@
 
             this.contexts = null;
 
-            _get(_getPrototypeOf(BufferToggleSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(BufferToggleSubscriber, "_complete", this, 3)([]);
           }
         }, {
           key: "notifyNext",
@@ -15492,8 +15245,6 @@
             }
           }
         }]);
-
-        return BufferToggleSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_2__["OuterSubscriber"]); //# sourceMappingURL=bufferToggle.js.map
 
       /***/
@@ -15556,27 +15307,21 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(ExpandOperator, [{
+        return _createClass2(ExpandOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ExpandSubscriber(subscriber, this.project, this.concurrent, this.scheduler));
           }
         }]);
-
-        return ExpandOperator;
       }();
 
       var ExpandSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP7) {
-        _inherits(ExpandSubscriber, _innerSubscribe__WEBP7);
-
-        var _super45 = _createSuper(ExpandSubscriber);
-
         function ExpandSubscriber(destination, project, concurrent, scheduler) {
           var _this68;
 
           _classCallCheck(this, ExpandSubscriber);
 
-          _this68 = _super45.call(this, destination);
+          _this68 = _callSuper(this, ExpandSubscriber, [destination]);
           _this68.project = project;
           _this68.concurrent = concurrent;
           _this68.scheduler = scheduler;
@@ -15591,7 +15336,9 @@
           return _this68;
         }
 
-        _createClass2(ExpandSubscriber, [{
+        _inherits(ExpandSubscriber, _innerSubscribe__WEBP7);
+
+        return _createClass2(ExpandSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var destination = this.destination;
@@ -15678,8 +15425,6 @@
             subscriber.subscribeToProjection(result, value, index);
           }
         }]);
-
-        return ExpandSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=expand.js.map
 
       /***/
@@ -15766,34 +15511,30 @@
           this.inclusive = inclusive;
         }
 
-        _createClass2(TakeWhileOperator, [{
+        return _createClass2(TakeWhileOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new TakeWhileSubscriber(subscriber, this.predicate, this.inclusive));
           }
         }]);
-
-        return TakeWhileOperator;
       }();
 
       var TakeWhileSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_14) {
-        _inherits(TakeWhileSubscriber, _Subscriber__WEBPACK_14);
-
-        var _super46 = _createSuper(TakeWhileSubscriber);
-
         function TakeWhileSubscriber(destination, predicate, inclusive) {
           var _this69;
 
           _classCallCheck(this, TakeWhileSubscriber);
 
-          _this69 = _super46.call(this, destination);
+          _this69 = _callSuper(this, TakeWhileSubscriber, [destination]);
           _this69.predicate = predicate;
           _this69.inclusive = inclusive;
           _this69.index = 0;
           return _this69;
         }
 
-        _createClass2(TakeWhileSubscriber, [{
+        _inherits(TakeWhileSubscriber, _Subscriber__WEBPACK_14);
+
+        return _createClass2(TakeWhileSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var destination = this.destination;
@@ -15824,8 +15565,6 @@
             }
           }
         }]);
-
-        return TakeWhileSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=takeWhile.js.map
 
       /***/
@@ -15873,36 +15612,32 @@
           this.source = source;
         }
 
-        _createClass2(EveryOperator, [{
+        return _createClass2(EveryOperator, [{
           key: "call",
           value: function call(observer, source) {
             return source.subscribe(new EverySubscriber(observer, this.predicate, this.thisArg, this.source));
           }
         }]);
-
-        return EveryOperator;
       }();
 
       var EverySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_15) {
-        _inherits(EverySubscriber, _Subscriber__WEBPACK_15);
-
-        var _super47 = _createSuper(EverySubscriber);
-
         function EverySubscriber(destination, predicate, thisArg, source) {
           var _this70;
 
           _classCallCheck(this, EverySubscriber);
 
-          _this70 = _super47.call(this, destination);
+          _this70 = _callSuper(this, EverySubscriber, [destination]);
           _this70.predicate = predicate;
           _this70.thisArg = thisArg;
           _this70.source = source;
           _this70.index = 0;
-          _this70.thisArg = thisArg || _assertThisInitialized(_this70);
+          _this70.thisArg = thisArg || _this70;
           return _this70;
         }
 
-        _createClass2(EverySubscriber, [{
+        _inherits(EverySubscriber, _Subscriber__WEBPACK_15);
+
+        return _createClass2(EverySubscriber, [{
           key: "notifyComplete",
           value: function notifyComplete(everyValueMatch) {
             this.destination.next(everyValueMatch);
@@ -15930,8 +15665,6 @@
             this.notifyComplete(true);
           }
         }]);
-
-        return EverySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=every.js.map
 
       /***/
@@ -16023,34 +15756,30 @@
           this.notifier = notifier;
         }
 
-        _createClass2(RepeatWhenOperator, [{
+        return _createClass2(RepeatWhenOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new RepeatWhenSubscriber(subscriber, this.notifier, source));
           }
         }]);
-
-        return RepeatWhenOperator;
       }();
 
       var RepeatWhenSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP8) {
-        _inherits(RepeatWhenSubscriber, _innerSubscribe__WEBP8);
-
-        var _super48 = _createSuper(RepeatWhenSubscriber);
-
         function RepeatWhenSubscriber(destination, notifier, source) {
           var _this71;
 
           _classCallCheck(this, RepeatWhenSubscriber);
 
-          _this71 = _super48.call(this, destination);
+          _this71 = _callSuper(this, RepeatWhenSubscriber, [destination]);
           _this71.notifier = notifier;
           _this71.source = source;
           _this71.sourceIsBeingSubscribedTo = true;
           return _this71;
         }
 
-        _createClass2(RepeatWhenSubscriber, [{
+        _inherits(RepeatWhenSubscriber, _innerSubscribe__WEBP8);
+
+        return _createClass2(RepeatWhenSubscriber, [{
           key: "notifyNext",
           value: function notifyNext() {
             this.sourceIsBeingSubscribedTo = true;
@@ -16060,7 +15789,7 @@
           key: "notifyComplete",
           value: function notifyComplete() {
             if (this.sourceIsBeingSubscribedTo === false) {
-              return _get(_getPrototypeOf(RepeatWhenSubscriber.prototype), "complete", this).call(this);
+              return _superPropGet(RepeatWhenSubscriber, "complete", this, 3)([]);
             }
           }
         }, {
@@ -16074,7 +15803,7 @@
               }
 
               if (!this.retriesSubscription || this.retriesSubscription.closed) {
-                return _get(_getPrototypeOf(RepeatWhenSubscriber.prototype), "complete", this).call(this);
+                return _superPropGet(RepeatWhenSubscriber, "complete", this, 3)([]);
               }
 
               this._unsubscribeAndRecycle();
@@ -16106,7 +15835,7 @@
             var _unsubscribe = this._unsubscribe;
             this._unsubscribe = null;
 
-            _get(_getPrototypeOf(RepeatWhenSubscriber.prototype), "_unsubscribeAndRecycle", this).call(this);
+            _superPropGet(RepeatWhenSubscriber, "_unsubscribeAndRecycle", this, 3)([]);
 
             this._unsubscribe = _unsubscribe;
             return this;
@@ -16121,15 +15850,13 @@
               var notifier = this.notifier;
               retries = notifier(this.notifications);
             } catch (e) {
-              return _get(_getPrototypeOf(RepeatWhenSubscriber.prototype), "complete", this).call(this);
+              return _superPropGet(RepeatWhenSubscriber, "complete", this, 3)([]);
             }
 
             this.retries = retries;
             this.retriesSubscription = Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["innerSubscribe"])(retries, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleInnerSubscriber"](this));
           }
         }]);
-
-        return RepeatWhenSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleOuterSubscriber"]); //# sourceMappingURL=repeatWhen.js.map
 
       /***/
@@ -16237,7 +15964,7 @@
           }
         }
 
-        _createClass2(Observable, [{
+        return _createClass2(Observable, [{
           key: "lift",
           value: function lift(operator) {
             var observable = new Observable();
@@ -16351,8 +16078,6 @@
             });
           }
         }]);
-
-        return Observable;
       }(_symbol_observable__WEBPACK_IMPORTED_MODULE_2__["observable"]);
 
       Observable.create = function (subscribe) {
@@ -16402,15 +16127,13 @@
       "IjjT");
 
       var QueueScheduler = /*#__PURE__*/function (_AsyncScheduler__WEBP) {
-        _inherits(QueueScheduler, _AsyncScheduler__WEBP);
-
-        var _super49 = _createSuper(QueueScheduler);
-
         function QueueScheduler() {
           _classCallCheck(this, QueueScheduler);
 
-          return _super49.apply(this, arguments);
+          return _callSuper(this, QueueScheduler, arguments);
         }
+
+        _inherits(QueueScheduler, _AsyncScheduler__WEBP);
 
         return _createClass2(QueueScheduler);
       }(_AsyncScheduler__WEBPACK_IMPORTED_MODULE_0__["AsyncScheduler"]); //# sourceMappingURL=QueueScheduler.js.map
@@ -16538,27 +16261,21 @@
           this.source = source;
         }
 
-        _createClass2(CountOperator, [{
+        return _createClass2(CountOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new CountSubscriber(subscriber, this.predicate, this.source));
           }
         }]);
-
-        return CountOperator;
       }();
 
       var CountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_16) {
-        _inherits(CountSubscriber, _Subscriber__WEBPACK_16);
-
-        var _super50 = _createSuper(CountSubscriber);
-
         function CountSubscriber(destination, predicate, source) {
           var _this74;
 
           _classCallCheck(this, CountSubscriber);
 
-          _this74 = _super50.call(this, destination);
+          _this74 = _callSuper(this, CountSubscriber, [destination]);
           _this74.predicate = predicate;
           _this74.source = source;
           _this74.count = 0;
@@ -16566,7 +16283,9 @@
           return _this74;
         }
 
-        _createClass2(CountSubscriber, [{
+        _inherits(CountSubscriber, _Subscriber__WEBPACK_16);
+
+        return _createClass2(CountSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this.predicate) {
@@ -16598,8 +16317,6 @@
             this.destination.complete();
           }
         }]);
-
-        return CountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=count.js.map
 
       /***/
@@ -16704,10 +16421,6 @@
       "Y/cZ");
 
       var AsyncScheduler = /*#__PURE__*/function (_Scheduler__WEBPACK_I) {
-        _inherits(AsyncScheduler, _Scheduler__WEBPACK_I);
-
-        var _super51 = _createSuper(AsyncScheduler);
-
         function AsyncScheduler(SchedulerAction) {
           var _this75;
 
@@ -16715,20 +16428,22 @@
 
           _classCallCheck(this, AsyncScheduler);
 
-          _this75 = _super51.call(this, SchedulerAction, function () {
+          _this75 = _callSuper(this, AsyncScheduler, [SchedulerAction, function () {
             if (AsyncScheduler.delegate && AsyncScheduler.delegate !== _assertThisInitialized(_this75)) {
               return AsyncScheduler.delegate.now();
             } else {
               return now();
             }
-          });
+          }]);
           _this75.actions = [];
           _this75.active = false;
           _this75.scheduled = undefined;
           return _this75;
         }
 
-        _createClass2(AsyncScheduler, [{
+        _inherits(AsyncScheduler, _Scheduler__WEBPACK_I);
+
+        return _createClass2(AsyncScheduler, [{
           key: "schedule",
           value: function schedule(work) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -16737,7 +16452,7 @@
             if (AsyncScheduler.delegate && AsyncScheduler.delegate !== this) {
               return AsyncScheduler.delegate.schedule(work, delay, state);
             } else {
-              return _get(_getPrototypeOf(AsyncScheduler.prototype), "schedule", this).call(this, work, delay, state);
+              return _superPropGet(AsyncScheduler, "schedule", this, 3)([work, delay, state]);
             }
           }
         }, {
@@ -16770,8 +16485,6 @@
             }
           }
         }]);
-
-        return AsyncScheduler;
       }(_Scheduler__WEBPACK_IMPORTED_MODULE_0__["Scheduler"]); //# sourceMappingURL=AsyncScheduler.js.map
 
       /***/
@@ -16837,33 +16550,29 @@
           }
         }
 
-        _createClass2(TakeOperator, [{
+        return _createClass2(TakeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new TakeSubscriber(subscriber, this.total));
           }
         }]);
-
-        return TakeOperator;
       }();
 
       var TakeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_17) {
-        _inherits(TakeSubscriber, _Subscriber__WEBPACK_17);
-
-        var _super52 = _createSuper(TakeSubscriber);
-
         function TakeSubscriber(destination, total) {
           var _this76;
 
           _classCallCheck(this, TakeSubscriber);
 
-          _this76 = _super52.call(this, destination);
+          _this76 = _callSuper(this, TakeSubscriber, [destination]);
           _this76.total = total;
           _this76.count = 0;
           return _this76;
         }
 
-        _createClass2(TakeSubscriber, [{
+        _inherits(TakeSubscriber, _Subscriber__WEBPACK_17);
+
+        return _createClass2(TakeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var total = this.total;
@@ -16879,8 +16588,6 @@
             }
           }
         }]);
-
-        return TakeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=take.js.map
 
       /***/
@@ -16928,33 +16635,29 @@
           this.selector = selector;
         }
 
-        _createClass2(CatchOperator, [{
+        return _createClass2(CatchOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new CatchSubscriber(subscriber, this.selector, this.caught));
           }
         }]);
-
-        return CatchOperator;
       }();
 
       var CatchSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP9) {
-        _inherits(CatchSubscriber, _innerSubscribe__WEBP9);
-
-        var _super53 = _createSuper(CatchSubscriber);
-
         function CatchSubscriber(destination, selector, caught) {
           var _this77;
 
           _classCallCheck(this, CatchSubscriber);
 
-          _this77 = _super53.call(this, destination);
+          _this77 = _callSuper(this, CatchSubscriber, [destination]);
           _this77.selector = selector;
           _this77.caught = caught;
           return _this77;
         }
 
-        _createClass2(CatchSubscriber, [{
+        _inherits(CatchSubscriber, _innerSubscribe__WEBP9);
+
+        return _createClass2(CatchSubscriber, [{
           key: "error",
           value: function error(err) {
             if (!this.isStopped) {
@@ -16963,7 +16666,7 @@
               try {
                 result = this.selector(err, this.caught);
               } catch (err2) {
-                _get(_getPrototypeOf(CatchSubscriber.prototype), "error", this).call(this, err2);
+                _superPropGet(CatchSubscriber, "error", this, 3)([err2]);
 
                 return;
               }
@@ -16980,8 +16683,6 @@
             }
           }
         }]);
-
-        return CatchSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=catchError.js.map
 
       /***/
@@ -17162,27 +16863,21 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(DebounceTimeOperator, [{
+        return _createClass2(DebounceTimeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DebounceTimeSubscriber(subscriber, this.dueTime, this.scheduler));
           }
         }]);
-
-        return DebounceTimeOperator;
       }();
 
       var DebounceTimeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_18) {
-        _inherits(DebounceTimeSubscriber, _Subscriber__WEBPACK_18);
-
-        var _super54 = _createSuper(DebounceTimeSubscriber);
-
         function DebounceTimeSubscriber(destination, dueTime, scheduler) {
           var _this78;
 
           _classCallCheck(this, DebounceTimeSubscriber);
 
-          _this78 = _super54.call(this, destination);
+          _this78 = _callSuper(this, DebounceTimeSubscriber, [destination]);
           _this78.dueTime = dueTime;
           _this78.scheduler = scheduler;
           _this78.debouncedSubscription = null;
@@ -17191,7 +16886,9 @@
           return _this78;
         }
 
-        _createClass2(DebounceTimeSubscriber, [{
+        _inherits(DebounceTimeSubscriber, _Subscriber__WEBPACK_18);
+
+        return _createClass2(DebounceTimeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.clearDebounce();
@@ -17229,8 +16926,6 @@
             }
           }
         }]);
-
-        return DebounceTimeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       function dispatchNext(subscriber) {
@@ -17290,27 +16985,21 @@
           this.hasSeed = hasSeed;
         }
 
-        _createClass2(ScanOperator, [{
+        return _createClass2(ScanOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ScanSubscriber(subscriber, this.accumulator, this.seed, this.hasSeed));
           }
         }]);
-
-        return ScanOperator;
       }();
 
       var ScanSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_19) {
-        _inherits(ScanSubscriber, _Subscriber__WEBPACK_19);
-
-        var _super55 = _createSuper(ScanSubscriber);
-
         function ScanSubscriber(destination, accumulator, _seed, hasSeed) {
           var _this79;
 
           _classCallCheck(this, ScanSubscriber);
 
-          _this79 = _super55.call(this, destination);
+          _this79 = _callSuper(this, ScanSubscriber, [destination]);
           _this79.accumulator = accumulator;
           _this79._seed = _seed;
           _this79.hasSeed = hasSeed;
@@ -17318,7 +17007,9 @@
           return _this79;
         }
 
-        _createClass2(ScanSubscriber, [{
+        _inherits(ScanSubscriber, _Subscriber__WEBPACK_19);
+
+        return _createClass2(ScanSubscriber, [{
           key: "seed",
           get: function get() {
             return this._seed;
@@ -17353,8 +17044,6 @@
             this.destination.next(result);
           }
         }]);
-
-        return ScanSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=scan.js.map
 
       /***/
@@ -17622,33 +17311,29 @@
           this.source = source;
         }
 
-        _createClass2(RetryWhenOperator, [{
+        return _createClass2(RetryWhenOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new RetryWhenSubscriber(subscriber, this.notifier, this.source));
           }
         }]);
-
-        return RetryWhenOperator;
       }();
 
       var RetryWhenSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP10) {
-        _inherits(RetryWhenSubscriber, _innerSubscribe__WEBP10);
-
-        var _super56 = _createSuper(RetryWhenSubscriber);
-
         function RetryWhenSubscriber(destination, notifier, source) {
           var _this80;
 
           _classCallCheck(this, RetryWhenSubscriber);
 
-          _this80 = _super56.call(this, destination);
+          _this80 = _callSuper(this, RetryWhenSubscriber, [destination]);
           _this80.notifier = notifier;
           _this80.source = source;
           return _this80;
         }
 
-        _createClass2(RetryWhenSubscriber, [{
+        _inherits(RetryWhenSubscriber, _innerSubscribe__WEBP10);
+
+        return _createClass2(RetryWhenSubscriber, [{
           key: "error",
           value: function error(err) {
             if (!this.isStopped) {
@@ -17663,7 +17348,7 @@
                   var notifier = this.notifier;
                   retries = notifier(errors);
                 } catch (e) {
-                  return _get(_getPrototypeOf(RetryWhenSubscriber.prototype), "error", this).call(this, e);
+                  return _superPropGet(RetryWhenSubscriber, "error", this, 3)([e]);
                 }
 
                 retriesSubscription = Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["innerSubscribe"])(retries, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleInnerSubscriber"](this));
@@ -17710,8 +17395,6 @@
             this.source.subscribe(this);
           }
         }]);
-
-        return RetryWhenSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleOuterSubscriber"]); //# sourceMappingURL=retryWhen.js.map
 
       /***/
@@ -17751,23 +17434,21 @@
       "quSY");
 
       var AsyncSubject = /*#__PURE__*/function (_Subject__WEBPACK_IMP3) {
-        _inherits(AsyncSubject, _Subject__WEBPACK_IMP3);
-
-        var _super57 = _createSuper(AsyncSubject);
-
         function AsyncSubject() {
           var _this81;
 
           _classCallCheck(this, AsyncSubject);
 
-          _this81 = _super57.apply(this, arguments);
+          _this81 = _callSuper(this, AsyncSubject, arguments);
           _this81.value = null;
           _this81.hasNext = false;
           _this81.hasCompleted = false;
           return _this81;
         }
 
-        _createClass2(AsyncSubject, [{
+        _inherits(AsyncSubject, _Subject__WEBPACK_IMP3);
+
+        return _createClass2(AsyncSubject, [{
           key: "_subscribe",
           value: function _subscribe(subscriber) {
             if (this.hasError) {
@@ -17779,7 +17460,7 @@
               return _Subscription__WEBPACK_IMPORTED_MODULE_1__["Subscription"].EMPTY;
             }
 
-            return _get(_getPrototypeOf(AsyncSubject.prototype), "_subscribe", this).call(this, subscriber);
+            return _superPropGet(AsyncSubject, "_subscribe", this, 3)([subscriber]);
           }
         }, {
           key: "next",
@@ -17793,7 +17474,7 @@
           key: "error",
           value: function error(_error2) {
             if (!this.hasCompleted) {
-              _get(_getPrototypeOf(AsyncSubject.prototype), "error", this).call(this, _error2);
+              _superPropGet(AsyncSubject, "error", this, 3)([_error2]);
             }
           }
         }, {
@@ -17802,14 +17483,12 @@
             this.hasCompleted = true;
 
             if (this.hasNext) {
-              _get(_getPrototypeOf(AsyncSubject.prototype), "next", this).call(this, this.value);
+              _superPropGet(AsyncSubject, "next", this, 3)([this.value]);
             }
 
-            _get(_getPrototypeOf(AsyncSubject.prototype), "complete", this).call(this);
+            _superPropGet(AsyncSubject, "complete", this, 3)([]);
           }
         }]);
-
-        return AsyncSubject;
       }(_Subject__WEBPACK_IMPORTED_MODULE_0__["Subject"]); //# sourceMappingURL=AsyncSubject.js.map
 
       /***/
@@ -18191,34 +17870,30 @@
           _classCallCheck(this, RaceOperator);
         }
 
-        _createClass2(RaceOperator, [{
+        return _createClass2(RaceOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new RaceSubscriber(subscriber));
           }
         }]);
-
-        return RaceOperator;
       }();
 
       var RaceSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB2) {
-        _inherits(RaceSubscriber, _OuterSubscriber__WEB2);
-
-        var _super58 = _createSuper(RaceSubscriber);
-
         function RaceSubscriber(destination) {
           var _this82;
 
           _classCallCheck(this, RaceSubscriber);
 
-          _this82 = _super58.call(this, destination);
+          _this82 = _callSuper(this, RaceSubscriber, [destination]);
           _this82.hasFirst = false;
           _this82.observables = [];
           _this82.subscriptions = [];
           return _this82;
         }
 
-        _createClass2(RaceSubscriber, [{
+        _inherits(RaceSubscriber, _OuterSubscriber__WEB2);
+
+        return _createClass2(RaceSubscriber, [{
           key: "_next",
           value: function _next(observable) {
             this.observables.push(observable);
@@ -18266,8 +17941,6 @@
             this.destination.next(innerValue);
           }
         }]);
-
-        return RaceSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_2__["OuterSubscriber"]); //# sourceMappingURL=race.js.map
 
       /***/
@@ -18313,10 +17986,6 @@
       "Y7HM");
 
       var SubscribeOnObservable = /*#__PURE__*/function (_Observable__WEBPACK_2) {
-        _inherits(SubscribeOnObservable, _Observable__WEBPACK_2);
-
-        var _super59 = _createSuper(SubscribeOnObservable);
-
         function SubscribeOnObservable(source) {
           var _this83;
 
@@ -18325,7 +17994,7 @@
 
           _classCallCheck(this, SubscribeOnObservable);
 
-          _this83 = _super59.call(this);
+          _this83 = _callSuper(this, SubscribeOnObservable);
           _this83.source = source;
           _this83.delayTime = delayTime;
           _this83.scheduler = scheduler;
@@ -18341,7 +18010,9 @@
           return _this83;
         }
 
-        _createClass2(SubscribeOnObservable, [{
+        _inherits(SubscribeOnObservable, _Observable__WEBPACK_2);
+
+        return _createClass2(SubscribeOnObservable, [{
           key: "_subscribe",
           value: function _subscribe(subscriber) {
             var delay = this.delayTime;
@@ -18367,8 +18038,6 @@
             return this.add(source.subscribe(subscriber));
           }
         }]);
-
-        return SubscribeOnObservable;
       }(_Observable__WEBPACK_IMPORTED_MODULE_0__["Observable"]); //# sourceMappingURL=SubscribeOnObservable.js.map
 
       /***/
@@ -18441,27 +18110,21 @@
           this.subjectSelector = subjectSelector;
         }
 
-        _createClass2(GroupByOperator, [{
+        return _createClass2(GroupByOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new GroupBySubscriber(subscriber, this.keySelector, this.elementSelector, this.durationSelector, this.subjectSelector));
           }
         }]);
-
-        return GroupByOperator;
       }();
 
       var GroupBySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_20) {
-        _inherits(GroupBySubscriber, _Subscriber__WEBPACK_20);
-
-        var _super60 = _createSuper(GroupBySubscriber);
-
         function GroupBySubscriber(destination, keySelector, elementSelector, durationSelector, subjectSelector) {
           var _this84;
 
           _classCallCheck(this, GroupBySubscriber);
 
-          _this84 = _super60.call(this, destination);
+          _this84 = _callSuper(this, GroupBySubscriber, [destination]);
           _this84.keySelector = keySelector;
           _this84.elementSelector = elementSelector;
           _this84.durationSelector = durationSelector;
@@ -18472,7 +18135,9 @@
           return _this84;
         }
 
-        _createClass2(GroupBySubscriber, [{
+        _inherits(GroupBySubscriber, _Subscriber__WEBPACK_20);
+
+        return _createClass2(GroupBySubscriber, [{
           key: "_next",
           value: function _next(value) {
             var key;
@@ -18572,33 +18237,29 @@
               this.attemptedToUnsubscribe = true;
 
               if (this.count === 0) {
-                _get(_getPrototypeOf(GroupBySubscriber.prototype), "unsubscribe", this).call(this);
+                _superPropGet(GroupBySubscriber, "unsubscribe", this, 3)([]);
               }
             }
           }
         }]);
-
-        return GroupBySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var GroupDurationSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_21) {
-        _inherits(GroupDurationSubscriber, _Subscriber__WEBPACK_21);
-
-        var _super61 = _createSuper(GroupDurationSubscriber);
-
         function GroupDurationSubscriber(key, group, parent) {
           var _this85;
 
           _classCallCheck(this, GroupDurationSubscriber);
 
-          _this85 = _super61.call(this, group);
+          _this85 = _callSuper(this, GroupDurationSubscriber, [group]);
           _this85.key = key;
           _this85.group = group;
           _this85.parent = parent;
           return _this85;
         }
 
-        _createClass2(GroupDurationSubscriber, [{
+        _inherits(GroupDurationSubscriber, _Subscriber__WEBPACK_21);
+
+        return _createClass2(GroupDurationSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.complete();
@@ -18615,28 +18276,24 @@
             }
           }
         }]);
-
-        return GroupDurationSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var GroupedObservable = /*#__PURE__*/function (_Observable__WEBPACK_3) {
-        _inherits(GroupedObservable, _Observable__WEBPACK_3);
-
-        var _super62 = _createSuper(GroupedObservable);
-
         function GroupedObservable(key, groupSubject, refCountSubscription) {
           var _this86;
 
           _classCallCheck(this, GroupedObservable);
 
-          _this86 = _super62.call(this);
+          _this86 = _callSuper(this, GroupedObservable);
           _this86.key = key;
           _this86.groupSubject = groupSubject;
           _this86.refCountSubscription = refCountSubscription;
           return _this86;
         }
 
-        _createClass2(GroupedObservable, [{
+        _inherits(GroupedObservable, _Observable__WEBPACK_3);
+
+        return _createClass2(GroupedObservable, [{
           key: "_subscribe",
           value: function _subscribe(subscriber) {
             var subscription = new _Subscription__WEBPACK_IMPORTED_MODULE_1__["Subscription"]();
@@ -18651,33 +18308,29 @@
             return subscription;
           }
         }]);
-
-        return GroupedObservable;
       }(_Observable__WEBPACK_IMPORTED_MODULE_2__["Observable"]);
 
       var InnerRefCountSubscription = /*#__PURE__*/function (_Subscription__WEBPAC3) {
-        _inherits(InnerRefCountSubscription, _Subscription__WEBPAC3);
-
-        var _super63 = _createSuper(InnerRefCountSubscription);
-
         function InnerRefCountSubscription(parent) {
           var _this87;
 
           _classCallCheck(this, InnerRefCountSubscription);
 
-          _this87 = _super63.call(this);
+          _this87 = _callSuper(this, InnerRefCountSubscription);
           _this87.parent = parent;
           parent.count++;
           return _this87;
         }
 
-        _createClass2(InnerRefCountSubscription, [{
+        _inherits(InnerRefCountSubscription, _Subscription__WEBPAC3);
+
+        return _createClass2(InnerRefCountSubscription, [{
           key: "unsubscribe",
           value: function unsubscribe() {
             var parent = this.parent;
 
             if (!parent.closed && !this.closed) {
-              _get(_getPrototypeOf(InnerRefCountSubscription.prototype), "unsubscribe", this).call(this);
+              _superPropGet(InnerRefCountSubscription, "unsubscribe", this, 3)([]);
 
               parent.count -= 1;
 
@@ -18687,8 +18340,6 @@
             }
           }
         }]);
-
-        return InnerRefCountSubscription;
       }(_Subscription__WEBPACK_IMPORTED_MODULE_1__["Subscription"]); //# sourceMappingURL=groupBy.js.map
 
       /***/
@@ -18769,14 +18420,12 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(BufferTimeOperator, [{
+        return _createClass2(BufferTimeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new BufferTimeSubscriber(subscriber, this.bufferTimeSpan, this.bufferCreationInterval, this.maxBufferSize, this.scheduler));
           }
         }]);
-
-        return BufferTimeOperator;
       }();
 
       var Context = /*#__PURE__*/_createClass2(function Context() {
@@ -18786,16 +18435,12 @@
       });
 
       var BufferTimeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_22) {
-        _inherits(BufferTimeSubscriber, _Subscriber__WEBPACK_22);
-
-        var _super64 = _createSuper(BufferTimeSubscriber);
-
         function BufferTimeSubscriber(destination, bufferTimeSpan, bufferCreationInterval, maxBufferSize, scheduler) {
           var _this88;
 
           _classCallCheck(this, BufferTimeSubscriber);
 
-          _this88 = _super64.call(this, destination);
+          _this88 = _callSuper(this, BufferTimeSubscriber, [destination]);
           _this88.bufferTimeSpan = bufferTimeSpan;
           _this88.bufferCreationInterval = bufferCreationInterval;
           _this88.maxBufferSize = maxBufferSize;
@@ -18808,7 +18453,7 @@
 
           if (_this88.timespanOnly) {
             var timeSpanOnlyState = {
-              subscriber: _assertThisInitialized(_this88),
+              subscriber: _this88,
               context: context,
               bufferTimeSpan: bufferTimeSpan
             };
@@ -18816,13 +18461,13 @@
             _this88.add(context.closeAction = scheduler.schedule(dispatchBufferTimeSpanOnly, bufferTimeSpan, timeSpanOnlyState));
           } else {
             var closeState = {
-              subscriber: _assertThisInitialized(_this88),
+              subscriber: _this88,
               context: context
             };
             var creationState = {
               bufferTimeSpan: bufferTimeSpan,
               bufferCreationInterval: bufferCreationInterval,
-              subscriber: _assertThisInitialized(_this88),
+              subscriber: _this88,
               scheduler: scheduler
             };
 
@@ -18834,7 +18479,9 @@
           return _this88;
         }
 
-        _createClass2(BufferTimeSubscriber, [{
+        _inherits(BufferTimeSubscriber, _Subscriber__WEBPACK_22);
+
+        return _createClass2(BufferTimeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var contexts = this.contexts;
@@ -18860,7 +18507,7 @@
           value: function _error(err) {
             this.contexts.length = 0;
 
-            _get(_getPrototypeOf(BufferTimeSubscriber.prototype), "_error", this).call(this, err);
+            _superPropGet(BufferTimeSubscriber, "_error", this, 3)([err]);
           }
         }, {
           key: "_complete",
@@ -18873,7 +18520,7 @@
               destination.next(context.buffer);
             }
 
-            _get(_getPrototypeOf(BufferTimeSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(BufferTimeSubscriber, "_complete", this, 3)([]);
           }
         }, {
           key: "_unsubscribe",
@@ -18918,8 +18565,6 @@
             }
           }
         }]);
-
-        return BufferTimeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_1__["Subscriber"]);
 
       function dispatchBufferTimeSpanOnly(state) {
@@ -19044,27 +18689,21 @@
           this.closingSelector = closingSelector;
         }
 
-        _createClass2(BufferWhenOperator, [{
+        return _createClass2(BufferWhenOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new BufferWhenSubscriber(subscriber, this.closingSelector));
           }
         }]);
-
-        return BufferWhenOperator;
       }();
 
       var BufferWhenSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP11) {
-        _inherits(BufferWhenSubscriber, _innerSubscribe__WEBP11);
-
-        var _super65 = _createSuper(BufferWhenSubscriber);
-
         function BufferWhenSubscriber(destination, closingSelector) {
           var _this89;
 
           _classCallCheck(this, BufferWhenSubscriber);
 
-          _this89 = _super65.call(this, destination);
+          _this89 = _callSuper(this, BufferWhenSubscriber, [destination]);
           _this89.closingSelector = closingSelector;
           _this89.subscribing = false;
 
@@ -19073,7 +18712,9 @@
           return _this89;
         }
 
-        _createClass2(BufferWhenSubscriber, [{
+        _inherits(BufferWhenSubscriber, _innerSubscribe__WEBP11);
+
+        return _createClass2(BufferWhenSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.buffer.push(value);
@@ -19087,7 +18728,7 @@
               this.destination.next(buffer);
             }
 
-            _get(_getPrototypeOf(BufferWhenSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(BufferWhenSubscriber, "_complete", this, 3)([]);
           }
         }, {
           key: "_unsubscribe",
@@ -19143,8 +18784,6 @@
             this.subscribing = false;
           }
         }]);
-
-        return BufferWhenSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleOuterSubscriber"]); //# sourceMappingURL=bufferWhen.js.map
 
       /***/
@@ -19274,28 +18913,26 @@
       "3N8a");
 
       var AsapAction = /*#__PURE__*/function (_AsyncAction__WEBPACK) {
-        _inherits(AsapAction, _AsyncAction__WEBPACK);
-
-        var _super66 = _createSuper(AsapAction);
-
         function AsapAction(scheduler, work) {
           var _this90;
 
           _classCallCheck(this, AsapAction);
 
-          _this90 = _super66.call(this, scheduler, work);
+          _this90 = _callSuper(this, AsapAction, [scheduler, work]);
           _this90.scheduler = scheduler;
           _this90.work = work;
           return _this90;
         }
 
-        _createClass2(AsapAction, [{
+        _inherits(AsapAction, _AsyncAction__WEBPACK);
+
+        return _createClass2(AsapAction, [{
           key: "requestAsyncId",
           value: function requestAsyncId(scheduler, id) {
             var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (delay !== null && delay > 0) {
-              return _get(_getPrototypeOf(AsapAction.prototype), "requestAsyncId", this).call(this, scheduler, id, delay);
+              return _superPropGet(AsapAction, "requestAsyncId", this, 3)([scheduler, id, delay]);
             }
 
             scheduler.actions.push(this);
@@ -19307,7 +18944,7 @@
             var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (delay !== null && delay > 0 || delay === null && this.delay > 0) {
-              return _get(_getPrototypeOf(AsapAction.prototype), "recycleAsyncId", this).call(this, scheduler, id, delay);
+              return _superPropGet(AsapAction, "recycleAsyncId", this, 3)([scheduler, id, delay]);
             }
 
             if (scheduler.actions.length === 0) {
@@ -19319,8 +18956,6 @@
             return undefined;
           }
         }]);
-
-        return AsapAction;
       }(_AsyncAction__WEBPACK_IMPORTED_MODULE_1__["AsyncAction"]); //# sourceMappingURL=AsapAction.js.map
 
       /***/
@@ -20816,7 +20451,7 @@
           this.totalTime = duration + delay;
         }
 
-        _createClass2(NoopAnimationPlayer, [{
+        return _createClass2(NoopAnimationPlayer, [{
           key: "_onFinish",
           value: function _onFinish() {
             if (!this._finished) {
@@ -20936,8 +20571,6 @@
             methods.length = 0;
           }
         }]);
-
-        return NoopAnimationPlayer;
       }();
       /**
        * @license
@@ -21006,7 +20639,7 @@
           }, 0);
         }
 
-        _createClass2(AnimationGroupPlayer, [{
+        return _createClass2(AnimationGroupPlayer, [{
           key: "_onFinish",
           value: function _onFinish() {
             if (!this._finished) {
@@ -21169,8 +20802,6 @@
             methods.length = 0;
           }
         }]);
-
-        return AnimationGroupPlayer;
       }();
       /**
        * @license
@@ -21357,16 +20988,12 @@
 
 
       var BrowserAnimationBuilder = /*#__PURE__*/function (_angular_animations__) {
-        _inherits(BrowserAnimationBuilder, _angular_animations__);
-
-        var _super67 = _createSuper(BrowserAnimationBuilder);
-
         function BrowserAnimationBuilder(rootRenderer, doc) {
           var _this94;
 
           _classCallCheck(this, BrowserAnimationBuilder);
 
-          _this94 = _super67.call(this);
+          _this94 = _callSuper(this, BrowserAnimationBuilder);
           _this94._nextAnimationId = 0;
           var typeData = {
             id: '0',
@@ -21380,7 +21007,9 @@
           return _this94;
         }
 
-        _createClass2(BrowserAnimationBuilder, [{
+        _inherits(BrowserAnimationBuilder, _angular_animations__);
+
+        return _createClass2(BrowserAnimationBuilder, [{
           key: "build",
           value: function build(animation) {
             var id = this._nextAnimationId.toString();
@@ -21391,8 +21020,6 @@
             return new BrowserAnimationFactory(id, this._renderer);
           }
         }]);
-
-        return BrowserAnimationBuilder;
       }(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["AnimationBuilder"]);
 
       BrowserAnimationBuilder.ɵfac = function BrowserAnimationBuilder_Factory(t) {
@@ -21435,29 +21062,25 @@
       })();
 
       var BrowserAnimationFactory = /*#__PURE__*/function (_angular_animations__2) {
-        _inherits(BrowserAnimationFactory, _angular_animations__2);
-
-        var _super68 = _createSuper(BrowserAnimationFactory);
-
         function BrowserAnimationFactory(_id, _renderer) {
           var _this95;
 
           _classCallCheck(this, BrowserAnimationFactory);
 
-          _this95 = _super68.call(this);
+          _this95 = _callSuper(this, BrowserAnimationFactory);
           _this95._id = _id;
           _this95._renderer = _renderer;
           return _this95;
         }
 
-        _createClass2(BrowserAnimationFactory, [{
+        _inherits(BrowserAnimationFactory, _angular_animations__2);
+
+        return _createClass2(BrowserAnimationFactory, [{
           key: "create",
           value: function create(element, options) {
             return new RendererAnimationPlayer(this._id, element, options || {}, this._renderer);
           }
         }]);
-
-        return BrowserAnimationFactory;
       }(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["AnimationFactory"]);
 
       var RendererAnimationPlayer = /*#__PURE__*/function () {
@@ -21474,7 +21097,7 @@
           this._command('create', options);
         }
 
-        _createClass2(RendererAnimationPlayer, [{
+        return _createClass2(RendererAnimationPlayer, [{
           key: "_listen",
           value: function _listen(eventName, callback) {
             return this._renderer.listen(this.element, "@@".concat(this.id, ":").concat(eventName), callback);
@@ -21556,8 +21179,6 @@
             return 0;
           }
         }]);
-
-        return RendererAnimationPlayer;
       }();
 
       function issueAnimationCommand(renderer, element, id, command, args) {
@@ -21592,7 +21213,7 @@
           };
         }
 
-        _createClass2(AnimationRendererFactory, [{
+        return _createClass2(AnimationRendererFactory, [{
           key: "createRenderer",
           value: function createRenderer(hostElement, type) {
             var _this96 = this;
@@ -21619,16 +21240,16 @@
             this._currentId++;
             this.engine.register(namespaceId, hostElement);
 
-            var registerTrigger = function registerTrigger(trigger) {
+            var _registerTrigger = function registerTrigger(trigger) {
               if (Array.isArray(trigger)) {
-                trigger.forEach(registerTrigger);
+                trigger.forEach(_registerTrigger);
               } else {
                 _this96.engine.registerTrigger(componentId, namespaceId, hostElement, trigger.name, trigger);
               }
             };
 
             var animationTriggers = type.data['animation'];
-            animationTriggers.forEach(registerTrigger);
+            animationTriggers.forEach(_registerTrigger);
             return new AnimationRenderer(this, namespaceId, delegate, this.engine);
           }
         }, {
@@ -21709,8 +21330,6 @@
             return this.engine.whenRenderingDone();
           }
         }]);
-
-        return AnimationRendererFactory;
       }();
 
       AnimationRendererFactory.ɵfac = function AnimationRendererFactory_Factory(t) {
@@ -21760,7 +21379,7 @@
           } : null;
         }
 
-        _createClass2(BaseAnimationRenderer, [{
+        return _createClass2(BaseAnimationRenderer, [{
           key: "data",
           get: function get() {
             return this.delegate.data;
@@ -21873,27 +21492,23 @@
             this.engine.disableAnimations(element, value);
           }
         }]);
-
-        return BaseAnimationRenderer;
       }();
 
       var AnimationRenderer = /*#__PURE__*/function (_BaseAnimationRendere) {
-        _inherits(AnimationRenderer, _BaseAnimationRendere);
-
-        var _super69 = _createSuper(AnimationRenderer);
-
         function AnimationRenderer(factory, namespaceId, delegate, engine) {
           var _this100;
 
           _classCallCheck(this, AnimationRenderer);
 
-          _this100 = _super69.call(this, namespaceId, delegate, engine);
+          _this100 = _callSuper(this, AnimationRenderer, [namespaceId, delegate, engine]);
           _this100.factory = factory;
           _this100.namespaceId = namespaceId;
           return _this100;
         }
 
-        _createClass2(AnimationRenderer, [{
+        _inherits(AnimationRenderer, _BaseAnimationRendere);
+
+        return _createClass2(AnimationRenderer, [{
           key: "setProperty",
           value: function setProperty(el, name, value) {
             if (name.charAt(0) == ANIMATION_PREFIX) {
@@ -21937,8 +21552,6 @@
             return this.delegate.listen(target, eventName, callback);
           }
         }]);
-
-        return AnimationRenderer;
       }(BaseAnimationRenderer);
 
       function resolveElementFromTarget(target) {
@@ -21973,15 +21586,13 @@
 
 
       var InjectableAnimationEngine = /*#__PURE__*/function (_angular_animations_b) {
-        _inherits(InjectableAnimationEngine, _angular_animations_b);
-
-        var _super70 = _createSuper(InjectableAnimationEngine);
-
         function InjectableAnimationEngine(doc, driver, normalizer) {
           _classCallCheck(this, InjectableAnimationEngine);
 
-          return _super70.call(this, doc.body, driver, normalizer);
+          return _callSuper(this, InjectableAnimationEngine, [doc.body, driver, normalizer]);
         }
+
+        _inherits(InjectableAnimationEngine, _angular_animations_b);
 
         return _createClass2(InjectableAnimationEngine);
       }(_angular_animations_browser__WEBPACK_IMPORTED_MODULE_3__["ɵAnimationEngine"]);
@@ -22240,17 +21851,15 @@
       "IjjT");
 
       var AsapScheduler = /*#__PURE__*/function (_AsyncScheduler__WEBP2) {
-        _inherits(AsapScheduler, _AsyncScheduler__WEBP2);
-
-        var _super71 = _createSuper(AsapScheduler);
-
         function AsapScheduler() {
           _classCallCheck(this, AsapScheduler);
 
-          return _super71.apply(this, arguments);
+          return _callSuper(this, AsapScheduler, arguments);
         }
 
-        _createClass2(AsapScheduler, [{
+        _inherits(AsapScheduler, _AsyncScheduler__WEBP2);
+
+        return _createClass2(AsapScheduler, [{
           key: "flush",
           value: function flush(action) {
             this.active = true;
@@ -22278,8 +21887,6 @@
             }
           }
         }]);
-
-        return AsapScheduler;
       }(_AsyncScheduler__WEBPACK_IMPORTED_MODULE_0__["AsyncScheduler"]); //# sourceMappingURL=AsapScheduler.js.map
 
       /***/
@@ -22607,37 +22214,33 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(WindowTimeOperator, [{
+        return _createClass2(WindowTimeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new WindowTimeSubscriber(subscriber, this.windowTimeSpan, this.windowCreationInterval, this.maxWindowSize, this.scheduler));
           }
         }]);
-
-        return WindowTimeOperator;
       }();
 
       var CountedSubject = /*#__PURE__*/function (_Subject__WEBPACK_IMP4) {
-        _inherits(CountedSubject, _Subject__WEBPACK_IMP4);
-
-        var _super72 = _createSuper(CountedSubject);
-
         function CountedSubject() {
           var _this102;
 
           _classCallCheck(this, CountedSubject);
 
-          _this102 = _super72.apply(this, arguments);
+          _this102 = _callSuper(this, CountedSubject, arguments);
           _this102._numberOfNextedValues = 0;
           return _this102;
         }
 
-        _createClass2(CountedSubject, [{
+        _inherits(CountedSubject, _Subject__WEBPACK_IMP4);
+
+        return _createClass2(CountedSubject, [{
           key: "next",
           value: function next(value) {
             this._numberOfNextedValues++;
 
-            _get(_getPrototypeOf(CountedSubject.prototype), "next", this).call(this, value);
+            _superPropGet(CountedSubject, "next", this, 3)([value]);
           }
         }, {
           key: "numberOfNextedValues",
@@ -22645,21 +22248,15 @@
             return this._numberOfNextedValues;
           }
         }]);
-
-        return CountedSubject;
       }(_Subject__WEBPACK_IMPORTED_MODULE_0__["Subject"]);
 
       var WindowTimeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_23) {
-        _inherits(WindowTimeSubscriber, _Subscriber__WEBPACK_23);
-
-        var _super73 = _createSuper(WindowTimeSubscriber);
-
         function WindowTimeSubscriber(destination, windowTimeSpan, windowCreationInterval, maxWindowSize, scheduler) {
           var _this103;
 
           _classCallCheck(this, WindowTimeSubscriber);
 
-          _this103 = _super73.call(this, destination);
+          _this103 = _callSuper(this, WindowTimeSubscriber, [destination]);
           _this103.destination = destination;
           _this103.windowTimeSpan = windowTimeSpan;
           _this103.windowCreationInterval = windowCreationInterval;
@@ -22671,14 +22268,14 @@
 
           if (windowCreationInterval !== null && windowCreationInterval >= 0) {
             var closeState = {
-              subscriber: _assertThisInitialized(_this103),
+              subscriber: _this103,
               window: window,
               context: null
             };
             var creationState = {
               windowTimeSpan: windowTimeSpan,
               windowCreationInterval: windowCreationInterval,
-              subscriber: _assertThisInitialized(_this103),
+              subscriber: _this103,
               scheduler: scheduler
             };
 
@@ -22687,7 +22284,7 @@
             _this103.add(scheduler.schedule(dispatchWindowCreation, windowCreationInterval, creationState));
           } else {
             var timeSpanOnlyState = {
-              subscriber: _assertThisInitialized(_this103),
+              subscriber: _this103,
               window: window,
               windowTimeSpan: windowTimeSpan
             };
@@ -22698,7 +22295,9 @@
           return _this103;
         }
 
-        _createClass2(WindowTimeSubscriber, [{
+        _inherits(WindowTimeSubscriber, _Subscriber__WEBPACK_23);
+
+        return _createClass2(WindowTimeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var windows = this.windows;
@@ -22759,8 +22358,6 @@
             windows.splice(windows.indexOf(window), 1);
           }
         }]);
-
-        return WindowTimeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_2__["Subscriber"]);
 
       function dispatchWindowTimeSpanOnly(state) {
@@ -23068,28 +22665,26 @@
       "3N8a");
 
       var AnimationFrameAction = /*#__PURE__*/function (_AsyncAction__WEBPACK2) {
-        _inherits(AnimationFrameAction, _AsyncAction__WEBPACK2);
-
-        var _super74 = _createSuper(AnimationFrameAction);
-
         function AnimationFrameAction(scheduler, work) {
           var _this104;
 
           _classCallCheck(this, AnimationFrameAction);
 
-          _this104 = _super74.call(this, scheduler, work);
+          _this104 = _callSuper(this, AnimationFrameAction, [scheduler, work]);
           _this104.scheduler = scheduler;
           _this104.work = work;
           return _this104;
         }
 
-        _createClass2(AnimationFrameAction, [{
+        _inherits(AnimationFrameAction, _AsyncAction__WEBPACK2);
+
+        return _createClass2(AnimationFrameAction, [{
           key: "requestAsyncId",
           value: function requestAsyncId(scheduler, id) {
             var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (delay !== null && delay > 0) {
-              return _get(_getPrototypeOf(AnimationFrameAction.prototype), "requestAsyncId", this).call(this, scheduler, id, delay);
+              return _superPropGet(AnimationFrameAction, "requestAsyncId", this, 3)([scheduler, id, delay]);
             }
 
             scheduler.actions.push(this);
@@ -23103,7 +22698,7 @@
             var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (delay !== null && delay > 0 || delay === null && this.delay > 0) {
-              return _get(_getPrototypeOf(AnimationFrameAction.prototype), "recycleAsyncId", this).call(this, scheduler, id, delay);
+              return _superPropGet(AnimationFrameAction, "recycleAsyncId", this, 3)([scheduler, id, delay]);
             }
 
             if (scheduler.actions.length === 0) {
@@ -23114,8 +22709,6 @@
             return undefined;
           }
         }]);
-
-        return AnimationFrameAction;
       }(_AsyncAction__WEBPACK_IMPORTED_MODULE_0__["AsyncAction"]); //# sourceMappingURL=AnimationFrameAction.js.map
 
       /***/
@@ -23184,7 +22777,7 @@
           this.hasValue = kind === 'N';
         }
 
-        _createClass2(Notification, [{
+        return _createClass2(Notification, [{
           key: "observe",
           value: function observe(observer) {
             switch (this.kind) {
@@ -23261,8 +22854,6 @@
             return Notification.completeNotification;
           }
         }]);
-
-        return Notification;
       }();
 
       Notification.completeNotification = new Notification('C');
@@ -23557,33 +23148,29 @@
           this.errorFactory = errorFactory;
         }
 
-        _createClass2(ThrowIfEmptyOperator, [{
+        return _createClass2(ThrowIfEmptyOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ThrowIfEmptySubscriber(subscriber, this.errorFactory));
           }
         }]);
-
-        return ThrowIfEmptyOperator;
       }();
 
       var ThrowIfEmptySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_24) {
-        _inherits(ThrowIfEmptySubscriber, _Subscriber__WEBPACK_24);
-
-        var _super75 = _createSuper(ThrowIfEmptySubscriber);
-
         function ThrowIfEmptySubscriber(destination, errorFactory) {
           var _this105;
 
           _classCallCheck(this, ThrowIfEmptySubscriber);
 
-          _this105 = _super75.call(this, destination);
+          _this105 = _callSuper(this, ThrowIfEmptySubscriber, [destination]);
           _this105.errorFactory = errorFactory;
           _this105.hasValue = false;
           return _this105;
         }
 
-        _createClass2(ThrowIfEmptySubscriber, [{
+        _inherits(ThrowIfEmptySubscriber, _Subscriber__WEBPACK_24);
+
+        return _createClass2(ThrowIfEmptySubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.hasValue = true;
@@ -23607,8 +23194,6 @@
             }
           }
         }]);
-
-        return ThrowIfEmptySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_1__["Subscriber"]);
 
       function defaultErrorFactory() {
@@ -23688,34 +23273,28 @@
       "2QA8");
 
       var SubjectSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_25) {
-        _inherits(SubjectSubscriber, _Subscriber__WEBPACK_25);
-
-        var _super76 = _createSuper(SubjectSubscriber);
-
         function SubjectSubscriber(destination) {
           var _this106;
 
           _classCallCheck(this, SubjectSubscriber);
 
-          _this106 = _super76.call(this, destination);
+          _this106 = _callSuper(this, SubjectSubscriber, [destination]);
           _this106.destination = destination;
           return _this106;
         }
+
+        _inherits(SubjectSubscriber, _Subscriber__WEBPACK_25);
 
         return _createClass2(SubjectSubscriber);
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_1__["Subscriber"]);
 
       var Subject = /*#__PURE__*/function (_Observable__WEBPACK_4, _internal_symbol_rxSu2) {
-        _inherits(Subject, _Observable__WEBPACK_4);
-
-        var _super77 = _createSuper(Subject);
-
         function Subject() {
           var _this107;
 
           _classCallCheck(this, Subject);
 
-          _this107 = _super77.call(this);
+          _this107 = _callSuper(this, Subject);
           _this107.observers = [];
           _this107.closed = false;
           _this107.isStopped = false;
@@ -23724,7 +23303,9 @@
           return _this107;
         }
 
-        _createClass2(Subject, [{
+        _inherits(Subject, _Observable__WEBPACK_4);
+
+        return _createClass2(Subject, [{
           key: _internal_symbol_rxSu2,
           value: function value() {
             return new SubjectSubscriber(this);
@@ -23804,7 +23385,7 @@
             if (this.closed) {
               throw new _util_ObjectUnsubscribedError__WEBPACK_IMPORTED_MODULE_3__["ObjectUnsubscribedError"]();
             } else {
-              return _get(_getPrototypeOf(Subject.prototype), "_trySubscribe", this).call(this, subscriber);
+              return _superPropGet(Subject, "_trySubscribe", this, 3)([subscriber]);
             }
           }
         }, {
@@ -23831,8 +23412,6 @@
             return observable;
           }
         }]);
-
-        return Subject;
       }(_Observable__WEBPACK_IMPORTED_MODULE_0__["Observable"], _internal_symbol_rxSubscriber__WEBPACK_IMPORTED_MODULE_5__["rxSubscriber"]);
 
       Subject.create = function (destination, source) {
@@ -23840,22 +23419,20 @@
       };
 
       var AnonymousSubject = /*#__PURE__*/function (_Subject) {
-        _inherits(AnonymousSubject, _Subject);
-
-        var _super78 = _createSuper(AnonymousSubject);
-
         function AnonymousSubject(destination, source) {
           var _this108;
 
           _classCallCheck(this, AnonymousSubject);
 
-          _this108 = _super78.call(this);
+          _this108 = _callSuper(this, AnonymousSubject);
           _this108.destination = destination;
           _this108.source = source;
           return _this108;
         }
 
-        _createClass2(AnonymousSubject, [{
+        _inherits(AnonymousSubject, _Subject);
+
+        return _createClass2(AnonymousSubject, [{
           key: "next",
           value: function next(value) {
             var destination = this.destination;
@@ -23894,8 +23471,6 @@
             }
           }
         }]);
-
-        return AnonymousSubject;
       }(Subject); //# sourceMappingURL=Subject.js.map
 
       /***/
@@ -23991,27 +23566,21 @@
           this.project = project;
         }
 
-        _createClass2(ExhaustMapOperator, [{
+        return _createClass2(ExhaustMapOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ExhaustMapSubscriber(subscriber, this.project));
           }
         }]);
-
-        return ExhaustMapOperator;
       }();
 
       var ExhaustMapSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP12) {
-        _inherits(ExhaustMapSubscriber, _innerSubscribe__WEBP12);
-
-        var _super79 = _createSuper(ExhaustMapSubscriber);
-
         function ExhaustMapSubscriber(destination, project) {
           var _this109;
 
           _classCallCheck(this, ExhaustMapSubscriber);
 
-          _this109 = _super79.call(this, destination);
+          _this109 = _callSuper(this, ExhaustMapSubscriber, [destination]);
           _this109.project = project;
           _this109.hasSubscription = false;
           _this109.hasCompleted = false;
@@ -24019,7 +23588,9 @@
           return _this109;
         }
 
-        _createClass2(ExhaustMapSubscriber, [{
+        _inherits(ExhaustMapSubscriber, _innerSubscribe__WEBP12);
+
+        return _createClass2(ExhaustMapSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (!this.hasSubscription) {
@@ -24086,8 +23657,6 @@
             }
           }
         }]);
-
-        return ExhaustMapSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleOuterSubscriber"]); //# sourceMappingURL=exhaustMap.js.map
 
       /***/
@@ -24103,7 +23672,7 @@
     /*! exports provided: Scheduler */
 
     /***/
-    function YCZ(module, __webpack_exports__, __webpack_require__) {
+    function Y_cZ(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -24124,7 +23693,7 @@
           this.now = now;
         }
 
-        _createClass2(Scheduler, [{
+        return _createClass2(Scheduler, [{
           key: "schedule",
           value: function schedule(work) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
@@ -24132,8 +23701,6 @@
             return new this.SchedulerAction(this, work).schedule(state, delay);
           }
         }]);
-
-        return Scheduler;
       }();
 
       Scheduler.now = function () {
@@ -24282,23 +23849,21 @@
       "quSY");
 
       var SubjectSubscription = /*#__PURE__*/function (_Subscription__WEBPAC4) {
-        _inherits(SubjectSubscription, _Subscription__WEBPAC4);
-
-        var _super80 = _createSuper(SubjectSubscription);
-
         function SubjectSubscription(subject, subscriber) {
           var _this110;
 
           _classCallCheck(this, SubjectSubscription);
 
-          _this110 = _super80.call(this);
+          _this110 = _callSuper(this, SubjectSubscription);
           _this110.subject = subject;
           _this110.subscriber = subscriber;
           _this110.closed = false;
           return _this110;
         }
 
-        _createClass2(SubjectSubscription, [{
+        _inherits(SubjectSubscription, _Subscription__WEBPAC4);
+
+        return _createClass2(SubjectSubscription, [{
           key: "unsubscribe",
           value: function unsubscribe() {
             if (this.closed) {
@@ -24321,8 +23886,6 @@
             }
           }
         }]);
-
-        return SubjectSubscription;
       }(_Subscription__WEBPACK_IMPORTED_MODULE_0__["Subscription"]); //# sourceMappingURL=SubjectSubscription.js.map
 
       /***/
@@ -24356,28 +23919,26 @@
       "3N8a");
 
       var QueueAction = /*#__PURE__*/function (_AsyncAction__WEBPACK3) {
-        _inherits(QueueAction, _AsyncAction__WEBPACK3);
-
-        var _super81 = _createSuper(QueueAction);
-
         function QueueAction(scheduler, work) {
           var _this111;
 
           _classCallCheck(this, QueueAction);
 
-          _this111 = _super81.call(this, scheduler, work);
+          _this111 = _callSuper(this, QueueAction, [scheduler, work]);
           _this111.scheduler = scheduler;
           _this111.work = work;
           return _this111;
         }
 
-        _createClass2(QueueAction, [{
+        _inherits(QueueAction, _AsyncAction__WEBPACK3);
+
+        return _createClass2(QueueAction, [{
           key: "schedule",
           value: function schedule(state) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
             if (delay > 0) {
-              return _get(_getPrototypeOf(QueueAction.prototype), "schedule", this).call(this, state, delay);
+              return _superPropGet(QueueAction, "schedule", this, 3)([state, delay]);
             }
 
             this.delay = delay;
@@ -24388,7 +23949,7 @@
         }, {
           key: "execute",
           value: function execute(state, delay) {
-            return delay > 0 || this.closed ? _get(_getPrototypeOf(QueueAction.prototype), "execute", this).call(this, state, delay) : this._execute(state, delay);
+            return delay > 0 || this.closed ? _superPropGet(QueueAction, "execute", this, 3)([state, delay]) : this._execute(state, delay);
           }
         }, {
           key: "requestAsyncId",
@@ -24396,14 +23957,12 @@
             var delay = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
 
             if (delay !== null && delay > 0 || delay === null && this.delay > 0) {
-              return _get(_getPrototypeOf(QueueAction.prototype), "requestAsyncId", this).call(this, scheduler, id, delay);
+              return _superPropGet(QueueAction, "requestAsyncId", this, 3)([scheduler, id, delay]);
             }
 
             return scheduler.flush(this);
           }
         }]);
-
-        return QueueAction;
       }(_AsyncAction__WEBPACK_IMPORTED_MODULE_0__["AsyncAction"]); //# sourceMappingURL=QueueAction.js.map
 
       /***/
@@ -24503,32 +24062,28 @@
           _classCallCheck(this, PairwiseOperator);
         }
 
-        _createClass2(PairwiseOperator, [{
+        return _createClass2(PairwiseOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new PairwiseSubscriber(subscriber));
           }
         }]);
-
-        return PairwiseOperator;
       }();
 
       var PairwiseSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_26) {
-        _inherits(PairwiseSubscriber, _Subscriber__WEBPACK_26);
-
-        var _super82 = _createSuper(PairwiseSubscriber);
-
         function PairwiseSubscriber(destination) {
           var _this112;
 
           _classCallCheck(this, PairwiseSubscriber);
 
-          _this112 = _super82.call(this, destination);
+          _this112 = _callSuper(this, PairwiseSubscriber, [destination]);
           _this112.hasPrev = false;
           return _this112;
         }
 
-        _createClass2(PairwiseSubscriber, [{
+        _inherits(PairwiseSubscriber, _Subscriber__WEBPACK_26);
+
+        return _createClass2(PairwiseSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var pair;
@@ -24546,8 +24101,6 @@
             }
           }
         }]);
-
-        return PairwiseSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=pairwise.js.map
 
       /***/
@@ -24606,39 +24159,35 @@
           this.comparator = comparator;
         }
 
-        _createClass2(SequenceEqualOperator, [{
+        return _createClass2(SequenceEqualOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SequenceEqualSubscriber(subscriber, this.compareTo, this.comparator));
           }
         }]);
-
-        return SequenceEqualOperator;
       }();
 
       var SequenceEqualSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_27) {
-        _inherits(SequenceEqualSubscriber, _Subscriber__WEBPACK_27);
-
-        var _super83 = _createSuper(SequenceEqualSubscriber);
-
         function SequenceEqualSubscriber(destination, compareTo, comparator) {
           var _this113;
 
           _classCallCheck(this, SequenceEqualSubscriber);
 
-          _this113 = _super83.call(this, destination);
+          _this113 = _callSuper(this, SequenceEqualSubscriber, [destination]);
           _this113.compareTo = compareTo;
           _this113.comparator = comparator;
           _this113._a = [];
           _this113._b = [];
           _this113._oneComplete = false;
 
-          _this113.destination.add(compareTo.subscribe(new SequenceEqualCompareToSubscriber(destination, _assertThisInitialized(_this113))));
+          _this113.destination.add(compareTo.subscribe(new SequenceEqualCompareToSubscriber(destination, _this113)));
 
           return _this113;
         }
 
-        _createClass2(SequenceEqualSubscriber, [{
+        _inherits(SequenceEqualSubscriber, _Subscriber__WEBPACK_27);
+
+        return _createClass2(SequenceEqualSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this._oneComplete && this._b.length === 0) {
@@ -24713,26 +24262,22 @@
             }
           }
         }]);
-
-        return SequenceEqualSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var SequenceEqualCompareToSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_28) {
-        _inherits(SequenceEqualCompareToSubscriber, _Subscriber__WEBPACK_28);
-
-        var _super84 = _createSuper(SequenceEqualCompareToSubscriber);
-
         function SequenceEqualCompareToSubscriber(destination, parent) {
           var _this114;
 
           _classCallCheck(this, SequenceEqualCompareToSubscriber);
 
-          _this114 = _super84.call(this, destination);
+          _this114 = _callSuper(this, SequenceEqualCompareToSubscriber, [destination]);
           _this114.parent = parent;
           return _this114;
         }
 
-        _createClass2(SequenceEqualCompareToSubscriber, [{
+        _inherits(SequenceEqualCompareToSubscriber, _Subscriber__WEBPACK_28);
+
+        return _createClass2(SequenceEqualCompareToSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.parent.nextB(value);
@@ -24750,8 +24295,6 @@
             this.unsubscribe();
           }
         }]);
-
-        return SequenceEqualCompareToSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=sequenceEqual.js.map
 
       /***/
@@ -24982,7 +24525,7 @@
           this.notifier = notifier;
         }
 
-        _createClass2(SampleOperator, [{
+        return _createClass2(SampleOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var sampleSubscriber = new SampleSubscriber(subscriber);
@@ -24991,26 +24534,22 @@
             return subscription;
           }
         }]);
-
-        return SampleOperator;
       }();
 
       var SampleSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP13) {
-        _inherits(SampleSubscriber, _innerSubscribe__WEBP13);
-
-        var _super85 = _createSuper(SampleSubscriber);
-
         function SampleSubscriber() {
           var _this115;
 
           _classCallCheck(this, SampleSubscriber);
 
-          _this115 = _super85.apply(this, arguments);
+          _this115 = _callSuper(this, SampleSubscriber, arguments);
           _this115.hasValue = false;
           return _this115;
         }
 
-        _createClass2(SampleSubscriber, [{
+        _inherits(SampleSubscriber, _innerSubscribe__WEBP13);
+
+        return _createClass2(SampleSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.value = value;
@@ -25035,8 +24574,6 @@
             }
           }
         }]);
-
-        return SampleSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=sample.js.map
 
       /***/
@@ -25166,27 +24703,21 @@
           this.thisArg = thisArg;
         }
 
-        _createClass2(FindValueOperator, [{
+        return _createClass2(FindValueOperator, [{
           key: "call",
           value: function call(observer, source) {
             return source.subscribe(new FindValueSubscriber(observer, this.predicate, this.source, this.yieldIndex, this.thisArg));
           }
         }]);
-
-        return FindValueOperator;
       }();
 
       var FindValueSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_29) {
-        _inherits(FindValueSubscriber, _Subscriber__WEBPACK_29);
-
-        var _super86 = _createSuper(FindValueSubscriber);
-
         function FindValueSubscriber(destination, predicate, source, yieldIndex, thisArg) {
           var _this116;
 
           _classCallCheck(this, FindValueSubscriber);
 
-          _this116 = _super86.call(this, destination);
+          _this116 = _callSuper(this, FindValueSubscriber, [destination]);
           _this116.predicate = predicate;
           _this116.source = source;
           _this116.yieldIndex = yieldIndex;
@@ -25195,7 +24726,9 @@
           return _this116;
         }
 
-        _createClass2(FindValueSubscriber, [{
+        _inherits(FindValueSubscriber, _Subscriber__WEBPACK_29);
+
+        return _createClass2(FindValueSubscriber, [{
           key: "notifyComplete",
           value: function notifyComplete(value) {
             var destination = this.destination;
@@ -25226,8 +24759,6 @@
             this.notifyComplete(this.yieldIndex ? -1 : undefined);
           }
         }]);
-
-        return FindValueSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=find.js.map
 
       /***/
@@ -25297,27 +24828,21 @@
           this.delayDurationSelector = delayDurationSelector;
         }
 
-        _createClass2(DelayWhenOperator, [{
+        return _createClass2(DelayWhenOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DelayWhenSubscriber(subscriber, this.delayDurationSelector));
           }
         }]);
-
-        return DelayWhenOperator;
       }();
 
       var DelayWhenSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB3) {
-        _inherits(DelayWhenSubscriber, _OuterSubscriber__WEB3);
-
-        var _super87 = _createSuper(DelayWhenSubscriber);
-
         function DelayWhenSubscriber(destination, delayDurationSelector) {
           var _this117;
 
           _classCallCheck(this, DelayWhenSubscriber);
 
-          _this117 = _super87.call(this, destination);
+          _this117 = _callSuper(this, DelayWhenSubscriber, [destination]);
           _this117.delayDurationSelector = delayDurationSelector;
           _this117.completed = false;
           _this117.delayNotifierSubscriptions = [];
@@ -25325,7 +24850,9 @@
           return _this117;
         }
 
-        _createClass2(DelayWhenSubscriber, [{
+        _inherits(DelayWhenSubscriber, _OuterSubscriber__WEB3);
+
+        return _createClass2(DelayWhenSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(outerValue, _innerValue, _outerIndex, _innerIndex, innerSub) {
             this.destination.next(outerValue);
@@ -25401,54 +24928,46 @@
             }
           }
         }]);
-
-        return DelayWhenSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_2__["OuterSubscriber"]);
 
       var SubscriptionDelayObservable = /*#__PURE__*/function (_Observable__WEBPACK_5) {
-        _inherits(SubscriptionDelayObservable, _Observable__WEBPACK_5);
-
-        var _super88 = _createSuper(SubscriptionDelayObservable);
-
         function SubscriptionDelayObservable(source, subscriptionDelay) {
           var _this118;
 
           _classCallCheck(this, SubscriptionDelayObservable);
 
-          _this118 = _super88.call(this);
+          _this118 = _callSuper(this, SubscriptionDelayObservable);
           _this118.source = source;
           _this118.subscriptionDelay = subscriptionDelay;
           return _this118;
         }
 
-        _createClass2(SubscriptionDelayObservable, [{
+        _inherits(SubscriptionDelayObservable, _Observable__WEBPACK_5);
+
+        return _createClass2(SubscriptionDelayObservable, [{
           key: "_subscribe",
           value: function _subscribe(subscriber) {
             this.subscriptionDelay.subscribe(new SubscriptionDelaySubscriber(subscriber, this.source));
           }
         }]);
-
-        return SubscriptionDelayObservable;
       }(_Observable__WEBPACK_IMPORTED_MODULE_1__["Observable"]);
 
       var SubscriptionDelaySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_30) {
-        _inherits(SubscriptionDelaySubscriber, _Subscriber__WEBPACK_30);
-
-        var _super89 = _createSuper(SubscriptionDelaySubscriber);
-
         function SubscriptionDelaySubscriber(parent, source) {
           var _this119;
 
           _classCallCheck(this, SubscriptionDelaySubscriber);
 
-          _this119 = _super89.call(this);
+          _this119 = _callSuper(this, SubscriptionDelaySubscriber);
           _this119.parent = parent;
           _this119.source = source;
           _this119.sourceSubscribed = false;
           return _this119;
         }
 
-        _createClass2(SubscriptionDelaySubscriber, [{
+        _inherits(SubscriptionDelaySubscriber, _Subscriber__WEBPACK_30);
+
+        return _createClass2(SubscriptionDelaySubscriber, [{
           key: "_next",
           value: function _next(unused) {
             this.subscribeToSource();
@@ -25475,8 +24994,6 @@
             }
           }
         }]);
-
-        return SubscriptionDelaySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=delayWhen.js.map
 
       /***/
@@ -25664,27 +25181,21 @@
           this.source = source;
         }
 
-        _createClass2(SingleOperator, [{
+        return _createClass2(SingleOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SingleSubscriber(subscriber, this.predicate, this.source));
           }
         }]);
-
-        return SingleOperator;
       }();
 
       var SingleSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_31) {
-        _inherits(SingleSubscriber, _Subscriber__WEBPACK_31);
-
-        var _super90 = _createSuper(SingleSubscriber);
-
         function SingleSubscriber(destination, predicate, source) {
           var _this120;
 
           _classCallCheck(this, SingleSubscriber);
 
-          _this120 = _super90.call(this, destination);
+          _this120 = _callSuper(this, SingleSubscriber, [destination]);
           _this120.predicate = predicate;
           _this120.source = source;
           _this120.seenValue = false;
@@ -25692,7 +25203,9 @@
           return _this120;
         }
 
-        _createClass2(SingleSubscriber, [{
+        _inherits(SingleSubscriber, _Subscriber__WEBPACK_31);
+
+        return _createClass2(SingleSubscriber, [{
           key: "applySingleValue",
           value: function applySingleValue(value) {
             if (this.seenValue) {
@@ -25737,8 +25250,6 @@
             }
           }
         }]);
-
-        return SingleSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=single.js.map
 
       /***/
@@ -25788,28 +25299,24 @@
           _classCallCheck(this, MaterializeOperator);
         }
 
-        _createClass2(MaterializeOperator, [{
+        return _createClass2(MaterializeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new MaterializeSubscriber(subscriber));
           }
         }]);
-
-        return MaterializeOperator;
       }();
 
       var MaterializeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_32) {
-        _inherits(MaterializeSubscriber, _Subscriber__WEBPACK_32);
-
-        var _super91 = _createSuper(MaterializeSubscriber);
-
         function MaterializeSubscriber(destination) {
           _classCallCheck(this, MaterializeSubscriber);
 
-          return _super91.call(this, destination);
+          return _callSuper(this, MaterializeSubscriber, [destination]);
         }
 
-        _createClass2(MaterializeSubscriber, [{
+        _inherits(MaterializeSubscriber, _Subscriber__WEBPACK_32);
+
+        return _createClass2(MaterializeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.destination.next(_Notification__WEBPACK_IMPORTED_MODULE_1__["Notification"].createNext(value));
@@ -25829,8 +25336,6 @@
             destination.complete();
           }
         }]);
-
-        return MaterializeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=materialize.js.map
 
       /***/
@@ -25898,33 +25403,29 @@
           this.project = project;
         }
 
-        _createClass2(SwitchMapOperator, [{
+        return _createClass2(SwitchMapOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SwitchMapSubscriber(subscriber, this.project));
           }
         }]);
-
-        return SwitchMapOperator;
       }();
 
       var SwitchMapSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP14) {
-        _inherits(SwitchMapSubscriber, _innerSubscribe__WEBP14);
-
-        var _super92 = _createSuper(SwitchMapSubscriber);
-
         function SwitchMapSubscriber(destination, project) {
           var _this121;
 
           _classCallCheck(this, SwitchMapSubscriber);
 
-          _this121 = _super92.call(this, destination);
+          _this121 = _callSuper(this, SwitchMapSubscriber, [destination]);
           _this121.project = project;
           _this121.index = 0;
           return _this121;
         }
 
-        _createClass2(SwitchMapSubscriber, [{
+        _inherits(SwitchMapSubscriber, _innerSubscribe__WEBP14);
+
+        return _createClass2(SwitchMapSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var result;
@@ -25963,7 +25464,7 @@
             var innerSubscription = this.innerSubscription;
 
             if (!innerSubscription || innerSubscription.closed) {
-              _get(_getPrototypeOf(SwitchMapSubscriber.prototype), "_complete", this).call(this);
+              _superPropGet(SwitchMapSubscriber, "_complete", this, 3)([]);
             }
 
             this.unsubscribe();
@@ -25979,7 +25480,7 @@
             this.innerSubscription = undefined;
 
             if (this.isStopped) {
-              _get(_getPrototypeOf(SwitchMapSubscriber.prototype), "_complete", this).call(this);
+              _superPropGet(SwitchMapSubscriber, "_complete", this, 3)([]);
             }
           }
         }, {
@@ -25988,8 +25489,6 @@
             this.destination.next(innerValue);
           }
         }]);
-
-        return SwitchMapSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleOuterSubscriber"]); //# sourceMappingURL=switchMap.js.map
 
       /***/
@@ -29677,14 +29176,12 @@
           }
         }
 
-        _createClass2(InjectionToken, [{
+        return _createClass2(InjectionToken, [{
           key: "toString",
           value: function toString() {
             return "InjectionToken ".concat(this._desc);
           }
         }]);
-
-        return InjectionToken;
       }();
       /**
        * @license
@@ -29892,7 +29389,7 @@
           _classCallCheck(this, NullInjector);
         }
 
-        _createClass2(NullInjector, [{
+        return _createClass2(NullInjector, [{
           key: "get",
           value: function get(token) {
             var notFoundValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : THROW_IF_NOT_FOUND;
@@ -29910,8 +29407,6 @@
             return notFoundValue;
           }
         }]);
-
-        return NullInjector;
       }();
 
       function catchInjectorError(e, token, injectorErrorName, source) {
@@ -31444,14 +30939,12 @@
          */
 
 
-        _createClass2(SimpleChange, [{
+        return _createClass2(SimpleChange, [{
           key: "isFirstChange",
           value: function isFirstChange() {
             return this.firstChange;
           }
         }]);
-
-        return SimpleChange;
       }();
       /**
        * @license
@@ -33836,14 +33329,12 @@
           this._lView = _lView;
         }
 
-        _createClass2(NodeInjector, [{
+        return _createClass2(NodeInjector, [{
           key: "get",
           value: function get(token, notFoundValue) {
             return getOrCreateInjectable(this._tNode, this._lView, token, undefined, notFoundValue);
           }
         }]);
-
-        return NodeInjector;
       }();
       /**
        * @codeGenApi
@@ -34001,7 +33492,7 @@
           this._console = console;
         }
 
-        _createClass2(ErrorHandler, [{
+        return _createClass2(ErrorHandler, [{
           key: "handleError",
           value: function handleError(error) {
             var originalError = this._findOriginalError(error);
@@ -34046,8 +33537,6 @@
             return e;
           }
         }]);
-
-        return ErrorHandler;
       }();
       /**
        * @license
@@ -34094,28 +33583,24 @@
           this.changingThisBreaksApplicationSecurity = changingThisBreaksApplicationSecurity;
         }
 
-        _createClass2(SafeValueImpl, [{
+        return _createClass2(SafeValueImpl, [{
           key: "toString",
           value: function toString() {
             return "SafeValue must use [property]=binding: ".concat(this.changingThisBreaksApplicationSecurity) + " (see http://g.co/ng/security#xss)";
           }
         }]);
-
-        return SafeValueImpl;
       }();
 
       var SafeHtmlImpl = /*#__PURE__*/function (_SafeValueImpl) {
-        _inherits(SafeHtmlImpl, _SafeValueImpl);
-
-        var _super93 = _createSuper(SafeHtmlImpl);
-
         function SafeHtmlImpl() {
           _classCallCheck(this, SafeHtmlImpl);
 
-          return _super93.apply(this, arguments);
+          return _callSuper(this, SafeHtmlImpl, arguments);
         }
 
-        _createClass2(SafeHtmlImpl, [{
+        _inherits(SafeHtmlImpl, _SafeValueImpl);
+
+        return _createClass2(SafeHtmlImpl, [{
           key: "getTypeName",
           value: function getTypeName() {
             return "HTML"
@@ -34123,22 +33608,18 @@
             ;
           }
         }]);
-
-        return SafeHtmlImpl;
       }(SafeValueImpl);
 
       var SafeStyleImpl = /*#__PURE__*/function (_SafeValueImpl2) {
-        _inherits(SafeStyleImpl, _SafeValueImpl2);
-
-        var _super94 = _createSuper(SafeStyleImpl);
-
         function SafeStyleImpl() {
           _classCallCheck(this, SafeStyleImpl);
 
-          return _super94.apply(this, arguments);
+          return _callSuper(this, SafeStyleImpl, arguments);
         }
 
-        _createClass2(SafeStyleImpl, [{
+        _inherits(SafeStyleImpl, _SafeValueImpl2);
+
+        return _createClass2(SafeStyleImpl, [{
           key: "getTypeName",
           value: function getTypeName() {
             return "Style"
@@ -34146,22 +33627,18 @@
             ;
           }
         }]);
-
-        return SafeStyleImpl;
       }(SafeValueImpl);
 
       var SafeScriptImpl = /*#__PURE__*/function (_SafeValueImpl3) {
-        _inherits(SafeScriptImpl, _SafeValueImpl3);
-
-        var _super95 = _createSuper(SafeScriptImpl);
-
         function SafeScriptImpl() {
           _classCallCheck(this, SafeScriptImpl);
 
-          return _super95.apply(this, arguments);
+          return _callSuper(this, SafeScriptImpl, arguments);
         }
 
-        _createClass2(SafeScriptImpl, [{
+        _inherits(SafeScriptImpl, _SafeValueImpl3);
+
+        return _createClass2(SafeScriptImpl, [{
           key: "getTypeName",
           value: function getTypeName() {
             return "Script"
@@ -34169,22 +33646,18 @@
             ;
           }
         }]);
-
-        return SafeScriptImpl;
       }(SafeValueImpl);
 
       var SafeUrlImpl = /*#__PURE__*/function (_SafeValueImpl4) {
-        _inherits(SafeUrlImpl, _SafeValueImpl4);
-
-        var _super96 = _createSuper(SafeUrlImpl);
-
         function SafeUrlImpl() {
           _classCallCheck(this, SafeUrlImpl);
 
-          return _super96.apply(this, arguments);
+          return _callSuper(this, SafeUrlImpl, arguments);
         }
 
-        _createClass2(SafeUrlImpl, [{
+        _inherits(SafeUrlImpl, _SafeValueImpl4);
+
+        return _createClass2(SafeUrlImpl, [{
           key: "getTypeName",
           value: function getTypeName() {
             return "URL"
@@ -34192,22 +33665,18 @@
             ;
           }
         }]);
-
-        return SafeUrlImpl;
       }(SafeValueImpl);
 
       var SafeResourceUrlImpl = /*#__PURE__*/function (_SafeValueImpl5) {
-        _inherits(SafeResourceUrlImpl, _SafeValueImpl5);
-
-        var _super97 = _createSuper(SafeResourceUrlImpl);
-
         function SafeResourceUrlImpl() {
           _classCallCheck(this, SafeResourceUrlImpl);
 
-          return _super97.apply(this, arguments);
+          return _callSuper(this, SafeResourceUrlImpl, arguments);
         }
 
-        _createClass2(SafeResourceUrlImpl, [{
+        _inherits(SafeResourceUrlImpl, _SafeValueImpl5);
+
+        return _createClass2(SafeResourceUrlImpl, [{
           key: "getTypeName",
           value: function getTypeName() {
             return "ResourceURL"
@@ -34215,8 +33684,6 @@
             ;
           }
         }]);
-
-        return SafeResourceUrlImpl;
       }(SafeValueImpl);
 
       function unwrapSafeValue(value) {
@@ -34399,7 +33866,7 @@
           _classCallCheck(this, DOMParserHelper);
         }
 
-        _createClass2(DOMParserHelper, [{
+        return _createClass2(DOMParserHelper, [{
           key: "getInertBodyElement",
           value: function getInertBodyElement(html) {
             // We add these extra elements to ensure that the rest of the content is parsed as expected
@@ -34417,8 +33884,6 @@
             }
           }
         }]);
-
-        return DOMParserHelper;
       }();
       /**
        * Use an HTML5 `template` element, if supported, or an inert body element created via
@@ -34444,7 +33909,7 @@
           }
         }
 
-        _createClass2(InertDocumentHelper, [{
+        return _createClass2(InertDocumentHelper, [{
           key: "getInertBodyElement",
           value: function getInertBodyElement(html) {
             // Prefer using <template> element if supported.
@@ -34503,8 +33968,6 @@
             }
           }
         }]);
-
-        return InertDocumentHelper;
       }();
       /**
        * We need to determine whether the DOMParser exists in the global context and
@@ -34681,7 +34144,7 @@
           this.buf = [];
         }
 
-        _createClass2(SanitizingHtmlSerializer, [{
+        return _createClass2(SanitizingHtmlSerializer, [{
           key: "sanitizeChildren",
           value: function sanitizeChildren(el) {
             // This cannot use a TreeWalker, as it has to run on Angular's various DOM adapters.
@@ -34793,8 +34256,6 @@
             return nextNode;
           }
         }]);
-
-        return SanitizingHtmlSerializer;
       }(); // Regular Expressions for parsing tags and attributes
 
 
@@ -36651,7 +36112,7 @@
           this._vars = _vars;
         }
 
-        _createClass2(TView, [{
+        return _createClass2(TView, [{
           key: "template_",
           get: function get() {
             var buf = [];
@@ -36669,8 +36130,6 @@
             return HEADER_OFFSET + this._decls + this._vars;
           }
         }]);
-
-        return TView;
       }();
 
       var TNode = /*#__PURE__*/function () {
@@ -36754,7 +36213,7 @@
          */
 
 
-        _createClass2(TNode, [{
+        return _createClass2(TNode, [{
           key: "debugNodeInjectorPath",
           value: function debugNodeInjectorPath(lView) {
             var path = [];
@@ -36864,8 +36323,6 @@
             );
           }
         }]);
-
-        return TNode;
       }();
 
       var TNodeDebug = TNode;
@@ -36999,7 +36456,7 @@
          */
 
 
-        _createClass2(LViewDebug, [{
+        return _createClass2(LViewDebug, [{
           key: "flags",
           get: function get() {
             var flags = this._raw_lView[FLAGS];
@@ -37169,8 +36626,6 @@
             return childViews;
           }
         }]);
-
-        return LViewDebug;
       }();
 
       function toLViewRange(tView, lView, start, end) {
@@ -37299,7 +36754,7 @@
           this._raw_lContainer = _raw_lContainer;
         }
 
-        _createClass2(LContainerDebug, [{
+        return _createClass2(LContainerDebug, [{
           key: "hasTransplantedViews",
           get: function get() {
             return this._raw_lContainer[HAS_TRANSPLANTED_VIEWS];
@@ -37335,8 +36790,6 @@
             return toDebug(this._raw_lContainer[NEXT]);
           }
         }]);
-
-        return LContainerDebug;
       }();
       /**
        * Return an `LView` value if found.
@@ -40546,7 +39999,7 @@
           this._viewContainerRef = null;
         }
 
-        _createClass2(ViewRef, [{
+        return _createClass2(ViewRef, [{
           key: "rootNodes",
           get: function get() {
             var lView = this._lView;
@@ -40818,28 +40271,24 @@
             this._appRef = appRef;
           }
         }]);
-
-        return ViewRef;
       }();
       /** @internal */
 
 
       var RootViewRef = /*#__PURE__*/function (_ViewRef) {
-        _inherits(RootViewRef, _ViewRef);
-
-        var _super98 = _createSuper(RootViewRef);
-
         function RootViewRef(_view) {
           var _this122;
 
           _classCallCheck(this, RootViewRef);
 
-          _this122 = _super98.call(this, _view);
+          _this122 = _callSuper(this, RootViewRef, [_view]);
           _this122._view = _view;
           return _this122;
         }
 
-        _createClass2(RootViewRef, [{
+        _inherits(RootViewRef, _ViewRef);
+
+        return _createClass2(RootViewRef, [{
           key: "detectChanges",
           value: function detectChanges() {
             detectChangesInRootView(this._view);
@@ -40855,8 +40304,6 @@
             return null;
           }
         }]);
-
-        return RootViewRef;
       }(ViewRef);
 
       function collectNativeNodes(tView, lView, tNode, result) {
@@ -40957,15 +40404,13 @@
       function createElementRef(ElementRefToken, tNode, view) {
         if (!R3ElementRef) {
           R3ElementRef = /*#__PURE__*/function (_ElementRefToken) {
-            _inherits(ElementRef, _ElementRefToken);
-
-            var _super99 = _createSuper(ElementRef);
-
             function ElementRef() {
               _classCallCheck(this, ElementRef);
 
-              return _super99.apply(this, arguments);
+              return _callSuper(this, ElementRef, arguments);
             }
+
+            _inherits(ElementRef, _ElementRefToken);
 
             return _createClass2(ElementRef);
           }(ElementRefToken);
@@ -40998,23 +40443,21 @@
       function createTemplateRef(TemplateRefToken, ElementRefToken, hostTNode, hostView) {
         if (!R3TemplateRef) {
           R3TemplateRef = /*#__PURE__*/function (_TemplateRefToken) {
-            _inherits(TemplateRef, _TemplateRefToken);
-
-            var _super100 = _createSuper(TemplateRef);
-
             function TemplateRef(_declarationView, _declarationTContainer, elementRef) {
               var _this123;
 
               _classCallCheck(this, TemplateRef);
 
-              _this123 = _super100.call(this);
+              _this123 = _callSuper(this, TemplateRef);
               _this123._declarationView = _declarationView;
               _this123._declarationTContainer = _declarationTContainer;
               _this123.elementRef = elementRef;
               return _this123;
             }
 
-            _createClass2(TemplateRef, [{
+            _inherits(TemplateRef, _TemplateRefToken);
+
+            return _createClass2(TemplateRef, [{
               key: "createEmbeddedView",
               value: function createEmbeddedView(context) {
                 var embeddedTView = this._declarationTContainer.tViews;
@@ -41034,8 +40477,6 @@
                 return new ViewRef(embeddedLView);
               }
             }]);
-
-            return TemplateRef;
           }(TemplateRefToken);
         }
 
@@ -41075,23 +40516,21 @@
       function createContainerRef(ViewContainerRefToken, ElementRefToken, hostTNode, hostView) {
         if (!R3ViewContainerRef) {
           R3ViewContainerRef = /*#__PURE__*/function (_ViewContainerRefToke) {
-            _inherits(ViewContainerRef, _ViewContainerRefToke);
-
-            var _super101 = _createSuper(ViewContainerRef);
-
             function ViewContainerRef(_lContainer, _hostTNode, _hostView) {
               var _this124;
 
               _classCallCheck(this, ViewContainerRef);
 
-              _this124 = _super101.call(this);
+              _this124 = _callSuper(this, ViewContainerRef);
               _this124._lContainer = _lContainer;
               _this124._hostTNode = _hostTNode;
               _this124._hostView = _hostView;
               return _this124;
             }
 
-            _createClass2(ViewContainerRef, [{
+            _inherits(ViewContainerRef, _ViewContainerRefToke);
+
+            return _createClass2(ViewContainerRef, [{
               key: "element",
               get: function get() {
                 return createElementRef(ElementRefToken, this._hostTNode, this._hostView);
@@ -41284,8 +40723,6 @@
                 }
               }
             }]);
-
-            return ViewContainerRef;
           }(ViewContainerRefToken);
         }
 
@@ -41573,7 +41010,7 @@
           this._reflect = reflect || _global['Reflect'];
         }
 
-        _createClass2(ReflectionCapabilities, [{
+        return _createClass2(ReflectionCapabilities, [{
           key: "isReflectionEnabled",
           value: function isReflectionEnabled() {
             return true;
@@ -41860,8 +41297,6 @@
             return enumIdentifier[name];
           }
         }]);
-
-        return ReflectionCapabilities;
       }();
 
       function convertTsickleDecoratorIntoMetadata(decoratorInvocations) {
@@ -42329,7 +41764,7 @@
          */
 
 
-        _createClass2(R3Injector, [{
+        return _createClass2(R3Injector, [{
           key: "destroyed",
           get: function get() {
             return this._destroyed;
@@ -42530,7 +41965,7 @@
 
 
               if (importTypesWithProviders !== undefined) {
-                var _loop2 = function _loop2(i) {
+                var _loop2 = function _loop2() {
                   var _importTypesWithProvi = importTypesWithProviders[i],
                       ngModule = _importTypesWithProvi.ngModule,
                       providers = _importTypesWithProvi.providers;
@@ -42540,7 +41975,7 @@
                 };
 
                 for (var i = 0; i < importTypesWithProviders.length; i++) {
-                  _loop2(i);
+                  _loop2();
                 }
               }
             } // Track the InjectorType and add a provider for it. It's important that this is done after the
@@ -42635,8 +42070,6 @@
             }
           }
         }]);
-
-        return R3Injector;
       }();
 
       function injectableDefOrInjectorDefFactory(token) {
@@ -42842,7 +42275,7 @@
           _classCallCheck(this, Injector);
         }
 
-        _createClass2(Injector, null, [{
+        return _createClass2(Injector, null, [{
           key: "create",
           value: function create(options, parent) {
             if (Array.isArray(options)) {
@@ -42852,8 +42285,6 @@
             }
           }
         }]);
-
-        return Injector;
       }();
 
       Injector.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND;
@@ -42916,7 +42347,7 @@
           this.scope = recursivelyProcessProviders(records, providers);
         }
 
-        _createClass2(StaticInjector, [{
+        return _createClass2(StaticInjector, [{
           key: "get",
           value: function get(token, notFoundValue) {
             var flags = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : InjectFlags.Default;
@@ -42966,8 +42397,6 @@
             return "StaticInjector[".concat(tokens.join(', '), "]");
           }
         }]);
-
-        return StaticInjector;
       }();
 
       function resolveProvider(provider) {
@@ -43497,7 +42926,7 @@
          */
 
 
-        _createClass2(ReflectiveKey, null, [{
+        return _createClass2(ReflectiveKey, null, [{
           key: "get",
           value: function get(token) {
             return _globalKeyRegistry.get(resolveForwardRef(token));
@@ -43512,8 +42941,6 @@
             return _globalKeyRegistry.numberOfKeys;
           }
         }]);
-
-        return ReflectiveKey;
       }();
 
       var KeyRegistry = /*#__PURE__*/function () {
@@ -43523,7 +42950,7 @@
           this._allKeys = new Map();
         }
 
-        _createClass2(KeyRegistry, [{
+        return _createClass2(KeyRegistry, [{
           key: "get",
           value: function get(token) {
             if (token instanceof ReflectiveKey) return token;
@@ -43544,8 +42971,6 @@
             return this._allKeys.size;
           }
         }]);
-
-        return KeyRegistry;
       }();
 
       var _globalKeyRegistry = new KeyRegistry();
@@ -43570,7 +42995,7 @@
           this.reflectionCapabilities = reflectionCapabilities;
         }
 
-        _createClass2(Reflector, [{
+        return _createClass2(Reflector, [{
           key: "updateCapabilities",
           value: function updateCapabilities(caps) {
             this.reflectionCapabilities = caps;
@@ -43636,8 +43061,6 @@
             return this.reflectionCapabilities.resolveEnum(identifier, name);
           }
         }]);
-
-        return Reflector;
       }();
       /**
        * @license
@@ -43676,14 +43099,12 @@
           this.visibility = visibility;
         }
 
-        _createClass2(ReflectiveDependency, null, [{
+        return _createClass2(ReflectiveDependency, null, [{
           key: "fromKey",
           value: function fromKey(key) {
             return new ReflectiveDependency(key, false, null);
           }
         }]);
-
-        return ReflectiveDependency;
       }();
 
       var _EMPTY_LIST = [];
@@ -43952,7 +43373,7 @@
           _classCallCheck(this, ReflectiveInjector);
         }
 
-        _createClass2(ReflectiveInjector, null, [{
+        return _createClass2(ReflectiveInjector, null, [{
           key: "resolve",
           value:
           /**
@@ -44051,8 +43472,6 @@
             return new ReflectiveInjector_(providers, parent);
           }
         }]);
-
-        return ReflectiveInjector;
       }();
 
       var ReflectiveInjector_ = /*#__PURE__*/function () {
@@ -44076,7 +43495,7 @@
           }
         }
 
-        _createClass2(ReflectiveInjector_, [{
+        return _createClass2(ReflectiveInjector_, [{
           key: "get",
           value: function get(token) {
             var notFoundValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : THROW_IF_NOT_FOUND;
@@ -44271,8 +43690,6 @@
             return this.displayName;
           }
         }]);
-
-        return ReflectiveInjector_;
       }();
 
       ReflectiveInjector_.INJECTOR_KEY = ReflectiveKey.get(Injector);
@@ -45780,7 +45197,7 @@
         /** Creates a wrapped value. */
 
 
-        _createClass2(WrappedValue, null, [{
+        return _createClass2(WrappedValue, null, [{
           key: "wrap",
           value: function wrap(value) {
             return new WrappedValue(value);
@@ -45803,8 +45220,6 @@
             return value instanceof WrappedValue;
           }
         }]);
-
-        return WrappedValue;
       }();
 
       function isListLikeIterable(obj) {
@@ -52237,7 +51652,7 @@
           this.codes = codes;
         }
 
-        _createClass2(OpCodeParser, [{
+        return _createClass2(OpCodeParser, [{
           key: "hasMore",
           value: function hasMore() {
             return this.i < this.codes.length;
@@ -52292,8 +51707,6 @@
             return value;
           }
         }]);
-
-        return OpCodeParser;
       }();
       /**
        * @license
@@ -53801,14 +53214,12 @@
           _classCallCheck(this, _NullComponentFactoryResolver);
         }
 
-        _createClass2(_NullComponentFactoryResolver, [{
+        return _createClass2(_NullComponentFactoryResolver, [{
           key: "resolveComponentFactory",
           value: function resolveComponentFactory(component) {
             throw noComponentFactoryError(component);
           }
         }]);
-
-        return _NullComponentFactoryResolver;
       }();
       /**
        * A simple registry that maps `Components` to generated `ComponentFactory` classes
@@ -53842,7 +53253,7 @@
           }
         }
 
-        _createClass2(CodegenComponentFactoryResolver, [{
+        return _createClass2(CodegenComponentFactoryResolver, [{
           key: "resolveComponentFactory",
           value: function resolveComponentFactory(component) {
             var factory = this._factories.get(component);
@@ -53858,21 +53269,15 @@
             return new ComponentFactoryBoundToModule(factory, this._ngModule);
           }
         }]);
-
-        return CodegenComponentFactoryResolver;
       }();
 
       var ComponentFactoryBoundToModule = /*#__PURE__*/function (_ComponentFactory) {
-        _inherits(ComponentFactoryBoundToModule, _ComponentFactory);
-
-        var _super102 = _createSuper(ComponentFactoryBoundToModule);
-
         function ComponentFactoryBoundToModule(factory, ngModule) {
           var _this129;
 
           _classCallCheck(this, ComponentFactoryBoundToModule);
 
-          _this129 = _super102.call(this);
+          _this129 = _callSuper(this, ComponentFactoryBoundToModule);
           _this129.factory = factory;
           _this129.ngModule = ngModule;
           _this129.selector = factory.selector;
@@ -53883,14 +53288,14 @@
           return _this129;
         }
 
-        _createClass2(ComponentFactoryBoundToModule, [{
+        _inherits(ComponentFactoryBoundToModule, _ComponentFactory);
+
+        return _createClass2(ComponentFactoryBoundToModule, [{
           key: "create",
           value: function create(injector, projectableNodes, rootSelectorOrNode, ngModule) {
             return this.factory.create(injector, projectableNodes, rootSelectorOrNode, ngModule || this.ngModule);
           }
         }]);
-
-        return ComponentFactoryBoundToModule;
       }(ComponentFactory);
       /**
        * @license
@@ -54088,7 +53493,7 @@
           _classCallCheck(this, DefaultIterableDifferFactory);
         }
 
-        _createClass2(DefaultIterableDifferFactory, [{
+        return _createClass2(DefaultIterableDifferFactory, [{
           key: "supports",
           value: function supports(obj) {
             return isListLikeIterable(obj);
@@ -54099,8 +53504,6 @@
             return new DefaultIterableDiffer(trackByFn);
           }
         }]);
-
-        return DefaultIterableDifferFactory;
       }();
 
       var trackByIdentity = function trackByIdentity(index, item) {
@@ -54137,7 +53540,7 @@
           this._trackByFn = trackByFn || trackByIdentity;
         }
 
-        _createClass2(DefaultIterableDiffer, [{
+        return _createClass2(DefaultIterableDiffer, [{
           key: "forEachItem",
           value: function forEachItem(fn) {
             var record;
@@ -54705,8 +54108,6 @@
             return record;
           }
         }]);
-
-        return DefaultIterableDiffer;
       }();
 
       var IterableChangeRecord_ = /*#__PURE__*/_createClass2(function IterableChangeRecord_(item, trackById) {
@@ -54766,7 +54167,7 @@
          */
 
 
-        _createClass2(_DuplicateItemRecordList, [{
+        return _createClass2(_DuplicateItemRecordList, [{
           key: "add",
           value: function add(record) {
             if (this._head === null) {
@@ -54833,8 +54234,6 @@
             return this._head === null;
           }
         }]);
-
-        return _DuplicateItemRecordList;
       }();
 
       var _DuplicateMap = /*#__PURE__*/function () {
@@ -54844,7 +54243,7 @@
           this.map = new Map();
         }
 
-        _createClass2(_DuplicateMap, [{
+        return _createClass2(_DuplicateMap, [{
           key: "put",
           value: function put(record) {
             var key = record.trackById;
@@ -54901,8 +54300,6 @@
             this.map.clear();
           }
         }]);
-
-        return _DuplicateMap;
       }();
 
       function getPreviousIndex(item, addRemoveOffset, moveOffsets) {
@@ -54930,7 +54327,7 @@
           _classCallCheck(this, DefaultKeyValueDifferFactory);
         }
 
-        _createClass2(DefaultKeyValueDifferFactory, [{
+        return _createClass2(DefaultKeyValueDifferFactory, [{
           key: "supports",
           value: function supports(obj) {
             return obj instanceof Map || isJsObject(obj);
@@ -54941,8 +54338,6 @@
             return new DefaultKeyValueDiffer();
           }
         }]);
-
-        return DefaultKeyValueDifferFactory;
       }();
 
       var DefaultKeyValueDiffer = /*#__PURE__*/function () {
@@ -54962,7 +54357,7 @@
           this._removalsTail = null;
         }
 
-        _createClass2(DefaultKeyValueDiffer, [{
+        return _createClass2(DefaultKeyValueDiffer, [{
           key: "isDirty",
           get: function get() {
             return this._additionsHead !== null || this._changesHead !== null || this._removalsHead !== null;
@@ -55230,8 +54625,6 @@
             }
           }
         }]);
-
-        return DefaultKeyValueDiffer;
       }();
 
       var KeyValueChangeRecord_ = /*#__PURE__*/_createClass2(function KeyValueChangeRecord_(key) {
@@ -55281,7 +54674,7 @@
           this.factories = factories;
         }
 
-        _createClass2(IterableDiffers, [{
+        return _createClass2(IterableDiffers, [{
           key: "find",
           value: function find(iterable) {
             var factory = this.factories.find(function (f) {
@@ -55345,8 +54738,6 @@
             };
           }
         }]);
-
-        return IterableDiffers;
       }();
       /** @nocollapse */
 
@@ -55384,7 +54775,7 @@
           this.factories = factories;
         }
 
-        _createClass2(KeyValueDiffers, [{
+        return _createClass2(KeyValueDiffers, [{
           key: "find",
           value: function find(kv) {
             var factory = this.factories.find(function (f) {
@@ -55447,8 +54838,6 @@
             };
           }
         }]);
-
-        return KeyValueDiffers;
       }();
       /** @nocollapse */
 
@@ -56725,10 +56114,6 @@
       }
 
       var ComponentFactory_ = /*#__PURE__*/function (_ComponentFactory2) {
-        _inherits(ComponentFactory_, _ComponentFactory2);
-
-        var _super103 = _createSuper(ComponentFactory_);
-
         function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
           var _this132;
 
@@ -56736,7 +56121,7 @@
 
           // Attention: this ctor is called as top level function.
           // Putting any logic in here will destroy closure tree shaking!
-          _this132 = _super103.call(this);
+          _this132 = _callSuper(this, ComponentFactory_);
           _this132.selector = selector;
           _this132.componentType = componentType;
           _this132._inputs = _inputs;
@@ -56746,7 +56131,9 @@
           return _this132;
         }
 
-        _createClass2(ComponentFactory_, [{
+        _inherits(ComponentFactory_, _ComponentFactory2);
+
+        return _createClass2(ComponentFactory_, [{
           key: "inputs",
           get: function get() {
             var inputsArr = [];
@@ -56800,21 +56187,15 @@
             return new ComponentRef_(view, new ViewRef_(view), component);
           }
         }]);
-
-        return ComponentFactory_;
       }(ComponentFactory);
 
       var ComponentRef_ = /*#__PURE__*/function (_ComponentRef) {
-        _inherits(ComponentRef_, _ComponentRef);
-
-        var _super104 = _createSuper(ComponentRef_);
-
         function ComponentRef_(_view, _viewRef, _component) {
           var _this133;
 
           _classCallCheck(this, ComponentRef_);
 
-          _this133 = _super104.call(this);
+          _this133 = _callSuper(this, ComponentRef_);
           _this133._view = _view;
           _this133._viewRef = _viewRef;
           _this133._component = _component;
@@ -56825,7 +56206,9 @@
           return _this133;
         }
 
-        _createClass2(ComponentRef_, [{
+        _inherits(ComponentRef_, _ComponentRef);
+
+        return _createClass2(ComponentRef_, [{
           key: "location",
           get: function get() {
             return new ElementRef(asElementData(this._view, this._elDef.nodeIndex).renderElement);
@@ -56851,8 +56234,6 @@
             this._viewRef.onDestroy(callback);
           }
         }]);
-
-        return ComponentRef_;
       }(ComponentRef);
 
       function createViewContainerData(view, elDef, elData) {
@@ -56873,7 +56254,7 @@
           this._embeddedViews = [];
         }
 
-        _createClass2(ViewContainerRef_, [{
+        return _createClass2(ViewContainerRef_, [{
           key: "element",
           get: function get() {
             return new ElementRef(this._data.renderElement);
@@ -56992,8 +56373,6 @@
             return view ? new ViewRef_(view) : null;
           }
         }]);
-
-        return ViewContainerRef_;
       }();
 
       function createChangeDetectorRef(view) {
@@ -57009,7 +56388,7 @@
           this._appRef = null;
         }
 
-        _createClass2(ViewRef_, [{
+        return _createClass2(ViewRef_, [{
           key: "rootNodes",
           get: function get() {
             return rootRenderNodes(this._view);
@@ -57113,8 +56492,6 @@
             this._viewContainerRef = vcRef;
           }
         }]);
-
-        return ViewRef_;
       }();
 
       function createTemplateData(view, def) {
@@ -57122,22 +56499,20 @@
       }
 
       var TemplateRef_ = /*#__PURE__*/function (_TemplateRef) {
-        _inherits(TemplateRef_, _TemplateRef);
-
-        var _super105 = _createSuper(TemplateRef_);
-
         function TemplateRef_(_parentView, _def) {
           var _this134;
 
           _classCallCheck(this, TemplateRef_);
 
-          _this134 = _super105.call(this);
+          _this134 = _callSuper(this, TemplateRef_);
           _this134._parentView = _parentView;
           _this134._def = _def;
           return _this134;
         }
 
-        _createClass2(TemplateRef_, [{
+        _inherits(TemplateRef_, _TemplateRef);
+
+        return _createClass2(TemplateRef_, [{
           key: "createEmbeddedView",
           value: function createEmbeddedView(context) {
             return new ViewRef_(Services.createEmbeddedView(this._parentView, this._def, this._def.element.template, context));
@@ -57148,8 +56523,6 @@
             return new ElementRef(asElementData(this._parentView, this._def.nodeIndex).renderElement);
           }
         }]);
-
-        return TemplateRef_;
       }(TemplateRef);
 
       function createInjector$1(view, elDef) {
@@ -57164,7 +56537,7 @@
           this.elDef = elDef;
         }
 
-        _createClass2(Injector_, [{
+        return _createClass2(Injector_, [{
           key: "get",
           value: function get(token) {
             var notFoundValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Injector.THROW_IF_NOT_FOUND;
@@ -57180,8 +56553,6 @@
             }, notFoundValue);
           }
         }]);
-
-        return Injector_;
       }();
 
       function nodeValue(view, index) {
@@ -57225,7 +56596,7 @@
           initNgModule(this);
         }
 
-        _createClass2(NgModuleRef_, [{
+        return _createClass2(NgModuleRef_, [{
           key: "get",
           value: function get(token) {
             var notFoundValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Injector.THROW_IF_NOT_FOUND;
@@ -57282,8 +56653,6 @@
             this._destroyListeners.push(callback);
           }
         }]);
-
-        return NgModuleRef_;
       }();
       /**
        * @license
@@ -57991,10 +57360,6 @@
 
 
       var ComponentFactoryResolver$1 = /*#__PURE__*/function (_ComponentFactoryReso) {
-        _inherits(ComponentFactoryResolver$1, _ComponentFactoryReso);
-
-        var _super106 = _createSuper(ComponentFactoryResolver$1);
-
         /**
          * @param ngModule The NgModuleRef to which all resolved factories are bound.
          */
@@ -58003,12 +57368,14 @@
 
           _classCallCheck(this, ComponentFactoryResolver$1);
 
-          _this135 = _super106.call(this);
+          _this135 = _callSuper(this, ComponentFactoryResolver$1);
           _this135.ngModule = ngModule;
           return _this135;
         }
 
-        _createClass2(ComponentFactoryResolver$1, [{
+        _inherits(ComponentFactoryResolver$1, _ComponentFactoryReso);
+
+        return _createClass2(ComponentFactoryResolver$1, [{
           key: "resolveComponentFactory",
           value: function resolveComponentFactory(component) {
             ngDevMode && assertComponentType(component);
@@ -58016,8 +57383,6 @@
             return new ComponentFactory$1(componentDef, this.ngModule);
           }
         }]);
-
-        return ComponentFactoryResolver$1;
       }(ComponentFactoryResolver);
 
       function toRefArray(map) {
@@ -58077,10 +57442,6 @@
 
 
       var ComponentFactory$1 = /*#__PURE__*/function (_ComponentFactory3) {
-        _inherits(ComponentFactory$1, _ComponentFactory3);
-
-        var _super107 = _createSuper(ComponentFactory$1);
-
         /**
          * @param componentDef The component definition.
          * @param ngModule The NgModuleRef to which the factory is bound.
@@ -58090,7 +57451,7 @@
 
           _classCallCheck(this, ComponentFactory$1);
 
-          _this136 = _super107.call(this);
+          _this136 = _callSuper(this, ComponentFactory$1);
           _this136.componentDef = componentDef;
           _this136.ngModule = ngModule;
           _this136.componentType = componentDef.type;
@@ -58100,7 +57461,9 @@
           return _this136;
         }
 
-        _createClass2(ComponentFactory$1, [{
+        _inherits(ComponentFactory$1, _ComponentFactory3);
+
+        return _createClass2(ComponentFactory$1, [{
           key: "inputs",
           get: function get() {
             return toRefArray(this.componentDef.inputs);
@@ -58198,8 +57561,6 @@
             return new ComponentRef$1(this.componentType, component, createElementRef(ElementRef, tElementNode, rootLView), rootLView, tElementNode);
           }
         }]);
-
-        return ComponentFactory$1;
       }(ComponentFactory);
 
       var componentFactoryResolver = new ComponentFactoryResolver$1();
@@ -58225,16 +57586,12 @@
 
 
       var ComponentRef$1 = /*#__PURE__*/function (_ComponentRef2) {
-        _inherits(ComponentRef$1, _ComponentRef2);
-
-        var _super108 = _createSuper(ComponentRef$1);
-
         function ComponentRef$1(componentType, instance, location, _rootLView, _tNode) {
           var _this137;
 
           _classCallCheck(this, ComponentRef$1);
 
-          _this137 = _super108.call(this);
+          _this137 = _callSuper(this, ComponentRef$1);
           _this137.location = location;
           _this137._rootLView = _rootLView;
           _this137._tNode = _tNode;
@@ -58245,7 +57602,9 @@
           return _this137;
         }
 
-        _createClass2(ComponentRef$1, [{
+        _inherits(ComponentRef$1, _ComponentRef2);
+
+        return _createClass2(ComponentRef$1, [{
           key: "injector",
           get: function get() {
             return new NodeInjector(this._tNode, this._rootLView);
@@ -58269,8 +57628,6 @@
             }
           }
         }]);
-
-        return ComponentRef$1;
       }(ComponentRef);
       /**
        * @license
@@ -58422,20 +57779,16 @@
 
 
       var NgModuleRef$1 = /*#__PURE__*/function (_NgModuleRef) {
-        _inherits(NgModuleRef$1, _NgModuleRef);
-
-        var _super109 = _createSuper(NgModuleRef$1);
-
         function NgModuleRef$1(ngModuleType, _parent) {
           var _this138;
 
           _classCallCheck(this, NgModuleRef$1);
 
-          _this138 = _super109.call(this);
+          _this138 = _callSuper(this, NgModuleRef$1);
           _this138._parent = _parent; // tslint:disable-next-line:require-internal-with-underscore
 
           _this138._bootstrapComponents = [];
-          _this138.injector = _assertThisInitialized(_this138);
+          _this138.injector = _this138;
           _this138.destroyCbs = []; // When bootstrapping a module we have a dependency graph that looks like this:
           // ApplicationRef -> ComponentFactoryResolver -> NgModuleRef. The problem is that if the
           // module being resolved tries to inject the ComponentFactoryResolver, it'll create a
@@ -58443,7 +57796,7 @@
           // exist yet. We work around the issue by creating the ComponentFactoryResolver ourselves
           // and providing it, rather than letting the injector resolve it.
 
-          _this138.componentFactoryResolver = new ComponentFactoryResolver$1(_assertThisInitialized(_this138));
+          _this138.componentFactoryResolver = new ComponentFactoryResolver$1(_this138);
           var ngModuleDef = getNgModuleDef(ngModuleType);
           ngDevMode && assertDefined(ngModuleDef, "NgModule '".concat(stringify(ngModuleType), "' is not a subtype of 'NgModuleType'."));
           var ngLocaleIdDef = getNgLocaleIdDef(ngModuleType);
@@ -58451,7 +57804,7 @@
           _this138._bootstrapComponents = maybeUnwrapFn(ngModuleDef.bootstrap);
           _this138._r3Injector = createInjectorWithoutInjectorInstances(ngModuleType, _parent, [{
             provide: NgModuleRef,
-            useValue: _assertThisInitialized(_this138)
+            useValue: _this138
           }, {
             provide: ComponentFactoryResolver,
             useValue: _this138.componentFactoryResolver
@@ -58465,7 +57818,9 @@
           return _this138;
         }
 
-        _createClass2(NgModuleRef$1, [{
+        _inherits(NgModuleRef$1, _NgModuleRef);
+
+        return _createClass2(NgModuleRef$1, [{
           key: "get",
           value: function get(token) {
             var notFoundValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : Injector.THROW_IF_NOT_FOUND;
@@ -58495,21 +57850,15 @@
             this.destroyCbs.push(callback);
           }
         }]);
-
-        return NgModuleRef$1;
       }(NgModuleRef);
 
       var NgModuleFactory$1 = /*#__PURE__*/function (_NgModuleFactory) {
-        _inherits(NgModuleFactory$1, _NgModuleFactory);
-
-        var _super110 = _createSuper(NgModuleFactory$1);
-
         function NgModuleFactory$1(moduleType) {
           var _this139;
 
           _classCallCheck(this, NgModuleFactory$1);
 
-          _this139 = _super110.call(this);
+          _this139 = _callSuper(this, NgModuleFactory$1);
           _this139.moduleType = moduleType;
           var ngModuleDef = getNgModuleDef(moduleType);
 
@@ -58543,14 +57892,14 @@
           return _this139;
         }
 
-        _createClass2(NgModuleFactory$1, [{
+        _inherits(NgModuleFactory$1, _NgModuleFactory);
+
+        return _createClass2(NgModuleFactory$1, [{
           key: "create",
           value: function create(parentInjector) {
             return new NgModuleRef$1(this.moduleType, parentInjector);
           }
         }]);
-
-        return NgModuleFactory$1;
       }(NgModuleFactory);
       /**
        * @license
@@ -59122,10 +58471,6 @@
 
 
       var EventEmitter_ = /*#__PURE__*/function (_rxjs__WEBPACK_IMPORT) {
-        _inherits(EventEmitter_, _rxjs__WEBPACK_IMPORT);
-
-        var _super111 = _createSuper(EventEmitter_);
-
         function EventEmitter_() {
           var _this140;
 
@@ -59133,15 +58478,17 @@
 
           _classCallCheck(this, EventEmitter_);
 
-          _this140 = _super111.call(this);
+          _this140 = _callSuper(this, EventEmitter_);
           _this140.__isAsync = isAsync;
           return _this140;
         }
 
-        _createClass2(EventEmitter_, [{
+        _inherits(EventEmitter_, _rxjs__WEBPACK_IMPORT);
+
+        return _createClass2(EventEmitter_, [{
           key: "emit",
           value: function emit(value) {
-            _get(_getPrototypeOf(EventEmitter_.prototype), "next", this).call(this, value);
+            _superPropGet(EventEmitter_, "next", this, 3)([value]);
           }
         }, {
           key: "subscribe",
@@ -59214,7 +58561,7 @@
               }
             }
 
-            var sink = _get(_getPrototypeOf(EventEmitter_.prototype), "subscribe", this).call(this, schedulerFn, errorFn, completeFn);
+            var sink = _superPropGet(EventEmitter_, "subscribe", this, 3)([schedulerFn, errorFn, completeFn]);
 
             if (generatorOrNext instanceof rxjs__WEBPACK_IMPORTED_MODULE_0__["Subscription"]) {
               generatorOrNext.add(sink);
@@ -59223,8 +58570,6 @@
             return sink;
           }
         }]);
-
-        return EventEmitter_;
       }(rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]);
       /**
        * @publicApi
@@ -59293,7 +58638,7 @@
          */
 
 
-        _createClass2(QueryList, [{
+        return _createClass2(QueryList, [{
           key: "map",
           value: function map(fn) {
             return this._results.map(fn);
@@ -59404,8 +58749,6 @@
             this.changes.unsubscribe();
           }
         }]);
-
-        return QueryList;
       }();
       /**
        * @license
@@ -59448,7 +58791,7 @@
           this.matches = null;
         }
 
-        _createClass2(LQuery_, [{
+        return _createClass2(LQuery_, [{
           key: "clone",
           value: function clone() {
             return new LQuery_(this.queryList);
@@ -59459,8 +58802,6 @@
             this.queryList.setDirty();
           }
         }]);
-
-        return LQuery_;
       }();
 
       var LQueries_ = /*#__PURE__*/function () {
@@ -59472,7 +58813,7 @@
           this.queries = queries;
         }
 
-        _createClass2(LQueries_, [{
+        return _createClass2(LQueries_, [{
           key: "createEmbeddedView",
           value: function createEmbeddedView(tView) {
             var tQueries = tView.queries;
@@ -59515,8 +58856,6 @@
             }
           }
         }]);
-
-        return LQueries_;
       }();
 
       var TQueryMetadata_ = /*#__PURE__*/_createClass2(function TQueryMetadata_(predicate, descendants, isStatic) {
@@ -59539,7 +58878,7 @@
           this.queries = queries;
         }
 
-        _createClass2(TQueries_, [{
+        return _createClass2(TQueries_, [{
           key: "elementStart",
           value: function elementStart(tView, tNode) {
             ngDevMode && assertFirstCreatePass(tView, 'Queries should collect results on the first template pass only');
@@ -59603,8 +58942,6 @@
             this.queries.push(tquery);
           }
         }]);
-
-        return TQueries_;
       }();
 
       var TQuery_ = /*#__PURE__*/function () {
@@ -59627,7 +58964,7 @@
           this._declarationNodeIndex = nodeIndex;
         }
 
-        _createClass2(TQuery_, [{
+        return _createClass2(TQuery_, [{
           key: "elementStart",
           value: function elementStart(tView, tNode) {
             if (this.isApplyingToNode(tNode)) {
@@ -59743,8 +59080,6 @@
             }
           }
         }]);
-
-        return TQuery_;
       }();
       /**
        * Iterates over local names for a given node and returns directive index
@@ -61513,7 +60848,7 @@
         /** @internal */
 
 
-        _createClass2(ApplicationInitStatus, [{
+        return _createClass2(ApplicationInitStatus, [{
           key: "runInitializers",
           value: function runInitializers() {
             var _this142 = this;
@@ -61553,8 +60888,6 @@
             this.initialized = true;
           }
         }]);
-
-        return ApplicationInitStatus;
       }();
 
       ApplicationInitStatus.ɵfac = function ApplicationInitStatus_Factory(t) {
@@ -61681,7 +61014,7 @@
           _classCallCheck(this, Console);
         }
 
-        _createClass2(Console, [{
+        return _createClass2(Console, [{
           key: "log",
           value: function log(message) {
             // tslint:disable-next-line:no-console
@@ -61695,8 +61028,6 @@
             console.warn(message);
           }
         }]);
-
-        return Console;
       }();
 
       Console.ɵfac = function Console_Factory(t) {
@@ -61981,7 +61312,7 @@
          */
 
 
-        _createClass2(Compiler, [{
+        return _createClass2(Compiler, [{
           key: "clearCache",
           value: function clearCache() {}
           /**
@@ -62001,8 +61332,6 @@
             return undefined;
           }
         }]);
-
-        return Compiler;
       }();
 
       Compiler.ɵfac = function Compiler_Factory(t) {
@@ -62248,7 +61577,7 @@
           forkInnerZoneWithAngularBehavior(self);
         }
 
-        _createClass2(NgZone, [{
+        return _createClass2(NgZone, [{
           key: "run",
           value:
           /**
@@ -62340,8 +61669,6 @@
             }
           }
         }]);
-
-        return NgZone;
       }();
 
       function noop$1() {}
@@ -62494,7 +61821,7 @@
           this.onError = new EventEmitter();
         }
 
-        _createClass2(NoopNgZone, [{
+        return _createClass2(NoopNgZone, [{
           key: "run",
           value: function run(fn, applyThis, applyArgs) {
             return fn.apply(applyThis, applyArgs);
@@ -62515,8 +61842,6 @@
             return fn.apply(applyThis, applyArgs);
           }
         }]);
-
-        return NoopNgZone;
       }();
       /**
        * @license
@@ -62561,7 +61886,7 @@
           });
         }
 
-        _createClass2(Testability, [{
+        return _createClass2(Testability, [{
           key: "_watchAngularEvents",
           value: function _watchAngularEvents() {
             var _this144 = this;
@@ -62745,8 +62070,6 @@
             return [];
           }
         }]);
-
-        return Testability;
       }();
 
       Testability.ɵfac = function Testability_Factory(t) {
@@ -62797,7 +62120,7 @@
          */
 
 
-        _createClass2(TestabilityRegistry, [{
+        return _createClass2(TestabilityRegistry, [{
           key: "registerApplication",
           value: function registerApplication(token, testability) {
             this._applications.set(token, testability);
@@ -62863,8 +62186,6 @@
             return _testabilityGetter.findTestabilityInTree(this, elem, findInAncestors);
           }
         }]);
-
-        return TestabilityRegistry;
       }();
 
       TestabilityRegistry.ɵfac = function TestabilityRegistry_Factory(t) {
@@ -62895,7 +62216,7 @@
           _classCallCheck(this, _NoopGetTestability);
         }
 
-        _createClass2(_NoopGetTestability, [{
+        return _createClass2(_NoopGetTestability, [{
           key: "addToWindow",
           value: function addToWindow(registry) {}
         }, {
@@ -62904,8 +62225,6 @@
             return null;
           }
         }]);
-
-        return _NoopGetTestability;
       }();
       /**
        * Set the {@link GetTestability} implementation used by the Angular testing framework.
@@ -63175,7 +62494,7 @@
          */
 
 
-        _createClass2(PlatformRef, [{
+        return _createClass2(PlatformRef, [{
           key: "bootstrapModuleFactory",
           value: function bootstrapModuleFactory(moduleFactory, options) {
             var _this147 = this;
@@ -63325,8 +62644,6 @@
             return this._destroyed;
           }
         }]);
-
-        return PlatformRef;
       }();
 
       PlatformRef.ɵfac = function PlatformRef_Factory(t) {
@@ -63604,7 +62921,7 @@
          */
 
 
-        _createClass2(ApplicationRef, [{
+        return _createClass2(ApplicationRef, [{
           key: "bootstrap",
           value: function bootstrap(componentOrFactory, rootSelectorOrNode) {
             var _this150 = this;
@@ -63770,8 +63087,6 @@
             return this._views.length;
           }
         }]);
-
-        return ApplicationRef;
       }();
 
       ApplicationRef.ɵfac = function ApplicationRef_Factory(t) {
@@ -63950,7 +63265,7 @@
           this._config = config || DEFAULT_CONFIG;
         }
 
-        _createClass2(SystemJsNgModuleLoader, [{
+        return _createClass2(SystemJsNgModuleLoader, [{
           key: "load",
           value: function load(path) {
             var legacyOfflineMode = !ivyEnabled && this._compiler instanceof Compiler;
@@ -64000,8 +63315,6 @@
             });
           }
         }]);
-
-        return SystemJsNgModuleLoader;
       }();
 
       SystemJsNgModuleLoader.ɵfac = function SystemJsNgModuleLoader_Factory(t) {
@@ -64066,15 +63379,13 @@
 
 
       var ViewRef$1 = /*#__PURE__*/function (_ChangeDetectorRef) {
-        _inherits(ViewRef$1, _ChangeDetectorRef);
-
-        var _super112 = _createSuper(ViewRef$1);
-
         function ViewRef$1() {
           _classCallCheck(this, ViewRef$1);
 
-          return _super112.apply(this, arguments);
+          return _callSuper(this, ViewRef$1, arguments);
         }
+
+        _inherits(ViewRef$1, _ChangeDetectorRef);
 
         return _createClass2(ViewRef$1);
       }(ChangeDetectorRef);
@@ -64134,15 +63445,13 @@
 
 
       var EmbeddedViewRef = /*#__PURE__*/function (_ViewRef$) {
-        _inherits(EmbeddedViewRef, _ViewRef$);
-
-        var _super113 = _createSuper(EmbeddedViewRef);
-
         function EmbeddedViewRef() {
           _classCallCheck(this, EmbeddedViewRef);
 
-          return _super113.apply(this, arguments);
+          return _callSuper(this, EmbeddedViewRef, arguments);
         }
+
+        _inherits(EmbeddedViewRef, _ViewRef$);
 
         return _createClass2(EmbeddedViewRef);
       }(ViewRef$1);
@@ -64188,7 +63497,7 @@
           }
         }
 
-        _createClass2(DebugNode__PRE_R3__, [{
+        return _createClass2(DebugNode__PRE_R3__, [{
           key: "injector",
           get: function get() {
             return this._debugContext.injector;
@@ -64214,21 +63523,15 @@
             return this._debugContext.providerTokens;
           }
         }]);
-
-        return DebugNode__PRE_R3__;
       }();
 
       var DebugElement__PRE_R3__ = /*#__PURE__*/function (_DebugNode__PRE_R3__) {
-        _inherits(DebugElement__PRE_R3__, _DebugNode__PRE_R3__);
-
-        var _super114 = _createSuper(DebugElement__PRE_R3__);
-
         function DebugElement__PRE_R3__(nativeNode, parent, _debugContext) {
           var _this153;
 
           _classCallCheck(this, DebugElement__PRE_R3__);
 
-          _this153 = _super114.call(this, nativeNode, parent, _debugContext);
+          _this153 = _callSuper(this, DebugElement__PRE_R3__, [nativeNode, parent, _debugContext]);
           _this153.properties = {};
           _this153.attributes = {};
           _this153.classes = {};
@@ -64238,7 +63541,9 @@
           return _this153;
         }
 
-        _createClass2(DebugElement__PRE_R3__, [{
+        _inherits(DebugElement__PRE_R3__, _DebugNode__PRE_R3__);
+
+        return _createClass2(DebugElement__PRE_R3__, [{
           key: "addChild",
           value: function addChild(child) {
             if (child) {
@@ -64335,8 +63640,6 @@
             });
           }
         }]);
-
-        return DebugElement__PRE_R3__;
       }(DebugNode__PRE_R3__);
       /**
        * @publicApi
@@ -64382,7 +63685,7 @@
           this.nativeNode = nativeNode;
         }
 
-        _createClass2(DebugNode__POST_R3__, [{
+        return _createClass2(DebugNode__POST_R3__, [{
           key: "parent",
           get: function get() {
             var parent = this.nativeNode.parentNode;
@@ -64422,23 +63725,19 @@
             return getInjectionTokens(this.nativeNode);
           }
         }]);
-
-        return DebugNode__POST_R3__;
       }();
 
       var DebugElement__POST_R3__ = /*#__PURE__*/function (_DebugNode__POST_R3__) {
-        _inherits(DebugElement__POST_R3__, _DebugNode__POST_R3__);
-
-        var _super115 = _createSuper(DebugElement__POST_R3__);
-
         function DebugElement__POST_R3__(nativeNode) {
           _classCallCheck(this, DebugElement__POST_R3__);
 
           ngDevMode && assertDomNode(nativeNode);
-          return _super115.call(this, nativeNode);
+          return _callSuper(this, DebugElement__POST_R3__, [nativeNode]);
         }
 
-        _createClass2(DebugElement__POST_R3__, [{
+        _inherits(DebugElement__POST_R3__, _DebugNode__POST_R3__);
+
+        return _createClass2(DebugElement__POST_R3__, [{
           key: "nativeElement",
           get: function get() {
             return this.nativeNode.nodeType == Node.ELEMENT_NODE ? this.nativeNode : null;
@@ -64653,8 +63952,6 @@
             }
           }
         }]);
-
-        return DebugElement__POST_R3__;
       }(DebugNode__POST_R3__);
 
       function copyDomProperties(element, properties) {
@@ -67829,7 +67126,7 @@
           this.elView = elView;
         }
 
-        _createClass2(DebugContext_, [{
+        return _createClass2(DebugContext_, [{
           key: "elOrCompView",
           get: function get() {
             // Has to be done lazily as we use the DebugContext also during creation of elements...
@@ -67952,8 +67249,6 @@
             }
           }
         }]);
-
-        return DebugContext_;
       }();
 
       function getRenderNodeIndex(viewDef, nodeIndex) {
@@ -68022,7 +67317,7 @@
           this.delegate = delegate;
         }
 
-        _createClass2(DebugRendererFactory2, [{
+        return _createClass2(DebugRendererFactory2, [{
           key: "createRenderer",
           value: function createRenderer(element, renderData) {
             return new DebugRenderer2(this.delegate.createRenderer(element, renderData));
@@ -68051,8 +67346,6 @@
             return Promise.resolve(null);
           }
         }]);
-
-        return DebugRendererFactory2;
       }();
 
       var DebugRenderer2 = /*#__PURE__*/function () {
@@ -68073,7 +67366,7 @@
           this.data = this.delegate.data;
         }
 
-        _createClass2(DebugRenderer2, [{
+        return _createClass2(DebugRenderer2, [{
           key: "createDebugContext",
           value: function createDebugContext(nativeElement) {
             return this.debugContextFactory(nativeElement);
@@ -68292,8 +67585,6 @@
             return this.delegate.setValue(node, value);
           }
         }]);
-
-        return DebugRenderer2;
       }();
       /**
        * @license
@@ -68344,10 +67635,6 @@
       }
 
       var NgModuleFactory_ = /*#__PURE__*/function (_NgModuleFactory2) {
-        _inherits(NgModuleFactory_, _NgModuleFactory2);
-
-        var _super116 = _createSuper(NgModuleFactory_);
-
         function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
           var _this155;
 
@@ -68355,14 +67642,16 @@
 
           // Attention: this ctor is called as top level function.
           // Putting any logic in here will destroy closure tree shaking!
-          _this155 = _super116.call(this);
+          _this155 = _callSuper(this, NgModuleFactory_);
           _this155.moduleType = moduleType;
           _this155._bootstrapComponents = _bootstrapComponents;
           _this155._ngModuleDefFactory = _ngModuleDefFactory;
           return _this155;
         }
 
-        _createClass2(NgModuleFactory_, [{
+        _inherits(NgModuleFactory_, _NgModuleFactory2);
+
+        return _createClass2(NgModuleFactory_, [{
           key: "create",
           value: function create(parentInjector) {
             initServicesIfNeeded(); // Clone the NgModuleDefinition so that any tree shakeable provider definition
@@ -68373,8 +67662,6 @@
             return Services.createNgModuleRef(this.moduleType, parentInjector || Injector.NULL, this._bootstrapComponents, def);
           }
         }]);
-
-        return NgModuleFactory_;
       }(NgModuleFactory);
       /**
        * @license
@@ -68556,27 +67843,21 @@
           this.trailing = trailing;
         }
 
-        _createClass2(ThrottleTimeOperator, [{
+        return _createClass2(ThrottleTimeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ThrottleTimeSubscriber(subscriber, this.duration, this.scheduler, this.leading, this.trailing));
           }
         }]);
-
-        return ThrottleTimeOperator;
       }();
 
       var ThrottleTimeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_33) {
-        _inherits(ThrottleTimeSubscriber, _Subscriber__WEBPACK_33);
-
-        var _super117 = _createSuper(ThrottleTimeSubscriber);
-
         function ThrottleTimeSubscriber(destination, duration, scheduler, leading, trailing) {
           var _this156;
 
           _classCallCheck(this, ThrottleTimeSubscriber);
 
-          _this156 = _super117.call(this, destination);
+          _this156 = _callSuper(this, ThrottleTimeSubscriber, [destination]);
           _this156.duration = duration;
           _this156.scheduler = scheduler;
           _this156.leading = leading;
@@ -68586,7 +67867,9 @@
           return _this156;
         }
 
-        _createClass2(ThrottleTimeSubscriber, [{
+        _inherits(ThrottleTimeSubscriber, _Subscriber__WEBPACK_33);
+
+        return _createClass2(ThrottleTimeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this.throttled) {
@@ -68635,8 +67918,6 @@
             }
           }
         }]);
-
-        return ThrottleTimeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       function dispatchNext(arg) {
@@ -68784,10 +68065,6 @@
       "IjjT");
 
       var VirtualTimeScheduler = /*#__PURE__*/function (_AsyncScheduler__WEBP3) {
-        _inherits(VirtualTimeScheduler, _AsyncScheduler__WEBP3);
-
-        var _super118 = _createSuper(VirtualTimeScheduler);
-
         function VirtualTimeScheduler() {
           var _this157;
 
@@ -68796,16 +68073,18 @@
 
           _classCallCheck(this, VirtualTimeScheduler);
 
-          _this157 = _super118.call(this, SchedulerAction, function () {
+          _this157 = _callSuper(this, VirtualTimeScheduler, [SchedulerAction, function () {
             return _this157.frame;
-          });
+          }]);
           _this157.maxFrames = maxFrames;
           _this157.frame = 0;
           _this157.index = -1;
           return _this157;
         }
 
-        _createClass2(VirtualTimeScheduler, [{
+        _inherits(VirtualTimeScheduler, _AsyncScheduler__WEBP3);
+
+        return _createClass2(VirtualTimeScheduler, [{
           key: "flush",
           value: function flush() {
             var actions = this.actions,
@@ -68830,17 +68109,11 @@
             }
           }
         }]);
-
-        return VirtualTimeScheduler;
       }(_AsyncScheduler__WEBPACK_IMPORTED_MODULE_1__["AsyncScheduler"]);
 
       VirtualTimeScheduler.frameTimeFactor = 10;
 
       var VirtualAction = /*#__PURE__*/function (_AsyncAction__WEBPACK4) {
-        _inherits(VirtualAction, _AsyncAction__WEBPACK4);
-
-        var _super119 = _createSuper(VirtualAction);
-
         function VirtualAction(scheduler, work) {
           var _this158;
 
@@ -68848,7 +68121,7 @@
 
           _classCallCheck(this, VirtualAction);
 
-          _this158 = _super119.call(this, scheduler, work);
+          _this158 = _callSuper(this, VirtualAction, [scheduler, work]);
           _this158.scheduler = scheduler;
           _this158.work = work;
           _this158.index = index;
@@ -68857,13 +68130,15 @@
           return _this158;
         }
 
-        _createClass2(VirtualAction, [{
+        _inherits(VirtualAction, _AsyncAction__WEBPACK4);
+
+        return _createClass2(VirtualAction, [{
           key: "schedule",
           value: function schedule(state) {
             var delay = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
             if (!this.id) {
-              return _get(_getPrototypeOf(VirtualAction.prototype), "schedule", this).call(this, state, delay);
+              return _superPropGet(VirtualAction, "schedule", this, 3)([state, delay]);
             }
 
             this.active = false;
@@ -68891,7 +68166,7 @@
           key: "_execute",
           value: function _execute(state, delay) {
             if (this.active === true) {
-              return _get(_getPrototypeOf(VirtualAction.prototype), "_execute", this).call(this, state, delay);
+              return _superPropGet(VirtualAction, "_execute", this, 3)([state, delay]);
             }
           }
         }], [{
@@ -68912,8 +68187,6 @@
             }
           }
         }]);
-
-        return VirtualAction;
       }(_AsyncAction__WEBPACK_IMPORTED_MODULE_0__["AsyncAction"]); //# sourceMappingURL=VirtualTimeScheduler.js.map
 
       /***/
@@ -69014,27 +68287,21 @@
           this.resultSelector = resultSelector;
         }
 
-        _createClass2(CombineLatestOperator, [{
+        return _createClass2(CombineLatestOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new CombineLatestSubscriber(subscriber, this.resultSelector));
           }
         }]);
-
-        return CombineLatestOperator;
       }();
 
       var CombineLatestSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB4) {
-        _inherits(CombineLatestSubscriber, _OuterSubscriber__WEB4);
-
-        var _super120 = _createSuper(CombineLatestSubscriber);
-
         function CombineLatestSubscriber(destination, resultSelector) {
           var _this159;
 
           _classCallCheck(this, CombineLatestSubscriber);
 
-          _this159 = _super120.call(this, destination);
+          _this159 = _callSuper(this, CombineLatestSubscriber, [destination]);
           _this159.resultSelector = resultSelector;
           _this159.active = 0;
           _this159.values = [];
@@ -69042,7 +68309,9 @@
           return _this159;
         }
 
-        _createClass2(CombineLatestSubscriber, [{
+        _inherits(CombineLatestSubscriber, _OuterSubscriber__WEB4);
+
+        return _createClass2(CombineLatestSubscriber, [{
           key: "_next",
           value: function _next(observable) {
             this.values.push(NONE);
@@ -69104,8 +68373,6 @@
             this.destination.next(result);
           }
         }]);
-
-        return CombineLatestSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_2__["OuterSubscriber"]); //# sourceMappingURL=combineLatest.js.map
 
       /***/
@@ -69552,24 +68819,20 @@
 
 
       var GenericBrowserDomAdapter = /*#__PURE__*/function (_angular_common__WEBP) {
-        _inherits(GenericBrowserDomAdapter, _angular_common__WEBP);
-
-        var _super121 = _createSuper(GenericBrowserDomAdapter);
-
         function GenericBrowserDomAdapter() {
           _classCallCheck(this, GenericBrowserDomAdapter);
 
-          return _super121.call(this);
+          return _callSuper(this, GenericBrowserDomAdapter);
         }
 
-        _createClass2(GenericBrowserDomAdapter, [{
+        _inherits(GenericBrowserDomAdapter, _angular_common__WEBP);
+
+        return _createClass2(GenericBrowserDomAdapter, [{
           key: "supportsDOMEvents",
           value: function supportsDOMEvents() {
             return true;
           }
         }]);
-
-        return GenericBrowserDomAdapter;
       }(_angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵDomAdapter"]);
       /**
        * @license
@@ -69601,17 +68864,15 @@
       /* tslint:disable:requireParameterType no-console */
 
       var BrowserDomAdapter = /*#__PURE__*/function (_GenericBrowserDomAda) {
-        _inherits(BrowserDomAdapter, _GenericBrowserDomAda);
-
-        var _super122 = _createSuper(BrowserDomAdapter);
-
         function BrowserDomAdapter() {
           _classCallCheck(this, BrowserDomAdapter);
 
-          return _super122.apply(this, arguments);
+          return _callSuper(this, BrowserDomAdapter, arguments);
         }
 
-        _createClass2(BrowserDomAdapter, [{
+        _inherits(BrowserDomAdapter, _GenericBrowserDomAda);
+
+        return _createClass2(BrowserDomAdapter, [{
           key: "getProperty",
           value: function getProperty(el, name) {
             return el[name];
@@ -69758,8 +69019,6 @@
             Object(_angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵsetRootDomAdapter"])(new BrowserDomAdapter());
           }
         }]);
-
-        return BrowserDomAdapter;
       }(GenericBrowserDomAdapter);
 
       var baseElement = null;
@@ -69838,7 +69097,7 @@
           _classCallCheck(this, BrowserGetTestability);
         }
 
-        _createClass2(BrowserGetTestability, [{
+        return _createClass2(BrowserGetTestability, [{
           key: "addToWindow",
           value: function addToWindow(registry) {
             _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵglobal"]['getAngularTestability'] = function (elem) {
@@ -69919,8 +69178,6 @@
             Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["setTestabilityGetter"])(new BrowserGetTestability());
           }
         }]);
-
-        return BrowserGetTestability;
       }();
       /**
        * @license
@@ -70084,7 +69341,7 @@
          */
 
 
-        _createClass2(EventManager, [{
+        return _createClass2(EventManager, [{
           key: "addEventListener",
           value: function addEventListener(element, eventName, handler) {
             var plugin = this._findPluginFor(eventName);
@@ -70143,8 +69400,6 @@
             throw new Error("No event manager plugin found for event ".concat(eventName));
           }
         }]);
-
-        return EventManager;
       }();
 
       EventManager.ɵfac = function EventManager_Factory(t) {
@@ -70193,7 +69448,7 @@
           this._doc = _doc;
         }
 
-        _createClass2(EventManagerPlugin, [{
+        return _createClass2(EventManagerPlugin, [{
           key: "addGlobalEventListener",
           value: function addGlobalEventListener(element, eventName, handler) {
             var target = Object(_angular_common__WEBPACK_IMPORTED_MODULE_0__["ɵgetDOM"])().getGlobalEventTarget(this._doc, element);
@@ -70205,8 +69460,6 @@
             return this.addEventListener(target, eventName, handler);
           }
         }]);
-
-        return EventManagerPlugin;
       }();
       /**
        * @license
@@ -70225,7 +69478,7 @@
           this._stylesSet = new Set();
         }
 
-        _createClass2(SharedStylesHost, [{
+        return _createClass2(SharedStylesHost, [{
           key: "addStyles",
           value: function addStyles(styles) {
             var _this161 = this;
@@ -70249,8 +69502,6 @@
             return Array.from(this._stylesSet);
           }
         }]);
-
-        return SharedStylesHost;
       }();
 
       SharedStylesHost.ɵfac = function SharedStylesHost_Factory(t) {
@@ -70272,16 +69523,12 @@
       })();
 
       var DomSharedStylesHost = /*#__PURE__*/function (_SharedStylesHost) {
-        _inherits(DomSharedStylesHost, _SharedStylesHost);
-
-        var _super123 = _createSuper(DomSharedStylesHost);
-
         function DomSharedStylesHost(_doc) {
           var _this162;
 
           _classCallCheck(this, DomSharedStylesHost);
 
-          _this162 = _super123.call(this);
+          _this162 = _callSuper(this, DomSharedStylesHost);
           _this162._doc = _doc;
           _this162._hostNodes = new Set();
           _this162._styleNodes = new Set();
@@ -70291,7 +69538,9 @@
           return _this162;
         }
 
-        _createClass2(DomSharedStylesHost, [{
+        _inherits(DomSharedStylesHost, _SharedStylesHost);
+
+        return _createClass2(DomSharedStylesHost, [{
           key: "_addStylesToHost",
           value: function _addStylesToHost(styles, host) {
             var _this163 = this;
@@ -70333,8 +69582,6 @@
             });
           }
         }]);
-
-        return DomSharedStylesHost;
       }(SharedStylesHost);
 
       DomSharedStylesHost.ɵfac = function DomSharedStylesHost_Factory(t) {
@@ -70453,7 +69700,7 @@
           this.defaultRenderer = new DefaultDomRenderer2(eventManager);
         }
 
-        _createClass2(DomRendererFactory2, [{
+        return _createClass2(DomRendererFactory2, [{
           key: "createRenderer",
           value: function createRenderer(element, type) {
             if (!element || !type) {
@@ -70497,8 +69744,6 @@
           key: "end",
           value: function end() {}
         }]);
-
-        return DomRendererFactory2;
       }();
 
       DomRendererFactory2.ɵfac = function DomRendererFactory2_Factory(t) {
@@ -70552,7 +69797,7 @@
           this.data = Object.create(null);
         }
 
-        _createClass2(DefaultDomRenderer2, [{
+        return _createClass2(DefaultDomRenderer2, [{
           key: "destroy",
           value: function destroy() {}
         }, {
@@ -70711,8 +69956,6 @@
             return this.eventManager.addEventListener(target, event, decoratePreventDefault(callback));
           }
         }]);
-
-        return DefaultDomRenderer2;
       }();
 
       var ɵ0$2 = function ɵ0$2() {
@@ -70728,16 +69971,12 @@
       }
 
       var EmulatedEncapsulationDomRenderer2 = /*#__PURE__*/function (_DefaultDomRenderer) {
-        _inherits(EmulatedEncapsulationDomRenderer2, _DefaultDomRenderer);
-
-        var _super124 = _createSuper(EmulatedEncapsulationDomRenderer2);
-
         function EmulatedEncapsulationDomRenderer2(eventManager, sharedStylesHost, component, appId) {
           var _this165;
 
           _classCallCheck(this, EmulatedEncapsulationDomRenderer2);
 
-          _this165 = _super124.call(this, eventManager);
+          _this165 = _callSuper(this, EmulatedEncapsulationDomRenderer2, [eventManager]);
           _this165.component = component;
           var styles = flattenStyles(appId + '-' + component.id, component.styles, []);
           sharedStylesHost.addStyles(styles);
@@ -70746,36 +69985,32 @@
           return _this165;
         }
 
-        _createClass2(EmulatedEncapsulationDomRenderer2, [{
+        _inherits(EmulatedEncapsulationDomRenderer2, _DefaultDomRenderer);
+
+        return _createClass2(EmulatedEncapsulationDomRenderer2, [{
           key: "applyToHost",
           value: function applyToHost(element) {
-            _get(_getPrototypeOf(EmulatedEncapsulationDomRenderer2.prototype), "setAttribute", this).call(this, element, this.hostAttr, '');
+            _superPropGet(EmulatedEncapsulationDomRenderer2, "setAttribute", this, 3)([element, this.hostAttr, '']);
           }
         }, {
           key: "createElement",
           value: function createElement(parent, name) {
-            var el = _get(_getPrototypeOf(EmulatedEncapsulationDomRenderer2.prototype), "createElement", this).call(this, parent, name);
+            var el = _superPropGet(EmulatedEncapsulationDomRenderer2, "createElement", this, 3)([parent, name]);
 
-            _get(_getPrototypeOf(EmulatedEncapsulationDomRenderer2.prototype), "setAttribute", this).call(this, el, this.contentAttr, '');
+            _superPropGet(EmulatedEncapsulationDomRenderer2, "setAttribute", this, 3)([el, this.contentAttr, '']);
 
             return el;
           }
         }]);
-
-        return EmulatedEncapsulationDomRenderer2;
       }(DefaultDomRenderer2);
 
       var ShadowDomRenderer = /*#__PURE__*/function (_DefaultDomRenderer2) {
-        _inherits(ShadowDomRenderer, _DefaultDomRenderer2);
-
-        var _super125 = _createSuper(ShadowDomRenderer);
-
         function ShadowDomRenderer(eventManager, sharedStylesHost, hostEl, component) {
           var _this166;
 
           _classCallCheck(this, ShadowDomRenderer);
 
-          _this166 = _super125.call(this, eventManager);
+          _this166 = _callSuper(this, ShadowDomRenderer, [eventManager]);
           _this166.sharedStylesHost = sharedStylesHost;
           _this166.hostEl = hostEl;
           _this166.component = component;
@@ -70802,7 +70037,9 @@
           return _this166;
         }
 
-        _createClass2(ShadowDomRenderer, [{
+        _inherits(ShadowDomRenderer, _DefaultDomRenderer2);
+
+        return _createClass2(ShadowDomRenderer, [{
           key: "nodeOrShadowRoot",
           value: function nodeOrShadowRoot(node) {
             return node === this.hostEl ? this.shadowRoot : node;
@@ -70815,26 +70052,24 @@
         }, {
           key: "appendChild",
           value: function appendChild(parent, newChild) {
-            return _get(_getPrototypeOf(ShadowDomRenderer.prototype), "appendChild", this).call(this, this.nodeOrShadowRoot(parent), newChild);
+            return _superPropGet(ShadowDomRenderer, "appendChild", this, 3)([this.nodeOrShadowRoot(parent), newChild]);
           }
         }, {
           key: "insertBefore",
           value: function insertBefore(parent, newChild, refChild) {
-            return _get(_getPrototypeOf(ShadowDomRenderer.prototype), "insertBefore", this).call(this, this.nodeOrShadowRoot(parent), newChild, refChild);
+            return _superPropGet(ShadowDomRenderer, "insertBefore", this, 3)([this.nodeOrShadowRoot(parent), newChild, refChild]);
           }
         }, {
           key: "removeChild",
           value: function removeChild(parent, oldChild) {
-            return _get(_getPrototypeOf(ShadowDomRenderer.prototype), "removeChild", this).call(this, this.nodeOrShadowRoot(parent), oldChild);
+            return _superPropGet(ShadowDomRenderer, "removeChild", this, 3)([this.nodeOrShadowRoot(parent), oldChild]);
           }
         }, {
           key: "parentNode",
           value: function parentNode(node) {
-            return this.nodeOrShadowRoot(_get(_getPrototypeOf(ShadowDomRenderer.prototype), "parentNode", this).call(this, this.nodeOrShadowRoot(node)));
+            return this.nodeOrShadowRoot(_superPropGet(ShadowDomRenderer, "parentNode", this, 3)([this.nodeOrShadowRoot(node)]));
           }
         }]);
-
-        return ShadowDomRenderer;
       }(DefaultDomRenderer2);
       /**
        * @license
@@ -70846,19 +70081,17 @@
 
 
       var DomEventsPlugin = /*#__PURE__*/function (_EventManagerPlugin) {
-        _inherits(DomEventsPlugin, _EventManagerPlugin);
-
-        var _super126 = _createSuper(DomEventsPlugin);
-
         function DomEventsPlugin(doc) {
           _classCallCheck(this, DomEventsPlugin);
 
-          return _super126.call(this, doc);
+          return _callSuper(this, DomEventsPlugin, [doc]);
         } // This plugin should come last in the list of plugins, because it accepts all
         // events.
 
 
-        _createClass2(DomEventsPlugin, [{
+        _inherits(DomEventsPlugin, _EventManagerPlugin);
+
+        return _createClass2(DomEventsPlugin, [{
           key: "supports",
           value: function supports(eventName) {
             return true;
@@ -70879,8 +70112,6 @@
             return target.removeEventListener(eventName, callback);
           }
         }]);
-
-        return DomEventsPlugin;
       }(EventManagerPlugin);
 
       DomEventsPlugin.ɵfac = function DomEventsPlugin_Factory(t) {
@@ -71026,7 +70257,7 @@
          */
 
 
-        _createClass2(HammerGestureConfig, [{
+        return _createClass2(HammerGestureConfig, [{
           key: "buildHammer",
           value: function buildHammer(element) {
             var mc = new Hammer(element, this.options);
@@ -71044,8 +70275,6 @@
             return mc;
           }
         }]);
-
-        return HammerGestureConfig;
       }();
 
       HammerGestureConfig.ɵfac = function HammerGestureConfig_Factory(t) {
@@ -71073,23 +70302,21 @@
 
 
       var HammerGesturesPlugin = /*#__PURE__*/function (_EventManagerPlugin2) {
-        _inherits(HammerGesturesPlugin, _EventManagerPlugin2);
-
-        var _super127 = _createSuper(HammerGesturesPlugin);
-
         function HammerGesturesPlugin(doc, _config, console, loader) {
           var _this168;
 
           _classCallCheck(this, HammerGesturesPlugin);
 
-          _this168 = _super127.call(this, doc);
+          _this168 = _callSuper(this, HammerGesturesPlugin, [doc]);
           _this168._config = _config;
           _this168.console = console;
           _this168.loader = loader;
           return _this168;
         }
 
-        _createClass2(HammerGesturesPlugin, [{
+        _inherits(HammerGesturesPlugin, _EventManagerPlugin2);
+
+        return _createClass2(HammerGesturesPlugin, [{
           key: "supports",
           value: function supports(eventName) {
             if (!EVENT_NAMES.hasOwnProperty(eventName.toLowerCase()) && !this.isCustomEvent(eventName)) {
@@ -71176,8 +70403,6 @@
             return this._config.events.indexOf(eventName) > -1;
           }
         }]);
-
-        return HammerGesturesPlugin;
       }(EventManagerPlugin);
 
       HammerGesturesPlugin.ɵfac = function HammerGesturesPlugin_Factory(t) {
@@ -71388,10 +70613,6 @@
        */
 
       var KeyEventsPlugin = /*#__PURE__*/function (_EventManagerPlugin3) {
-        _inherits(KeyEventsPlugin, _EventManagerPlugin3);
-
-        var _super128 = _createSuper(KeyEventsPlugin);
-
         /**
          * Initializes an instance of the browser plug-in.
          * @param doc The document in which key events will be detected.
@@ -71399,7 +70620,7 @@
         function KeyEventsPlugin(doc) {
           _classCallCheck(this, KeyEventsPlugin);
 
-          return _super128.call(this, doc);
+          return _callSuper(this, KeyEventsPlugin, [doc]);
         }
         /**
          * Reports whether a named key event is supported.
@@ -71408,7 +70629,9 @@
          */
 
 
-        _createClass2(KeyEventsPlugin, [{
+        _inherits(KeyEventsPlugin, _EventManagerPlugin3);
+
+        return _createClass2(KeyEventsPlugin, [{
           key: "supports",
           value: function supports(eventName) {
             return KeyEventsPlugin.parseEventName(eventName) != null;
@@ -71528,8 +70751,6 @@
             }
           }
         }]);
-
-        return KeyEventsPlugin;
       }(EventManagerPlugin);
 
       KeyEventsPlugin.ɵfac = function KeyEventsPlugin_Factory(t) {
@@ -71668,21 +70889,19 @@
       }
 
       var DomSanitizerImpl = /*#__PURE__*/function (_DomSanitizer) {
-        _inherits(DomSanitizerImpl, _DomSanitizer);
-
-        var _super129 = _createSuper(DomSanitizerImpl);
-
         function DomSanitizerImpl(_doc) {
           var _this170;
 
           _classCallCheck(this, DomSanitizerImpl);
 
-          _this170 = _super129.call(this);
+          _this170 = _callSuper(this, DomSanitizerImpl);
           _this170._doc = _doc;
           return _this170;
         }
 
-        _createClass2(DomSanitizerImpl, [{
+        _inherits(DomSanitizerImpl, _DomSanitizer);
+
+        return _createClass2(DomSanitizerImpl, [{
           key: "sanitize",
           value: function sanitize(ctx, value) {
             if (value == null) return null;
@@ -71768,8 +70987,6 @@
             return Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵbypassSanitizationTrustResourceUrl"])(value);
           }
         }]);
-
-        return DomSanitizerImpl;
       }(DomSanitizer);
 
       DomSanitizerImpl.ɵfac = function DomSanitizerImpl_Factory(t) {
@@ -71944,7 +71161,7 @@
          */
 
 
-        _createClass2(BrowserModule, null, [{
+        return _createClass2(BrowserModule, null, [{
           key: "withServerTransition",
           value: function withServerTransition(params) {
             return {
@@ -71959,8 +71176,6 @@
             };
           }
         }]);
-
-        return BrowserModule;
       }();
 
       BrowserModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
@@ -72078,7 +71293,7 @@
          */
 
 
-        _createClass2(Meta, [{
+        return _createClass2(Meta, [{
           key: "addTag",
           value: function addTag(tag) {
             var forceCreation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
@@ -72232,8 +71447,6 @@
             });
           }
         }]);
-
-        return Meta;
       }();
 
       Meta.ɵfac = function Meta_Factory(t) {
@@ -72315,7 +71528,7 @@
          */
 
 
-        _createClass2(Title, [{
+        return _createClass2(Title, [{
           key: "getTitle",
           value: function getTitle() {
             return this._doc.title;
@@ -72331,8 +71544,6 @@
             this._doc.title = newTitle || '';
           }
         }]);
-
-        return Title;
       }();
 
       Title.ɵfac = function Title_Factory(t) {
@@ -72430,7 +71641,7 @@
          */
 
 
-        _createClass2(AngularProfiler, [{
+        return _createClass2(AngularProfiler, [{
           key: "timeChangeDetection",
           value: function timeChangeDetection(config) {
             var record = config && config['record'];
@@ -72462,8 +71673,6 @@
             return new ChangeDetectionPerfRecord(msPerTick, numTicks);
           }
         }]);
-
-        return AngularProfiler;
       }();
       /**
        * @license
@@ -72581,7 +71790,7 @@
         /** @internal */
 
 
-        _createClass2(TransferState, [{
+        return _createClass2(TransferState, [{
           key: "get",
           value:
           /**
@@ -72654,8 +71863,6 @@
             return transferState;
           }
         }]);
-
-        return TransferState;
       }();
 
       TransferState.ɵfac = function TransferState_Factory(t) {
@@ -72751,7 +71958,7 @@
           _classCallCheck(this, By);
         }
 
-        _createClass2(By, null, [{
+        return _createClass2(By, null, [{
           key: "all",
           value:
           /**
@@ -72800,8 +72007,6 @@
             };
           }
         }]);
-
-        return By;
       }();
 
       function elementMatches(n, selector) {
@@ -72923,10 +72128,6 @@
       "Ylt2");
 
       var ReplaySubject = /*#__PURE__*/function (_Subject__WEBPACK_IMP5) {
-        _inherits(ReplaySubject, _Subject__WEBPACK_IMP5);
-
-        var _super130 = _createSuper(ReplaySubject);
-
         function ReplaySubject() {
           var _this172;
 
@@ -72936,7 +72137,7 @@
 
           _classCallCheck(this, ReplaySubject);
 
-          _this172 = _super130.call(this);
+          _this172 = _callSuper(this, ReplaySubject);
           _this172.scheduler = scheduler;
           _this172._events = [];
           _this172._infiniteTimeWindow = false;
@@ -72953,7 +72154,9 @@
           return _this172;
         }
 
-        _createClass2(ReplaySubject, [{
+        _inherits(ReplaySubject, _Subject__WEBPACK_IMP5);
+
+        return _createClass2(ReplaySubject, [{
           key: "nextInfiniteTimeWindow",
           value: function nextInfiniteTimeWindow(value) {
             if (!this.isStopped) {
@@ -72966,7 +72169,7 @@
               }
             }
 
-            _get(_getPrototypeOf(ReplaySubject.prototype), "next", this).call(this, value);
+            _superPropGet(ReplaySubject, "next", this, 3)([value]);
           }
         }, {
           key: "nextTimeWindow",
@@ -72977,7 +72180,7 @@
               this._trimBufferThenGetEvents();
             }
 
-            _get(_getPrototypeOf(ReplaySubject.prototype), "next", this).call(this, value);
+            _superPropGet(ReplaySubject, "next", this, 3)([value]);
           }
         }, {
           key: "_subscribe",
@@ -73056,8 +72259,6 @@
             return _events;
           }
         }]);
-
-        return ReplaySubject;
       }(_Subject__WEBPACK_IMPORTED_MODULE_0__["Subject"]);
 
       var ReplayEvent = /*#__PURE__*/_createClass2(function ReplayEvent(time, value) {
@@ -74408,7 +73609,7 @@
           }
         }
 
-        _createClass2(SkipLastOperator, [{
+        return _createClass2(SkipLastOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             if (this._skipCount === 0) {
@@ -74418,28 +73619,24 @@
             }
           }
         }]);
-
-        return SkipLastOperator;
       }();
 
       var SkipLastSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_34) {
-        _inherits(SkipLastSubscriber, _Subscriber__WEBPACK_34);
-
-        var _super131 = _createSuper(SkipLastSubscriber);
-
         function SkipLastSubscriber(destination, _skipCount) {
           var _this173;
 
           _classCallCheck(this, SkipLastSubscriber);
 
-          _this173 = _super131.call(this, destination);
+          _this173 = _callSuper(this, SkipLastSubscriber, [destination]);
           _this173._skipCount = _skipCount;
           _this173._count = 0;
           _this173._ring = new Array(_skipCount);
           return _this173;
         }
 
-        _createClass2(SkipLastSubscriber, [{
+        _inherits(SkipLastSubscriber, _Subscriber__WEBPACK_34);
+
+        return _createClass2(SkipLastSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var skipCount = this._skipCount;
@@ -74456,8 +73653,6 @@
             }
           }
         }]);
-
-        return SkipLastSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=skipLast.js.map
 
       /***/
@@ -74501,35 +73696,29 @@
           _classCallCheck(this, DeMaterializeOperator);
         }
 
-        _createClass2(DeMaterializeOperator, [{
+        return _createClass2(DeMaterializeOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DeMaterializeSubscriber(subscriber));
           }
         }]);
-
-        return DeMaterializeOperator;
       }();
 
       var DeMaterializeSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_35) {
-        _inherits(DeMaterializeSubscriber, _Subscriber__WEBPACK_35);
-
-        var _super132 = _createSuper(DeMaterializeSubscriber);
-
         function DeMaterializeSubscriber(destination) {
           _classCallCheck(this, DeMaterializeSubscriber);
 
-          return _super132.call(this, destination);
+          return _callSuper(this, DeMaterializeSubscriber, [destination]);
         }
 
-        _createClass2(DeMaterializeSubscriber, [{
+        _inherits(DeMaterializeSubscriber, _Subscriber__WEBPACK_35);
+
+        return _createClass2(DeMaterializeSubscriber, [{
           key: "_next",
           value: function _next(value) {
             value.observe(this.destination);
           }
         }]);
-
-        return DeMaterializeSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=dematerialize.js.map
 
       /***/
@@ -74639,17 +73828,15 @@
       "7o/Q");
 
       var OuterSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_36) {
-        _inherits(OuterSubscriber, _Subscriber__WEBPACK_36);
-
-        var _super133 = _createSuper(OuterSubscriber);
-
         function OuterSubscriber() {
           _classCallCheck(this, OuterSubscriber);
 
-          return _super133.apply(this, arguments);
+          return _callSuper(this, OuterSubscriber, arguments);
         }
 
-        _createClass2(OuterSubscriber, [{
+        _inherits(OuterSubscriber, _Subscriber__WEBPACK_36);
+
+        return _createClass2(OuterSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(outerValue, innerValue, outerIndex, innerIndex, innerSub) {
             this.destination.next(innerValue);
@@ -74665,8 +73852,6 @@
             this.destination.complete();
           }
         }]);
-
-        return OuterSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=OuterSubscriber.js.map
 
       /***/
@@ -74723,34 +73908,30 @@
           this.thisArg = thisArg;
         }
 
-        _createClass2(MapOperator, [{
+        return _createClass2(MapOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new MapSubscriber(subscriber, this.project, this.thisArg));
           }
         }]);
-
-        return MapOperator;
       }();
 
       var MapSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_37) {
-        _inherits(MapSubscriber, _Subscriber__WEBPACK_37);
-
-        var _super134 = _createSuper(MapSubscriber);
-
         function MapSubscriber(destination, project, thisArg) {
           var _this174;
 
           _classCallCheck(this, MapSubscriber);
 
-          _this174 = _super134.call(this, destination);
+          _this174 = _callSuper(this, MapSubscriber, [destination]);
           _this174.project = project;
           _this174.count = 0;
-          _this174.thisArg = thisArg || _assertThisInitialized(_this174);
+          _this174.thisArg = thisArg || _this174;
           return _this174;
         }
 
-        _createClass2(MapSubscriber, [{
+        _inherits(MapSubscriber, _Subscriber__WEBPACK_37);
+
+        return _createClass2(MapSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var result;
@@ -74765,8 +73946,6 @@
             this.destination.next(result);
           }
         }]);
-
-        return MapSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=map.js.map
 
       /***/
@@ -74820,27 +73999,21 @@
           this.startWindowEvery = startWindowEvery;
         }
 
-        _createClass2(WindowCountOperator, [{
+        return _createClass2(WindowCountOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new WindowCountSubscriber(subscriber, this.windowSize, this.startWindowEvery));
           }
         }]);
-
-        return WindowCountOperator;
       }();
 
       var WindowCountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_38) {
-        _inherits(WindowCountSubscriber, _Subscriber__WEBPACK_38);
-
-        var _super135 = _createSuper(WindowCountSubscriber);
-
         function WindowCountSubscriber(destination, windowSize, startWindowEvery) {
           var _this175;
 
           _classCallCheck(this, WindowCountSubscriber);
 
-          _this175 = _super135.call(this, destination);
+          _this175 = _callSuper(this, WindowCountSubscriber, [destination]);
           _this175.destination = destination;
           _this175.windowSize = windowSize;
           _this175.startWindowEvery = startWindowEvery;
@@ -74850,7 +74023,9 @@
           return _this175;
         }
 
-        _createClass2(WindowCountSubscriber, [{
+        _inherits(WindowCountSubscriber, _Subscriber__WEBPACK_38);
+
+        return _createClass2(WindowCountSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var startWindowEvery = this.startWindowEvery > 0 ? this.startWindowEvery : this.windowSize;
@@ -74909,8 +74084,6 @@
             this.windows = null;
           }
         }]);
-
-        return WindowCountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=windowCount.js.map
 
       /***/
@@ -74954,28 +74127,24 @@
           _classCallCheck(this, IsEmptyOperator);
         }
 
-        _createClass2(IsEmptyOperator, [{
+        return _createClass2(IsEmptyOperator, [{
           key: "call",
           value: function call(observer, source) {
             return source.subscribe(new IsEmptySubscriber(observer));
           }
         }]);
-
-        return IsEmptyOperator;
       }();
 
       var IsEmptySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_39) {
-        _inherits(IsEmptySubscriber, _Subscriber__WEBPACK_39);
-
-        var _super136 = _createSuper(IsEmptySubscriber);
-
         function IsEmptySubscriber(destination) {
           _classCallCheck(this, IsEmptySubscriber);
 
-          return _super136.call(this, destination);
+          return _callSuper(this, IsEmptySubscriber, [destination]);
         }
 
-        _createClass2(IsEmptySubscriber, [{
+        _inherits(IsEmptySubscriber, _Subscriber__WEBPACK_39);
+
+        return _createClass2(IsEmptySubscriber, [{
           key: "notifyComplete",
           value: function notifyComplete(isEmpty) {
             var destination = this.destination;
@@ -74993,8 +74162,6 @@
             this.notifyComplete(true);
           }
         }]);
-
-        return IsEmptySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=isEmpty.js.map
 
       /***/
@@ -75070,7 +74237,7 @@
     /*! exports provided: window */
 
     /***/
-    function mk5(module, __webpack_exports__, __webpack_require__) {
+    function mk5_(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -75106,7 +74273,7 @@
           this.windowBoundaries = windowBoundaries;
         }
 
-        _createClass2(WindowOperator, [{
+        return _createClass2(WindowOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var windowSubscriber = new WindowSubscriber(subscriber);
@@ -75119,27 +74286,23 @@
             return sourceSubscription;
           }
         }]);
-
-        return WindowOperator;
       }();
 
       var WindowSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP15) {
-        _inherits(WindowSubscriber, _innerSubscribe__WEBP15);
-
-        var _super137 = _createSuper(WindowSubscriber);
-
         function WindowSubscriber(destination) {
           var _this176;
 
           _classCallCheck(this, WindowSubscriber);
 
-          _this176 = _super137.call(this, destination);
+          _this176 = _callSuper(this, WindowSubscriber, [destination]);
           _this176.window = new _Subject__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
           destination.next(_this176.window);
           return _this176;
         }
 
-        _createClass2(WindowSubscriber, [{
+        _inherits(WindowSubscriber, _innerSubscribe__WEBP15);
+
+        return _createClass2(WindowSubscriber, [{
           key: "notifyNext",
           value: function notifyNext() {
             this.openWindow();
@@ -75190,8 +74353,6 @@
             destination.next(newWindow);
           }
         }]);
-
-        return WindowSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_1__["SimpleOuterSubscriber"]); //# sourceMappingURL=window.js.map
 
       /***/
@@ -75299,32 +74460,28 @@
           this.callback = callback;
         }
 
-        _createClass2(FinallyOperator, [{
+        return _createClass2(FinallyOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new FinallySubscriber(subscriber, this.callback));
           }
         }]);
-
-        return FinallyOperator;
       }();
 
       var FinallySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_40) {
-        _inherits(FinallySubscriber, _Subscriber__WEBPACK_40);
-
-        var _super138 = _createSuper(FinallySubscriber);
-
         function FinallySubscriber(destination, callback) {
           var _this177;
 
           _classCallCheck(this, FinallySubscriber);
 
-          _this177 = _super138.call(this, destination);
+          _this177 = _callSuper(this, FinallySubscriber, [destination]);
 
           _this177.add(new _Subscription__WEBPACK_IMPORTED_MODULE_1__["Subscription"](callback));
 
           return _this177;
         }
+
+        _inherits(FinallySubscriber, _Subscriber__WEBPACK_40);
 
         return _createClass2(FinallySubscriber);
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=finalize.js.map
@@ -75430,7 +74587,7 @@
           this.selector = selector;
         }
 
-        _createClass2(MulticastOperator, [{
+        return _createClass2(MulticastOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var selector = this.selector;
@@ -75440,8 +74597,6 @@
             return subscription;
           }
         }]);
-
-        return MulticastOperator;
       }(); //# sourceMappingURL=multicast.js.map
 
       /***/
@@ -76048,9 +75203,7 @@
         var c = arguments.length,
             r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
             d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
       };
 
@@ -76227,9 +75380,7 @@
         var c = arguments.length,
             r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
             d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
       };
 
@@ -76443,9 +75594,7 @@
         var c = arguments.length,
             r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
             d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
       };
 
@@ -76745,9 +75894,7 @@
         var c = arguments.length,
             r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
             d;
-        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) {
-          if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-        }
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
       };
 
@@ -77517,16 +76664,12 @@
        */
 
       var BrowserPlatformLocation = /*#__PURE__*/function (_PlatformLocation) {
-        _inherits(BrowserPlatformLocation, _PlatformLocation);
-
-        var _super139 = _createSuper(BrowserPlatformLocation);
-
         function BrowserPlatformLocation(_doc) {
           var _this178;
 
           _classCallCheck(this, BrowserPlatformLocation);
 
-          _this178 = _super139.call(this);
+          _this178 = _callSuper(this, BrowserPlatformLocation);
           _this178._doc = _doc;
 
           _this178._init();
@@ -77537,7 +76680,9 @@
         /** @internal */
 
 
-        _createClass2(BrowserPlatformLocation, [{
+        _inherits(BrowserPlatformLocation, _PlatformLocation);
+
+        return _createClass2(BrowserPlatformLocation, [{
           key: "_init",
           value: function _init() {
             this.location = getDOM().getLocation();
@@ -77630,8 +76775,6 @@
             return this._history.state;
           }
         }]);
-
-        return BrowserPlatformLocation;
       }(PlatformLocation);
 
       BrowserPlatformLocation.ɵfac = function BrowserPlatformLocation_Factory(t) {
@@ -77883,16 +77026,12 @@
        */
 
       var PathLocationStrategy = /*#__PURE__*/function (_LocationStrategy) {
-        _inherits(PathLocationStrategy, _LocationStrategy);
-
-        var _super140 = _createSuper(PathLocationStrategy);
-
         function PathLocationStrategy(_platformLocation, href) {
           var _this179;
 
           _classCallCheck(this, PathLocationStrategy);
 
-          _this179 = _super140.call(this);
+          _this179 = _callSuper(this, PathLocationStrategy);
           _this179._platformLocation = _platformLocation;
 
           if (href == null) {
@@ -77907,7 +77046,9 @@
           return _this179;
         }
 
-        _createClass2(PathLocationStrategy, [{
+        _inherits(PathLocationStrategy, _LocationStrategy);
+
+        return _createClass2(PathLocationStrategy, [{
           key: "onPopState",
           value: function onPopState(fn) {
             this._platformLocation.onPopState(fn);
@@ -77957,8 +77098,6 @@
             this._platformLocation.back();
           }
         }]);
-
-        return PathLocationStrategy;
       }(LocationStrategy);
 
       PathLocationStrategy.ɵfac = function PathLocationStrategy_Factory(t) {
@@ -78032,16 +77171,12 @@
 
 
       var HashLocationStrategy = /*#__PURE__*/function (_LocationStrategy2) {
-        _inherits(HashLocationStrategy, _LocationStrategy2);
-
-        var _super141 = _createSuper(HashLocationStrategy);
-
         function HashLocationStrategy(_platformLocation, _baseHref) {
           var _this180;
 
           _classCallCheck(this, HashLocationStrategy);
 
-          _this180 = _super141.call(this);
+          _this180 = _callSuper(this, HashLocationStrategy);
           _this180._platformLocation = _platformLocation;
           _this180._baseHref = '';
 
@@ -78052,7 +77187,9 @@
           return _this180;
         }
 
-        _createClass2(HashLocationStrategy, [{
+        _inherits(HashLocationStrategy, _LocationStrategy2);
+
+        return _createClass2(HashLocationStrategy, [{
           key: "onPopState",
           value: function onPopState(fn) {
             this._platformLocation.onPopState(fn);
@@ -78113,8 +77250,6 @@
             this._platformLocation.back();
           }
         }]);
-
-        return HashLocationStrategy;
       }(LocationStrategy);
 
       HashLocationStrategy.ɵfac = function HashLocationStrategy_Factory(t) {
@@ -78235,7 +77370,7 @@
         // removed.
 
 
-        _createClass2(Location, [{
+        return _createClass2(Location, [{
           key: "path",
           value: function path() {
             var includeHash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
@@ -78409,8 +77544,6 @@
             });
           }
         }]);
-
-        return Location;
       }();
 
       Location.ɵfac = function Location_Factory(t) {
@@ -80540,9 +79673,7 @@
           // Count the number of trailing zeros
           zeros--;
 
-          while (numStr.charAt(zeros) === ZERO_CHAR) {
-            zeros--;
-          } // Trailing zeros are insignificant so ignore them
+          while (numStr.charAt(zeros) === ZERO_CHAR) zeros--; // Trailing zeros are insignificant so ignore them
 
 
           integerLen -= i;
@@ -80598,9 +79729,7 @@
           digits.length = Math.max(1, roundAt = fractionSize + 1);
           digits[0] = 0;
 
-          for (var i = 1; i < roundAt; i++) {
-            digits[i] = 0;
-          }
+          for (var i = 1; i < roundAt; i++) digits[i] = 0;
         }
 
         if (digit >= 5) {
@@ -80618,9 +79747,7 @@
         } // Pad out with zeros to get the required fraction length
 
 
-        for (; fractionLen < Math.max(0, fractionSize); fractionLen++) {
-          digits.push(0);
-        }
+        for (; fractionLen < Math.max(0, fractionSize); fractionLen++) digits.push(0);
 
         var dropTrailingZeros = fractionSize !== 0; // Minimal length = nb of decimals required + current nb of integers
         // Any number besides that is optional and can be removed if it's a trailing 0
@@ -80708,21 +79835,19 @@
 
 
       var NgLocaleLocalization = /*#__PURE__*/function (_NgLocalization) {
-        _inherits(NgLocaleLocalization, _NgLocalization);
-
-        var _super142 = _createSuper(NgLocaleLocalization);
-
         function NgLocaleLocalization(locale) {
           var _this183;
 
           _classCallCheck(this, NgLocaleLocalization);
 
-          _this183 = _super142.call(this);
+          _this183 = _callSuper(this, NgLocaleLocalization);
           _this183.locale = locale;
           return _this183;
         }
 
-        _createClass2(NgLocaleLocalization, [{
+        _inherits(NgLocaleLocalization, _NgLocalization);
+
+        return _createClass2(NgLocaleLocalization, [{
           key: "getPluralCategory",
           value: function getPluralCategory(value, locale) {
             var plural = getLocalePluralCase(locale || this.locale)(value);
@@ -80748,8 +79873,6 @@
             }
           }
         }]);
-
-        return NgLocaleLocalization;
       }(NgLocalization);
 
       NgLocaleLocalization.ɵfac = function NgLocaleLocalization_Factory(t) {
@@ -80896,7 +80019,7 @@
           this._rawClass = null;
         }
 
-        _createClass2(NgClass, [{
+        return _createClass2(NgClass, [{
           key: "klass",
           set: function set(value) {
             this._removeClasses(this._initialClasses);
@@ -81042,8 +80165,6 @@
             }
           }
         }]);
-
-        return NgClass;
       }();
 
       NgClass.ɵfac = function NgClass_Factory(t) {
@@ -81184,7 +80305,7 @@
           this._moduleRef = null;
         }
 
-        _createClass2(NgComponentOutlet, [{
+        return _createClass2(NgComponentOutlet, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             this._viewContainerRef.clear();
@@ -81216,8 +80337,6 @@
             if (this._moduleRef) this._moduleRef.destroy();
           }
         }]);
-
-        return NgComponentOutlet;
       }();
 
       NgComponentOutlet.ɵfac = function NgComponentOutlet_Factory(t) {
@@ -81306,7 +80425,7 @@
           this.count = count;
         }
 
-        _createClass2(NgForOfContext, [{
+        return _createClass2(NgForOfContext, [{
           key: "first",
           get: function get() {
             return this.index === 0;
@@ -81327,8 +80446,6 @@
             return !this.even;
           }
         }]);
-
-        return NgForOfContext;
       }();
       /**
        * A [structural directive](guide/structural-directives) that renders
@@ -81447,7 +80564,7 @@
          */
 
 
-        _createClass2(NgForOf, [{
+        return _createClass2(NgForOf, [{
           key: "ngForOf",
           set: function set(ngForOf) {
             this._ngForOf = ngForOf;
@@ -81592,8 +80709,6 @@
             return true;
           }
         }]);
-
-        return NgForOf;
       }();
 
       NgForOf.ɵfac = function NgForOf_Factory(t) {
@@ -81836,7 +80951,7 @@
          */
 
 
-        _createClass2(NgIf, [{
+        return _createClass2(NgIf, [{
           key: "ngIf",
           set: function set(condition) {
             this._context.$implicit = this._context.ngIf = condition;
@@ -81907,8 +81022,6 @@
             return true;
           }
         }]);
-
-        return NgIf;
       }();
 
       NgIf.ɵfac = function NgIf_Factory(t) {
@@ -82007,7 +81120,7 @@
           this._created = false;
         }
 
-        _createClass2(SwitchView, [{
+        return _createClass2(SwitchView, [{
           key: "create",
           value: function create() {
             this._created = true;
@@ -82031,8 +81144,6 @@
             }
           }
         }]);
-
-        return SwitchView;
       }();
       /**
        * @ngModule CommonModule
@@ -82112,7 +81223,7 @@
           this._lastCasesMatched = false;
         }
 
-        _createClass2(NgSwitch, [{
+        return _createClass2(NgSwitch, [{
           key: "ngSwitch",
           set: function set(newValue) {
             this._ngSwitch = newValue;
@@ -82170,8 +81281,6 @@
             }
           }
         }]);
-
-        return NgSwitch;
       }();
 
       NgSwitch.ɵfac = function NgSwitch_Factory(t) {
@@ -82256,14 +81365,12 @@
          */
 
 
-        _createClass2(NgSwitchCase, [{
+        return _createClass2(NgSwitchCase, [{
           key: "ngDoCheck",
           value: function ngDoCheck() {
             this._view.enforceState(this.ngSwitch._matchCase(this.ngSwitchCase));
           }
         }]);
-
-        return NgSwitchCase;
       }();
 
       NgSwitchCase.ɵfac = function NgSwitchCase_Factory(t) {
@@ -82435,7 +81542,7 @@
           this._caseViews = {};
         }
 
-        _createClass2(NgPlural, [{
+        return _createClass2(NgPlural, [{
           key: "ngPlural",
           set: function set(value) {
             this._switchValue = value;
@@ -82472,8 +81579,6 @@
             }
           }
         }]);
-
-        return NgPlural;
       }();
 
       NgPlural.ɵfac = function NgPlural_Factory(t) {
@@ -82659,7 +81764,7 @@
           this._differ = null;
         }
 
-        _createClass2(NgStyle, [{
+        return _createClass2(NgStyle, [{
           key: "ngStyle",
           set: function set(values) {
             this._ngStyle = values;
@@ -82711,8 +81816,6 @@
             });
           }
         }]);
-
-        return NgStyle;
       }();
 
       NgStyle.ɵfac = function NgStyle_Factory(t) {
@@ -82821,7 +81924,7 @@
           this.ngTemplateOutlet = null;
         }
 
-        _createClass2(NgTemplateOutlet, [{
+        return _createClass2(NgTemplateOutlet, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             var recreateView = this._shouldRecreateView(changes);
@@ -82893,8 +81996,6 @@
             }
           }
         }]);
-
-        return NgTemplateOutlet;
       }();
 
       NgTemplateOutlet.ɵfac = function NgTemplateOutlet_Factory(t) {
@@ -82986,7 +82087,7 @@
           _classCallCheck(this, ObservableStrategy);
         }
 
-        _createClass2(ObservableStrategy, [{
+        return _createClass2(ObservableStrategy, [{
           key: "createSubscription",
           value: function createSubscription(async, updateLatestValue) {
             return async.subscribe({
@@ -83007,8 +82108,6 @@
             subscription.unsubscribe();
           }
         }]);
-
-        return ObservableStrategy;
       }();
 
       var PromiseStrategy = /*#__PURE__*/function () {
@@ -83016,7 +82115,7 @@
           _classCallCheck(this, PromiseStrategy);
         }
 
-        _createClass2(PromiseStrategy, [{
+        return _createClass2(PromiseStrategy, [{
           key: "createSubscription",
           value: function createSubscription(async, updateLatestValue) {
             return async.then(updateLatestValue, function (e) {
@@ -83030,8 +82129,6 @@
           key: "onDestroy",
           value: function onDestroy(subscription) {}
         }]);
-
-        return PromiseStrategy;
       }();
 
       var _promiseStrategy = new PromiseStrategy();
@@ -83077,7 +82174,7 @@
           this._strategy = null;
         }
 
-        _createClass2(AsyncPipe, [{
+        return _createClass2(AsyncPipe, [{
           key: "ngOnDestroy",
           value: function ngOnDestroy() {
             if (this._subscription) {
@@ -83146,8 +82243,6 @@
             }
           }
         }]);
-
-        return AsyncPipe;
       }();
 
       AsyncPipe.ɵfac = function AsyncPipe_Factory(t) {
@@ -83211,7 +82306,7 @@
           _classCallCheck(this, LowerCasePipe);
         }
 
-        _createClass2(LowerCasePipe, [{
+        return _createClass2(LowerCasePipe, [{
           key: "transform",
           value:
           /**
@@ -83227,8 +82322,6 @@
             return value.toLowerCase();
           }
         }]);
-
-        return LowerCasePipe;
       }();
 
       LowerCasePipe.ɵfac = function LowerCasePipe_Factory(t) {
@@ -83283,7 +82376,7 @@
           _classCallCheck(this, TitleCasePipe);
         }
 
-        _createClass2(TitleCasePipe, [{
+        return _createClass2(TitleCasePipe, [{
           key: "transform",
           value:
           /**
@@ -83301,8 +82394,6 @@
             });
           }
         }]);
-
-        return TitleCasePipe;
       }();
 
       TitleCasePipe.ɵfac = function TitleCasePipe_Factory(t) {
@@ -83339,7 +82430,7 @@
           _classCallCheck(this, UpperCasePipe);
         }
 
-        _createClass2(UpperCasePipe, [{
+        return _createClass2(UpperCasePipe, [{
           key: "transform",
           value:
           /**
@@ -83355,8 +82446,6 @@
             return value.toUpperCase();
           }
         }]);
-
-        return UpperCasePipe;
       }();
 
       UpperCasePipe.ɵfac = function UpperCasePipe_Factory(t) {
@@ -83549,7 +82638,7 @@
          */
 
 
-        _createClass2(DatePipe, [{
+        return _createClass2(DatePipe, [{
           key: "transform",
           value: function transform(value) {
             var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'mediumDate';
@@ -83564,8 +82653,6 @@
             }
           }
         }]);
-
-        return DatePipe;
       }();
 
       DatePipe.ɵfac = function DatePipe_Factory(t) {
@@ -83647,7 +82734,7 @@
          */
 
 
-        _createClass2(I18nPluralPipe, [{
+        return _createClass2(I18nPluralPipe, [{
           key: "transform",
           value: function transform(value, pluralMap, locale) {
             if (value == null) return '';
@@ -83660,8 +82747,6 @@
             return pluralMap[key].replace(_INTERPOLATION_REGEXP, value.toString());
           }
         }]);
-
-        return I18nPluralPipe;
       }();
 
       I18nPluralPipe.ɵfac = function I18nPluralPipe_Factory(t) {
@@ -83727,7 +82812,7 @@
           _classCallCheck(this, I18nSelectPipe);
         }
 
-        _createClass2(I18nSelectPipe, [{
+        return _createClass2(I18nSelectPipe, [{
           key: "transform",
           value:
           /**
@@ -83753,8 +82838,6 @@
             return '';
           }
         }]);
-
-        return I18nSelectPipe;
       }();
 
       I18nSelectPipe.ɵfac = function I18nSelectPipe_Factory(t) {
@@ -83807,7 +82890,7 @@
           _classCallCheck(this, JsonPipe);
         }
 
-        _createClass2(JsonPipe, [{
+        return _createClass2(JsonPipe, [{
           key: "transform",
           value:
           /**
@@ -83817,8 +82900,6 @@
             return JSON.stringify(value, null, 2);
           }
         }]);
-
-        return JsonPipe;
       }();
 
       JsonPipe.ɵfac = function JsonPipe_Factory(t) {
@@ -83886,7 +82967,7 @@
           this.keyValues = [];
         }
 
-        _createClass2(KeyValuePipe, [{
+        return _createClass2(KeyValuePipe, [{
           key: "transform",
           value: function transform(input) {
             var _this192 = this;
@@ -83915,8 +82996,6 @@
             return this.keyValues;
           }
         }]);
-
-        return KeyValuePipe;
       }();
 
       KeyValuePipe.ɵfac = function KeyValuePipe_Factory(t) {
@@ -84048,7 +83127,7 @@
          */
 
 
-        _createClass2(DecimalPipe, [{
+        return _createClass2(DecimalPipe, [{
           key: "transform",
           value: function transform(value, digitsInfo, locale) {
             if (isEmpty(value)) return null;
@@ -84062,8 +83141,6 @@
             }
           }
         }]);
-
-        return DecimalPipe;
       }();
 
       DecimalPipe.ɵfac = function DecimalPipe_Factory(t) {
@@ -84150,7 +83227,7 @@
          */
 
 
-        _createClass2(PercentPipe, [{
+        return _createClass2(PercentPipe, [{
           key: "transform",
           value: function transform(value, digitsInfo, locale) {
             if (isEmpty(value)) return null;
@@ -84164,8 +83241,6 @@
             }
           }
         }]);
-
-        return PercentPipe;
       }();
 
       PercentPipe.ɵfac = function PercentPipe_Factory(t) {
@@ -84292,7 +83367,7 @@
          */
 
 
-        _createClass2(CurrencyPipe, [{
+        return _createClass2(CurrencyPipe, [{
           key: "transform",
           value: function transform(value, currencyCode) {
             var display = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'symbol';
@@ -84327,8 +83402,6 @@
             }
           }
         }]);
-
-        return CurrencyPipe;
       }();
 
       CurrencyPipe.ɵfac = function CurrencyPipe_Factory(t) {
@@ -84452,7 +83525,7 @@
           _classCallCheck(this, SlicePipe);
         }
 
-        _createClass2(SlicePipe, [{
+        return _createClass2(SlicePipe, [{
           key: "transform",
           value: function transform(value, start, end) {
             if (value == null) return value;
@@ -84469,8 +83542,6 @@
             return typeof obj === 'string' || Array.isArray(obj);
           }
         }]);
-
-        return SlicePipe;
       }();
 
       SlicePipe.ɵfac = function SlicePipe_Factory(t) {
@@ -84685,7 +83756,7 @@
          */
 
 
-        _createClass2(BrowserViewportScroller, [{
+        return _createClass2(BrowserViewportScroller, [{
           key: "setOffset",
           value: function setOffset(offset) {
             if (Array.isArray(offset)) {
@@ -84798,8 +83869,6 @@
             }
           }
         }]);
-
-        return BrowserViewportScroller;
       }();
 
       function getScrollRestorationProperty(obj) {
@@ -84816,7 +83885,7 @@
           _classCallCheck(this, NullViewportScroller);
         }
 
-        _createClass2(NullViewportScroller, [{
+        return _createClass2(NullViewportScroller, [{
           key: "setOffset",
           value:
           /**
@@ -84854,8 +83923,6 @@
           key: "setHistoryScrollRestoration",
           value: function setHistoryScrollRestoration(scrollRestoration) {}
         }]);
-
-        return NullViewportScroller;
       }();
       /**
        * @license
@@ -84900,7 +83967,7 @@
     /*! exports provided: buffer */
 
     /***/
-    function p9F(module, __webpack_exports__, __webpack_require__) {
+    function p9_F(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -84930,35 +83997,31 @@
           this.closingNotifier = closingNotifier;
         }
 
-        _createClass2(BufferOperator, [{
+        return _createClass2(BufferOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new BufferSubscriber(subscriber, this.closingNotifier));
           }
         }]);
-
-        return BufferOperator;
       }();
 
       var BufferSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP16) {
-        _inherits(BufferSubscriber, _innerSubscribe__WEBP16);
-
-        var _super143 = _createSuper(BufferSubscriber);
-
         function BufferSubscriber(destination, closingNotifier) {
           var _this193;
 
           _classCallCheck(this, BufferSubscriber);
 
-          _this193 = _super143.call(this, destination);
+          _this193 = _callSuper(this, BufferSubscriber, [destination]);
           _this193.buffer = [];
 
-          _this193.add(Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["innerSubscribe"])(closingNotifier, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_assertThisInitialized(_this193))));
+          _this193.add(Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["innerSubscribe"])(closingNotifier, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_this193)));
 
           return _this193;
         }
 
-        _createClass2(BufferSubscriber, [{
+        _inherits(BufferSubscriber, _innerSubscribe__WEBP16);
+
+        return _createClass2(BufferSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.buffer.push(value);
@@ -84971,8 +84034,6 @@
             this.destination.next(buffer);
           }
         }]);
-
-        return BufferSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=buffer.js.map
 
       /***/
@@ -85019,34 +84080,30 @@
           this.thisArg = thisArg;
         }
 
-        _createClass2(FilterOperator, [{
+        return _createClass2(FilterOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new FilterSubscriber(subscriber, this.predicate, this.thisArg));
           }
         }]);
-
-        return FilterOperator;
       }();
 
       var FilterSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_41) {
-        _inherits(FilterSubscriber, _Subscriber__WEBPACK_41);
-
-        var _super144 = _createSuper(FilterSubscriber);
-
         function FilterSubscriber(destination, predicate, thisArg) {
           var _this194;
 
           _classCallCheck(this, FilterSubscriber);
 
-          _this194 = _super144.call(this, destination);
+          _this194 = _callSuper(this, FilterSubscriber, [destination]);
           _this194.predicate = predicate;
           _this194.thisArg = thisArg;
           _this194.count = 0;
           return _this194;
         }
 
-        _createClass2(FilterSubscriber, [{
+        _inherits(FilterSubscriber, _Subscriber__WEBPACK_41);
+
+        return _createClass2(FilterSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var result;
@@ -85063,8 +84120,6 @@
             }
           }
         }]);
-
-        return FilterSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=filter.js.map
 
       /***/
@@ -85190,27 +84245,21 @@
           this.closingSelector = closingSelector;
         }
 
-        _createClass2(WindowOperator, [{
+        return _createClass2(WindowOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new WindowSubscriber(subscriber, this.closingSelector));
           }
         }]);
-
-        return WindowOperator;
       }();
 
       var WindowSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB5) {
-        _inherits(WindowSubscriber, _OuterSubscriber__WEB5);
-
-        var _super145 = _createSuper(WindowSubscriber);
-
         function WindowSubscriber(destination, closingSelector) {
           var _this195;
 
           _classCallCheck(this, WindowSubscriber);
 
-          _this195 = _super145.call(this, destination);
+          _this195 = _callSuper(this, WindowSubscriber, [destination]);
           _this195.destination = destination;
           _this195.closingSelector = closingSelector;
 
@@ -85219,7 +84268,9 @@
           return _this195;
         }
 
-        _createClass2(WindowSubscriber, [{
+        _inherits(WindowSubscriber, _OuterSubscriber__WEB5);
+
+        return _createClass2(WindowSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(_outerValue, _innerValue, _outerIndex, _innerIndex, innerSub) {
             this.openWindow(innerSub);
@@ -85292,8 +84343,6 @@
             this.add(this.closingNotification = Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_2__["subscribeToResult"])(this, closingNotifier));
           }
         }]);
-
-        return WindowSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_1__["OuterSubscriber"]); //# sourceMappingURL=windowWhen.js.map
 
       /***/
@@ -85407,21 +84456,15 @@
           this.delay = delay;
         }
 
-        _createClass2(ObserveOnOperator, [{
+        return _createClass2(ObserveOnOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ObserveOnSubscriber(subscriber, this.scheduler, this.delay));
           }
         }]);
-
-        return ObserveOnOperator;
       }();
 
       var ObserveOnSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_42) {
-        _inherits(ObserveOnSubscriber, _Subscriber__WEBPACK_42);
-
-        var _super146 = _createSuper(ObserveOnSubscriber);
-
         function ObserveOnSubscriber(destination, scheduler) {
           var _this196;
 
@@ -85429,13 +84472,15 @@
 
           _classCallCheck(this, ObserveOnSubscriber);
 
-          _this196 = _super146.call(this, destination);
+          _this196 = _callSuper(this, ObserveOnSubscriber, [destination]);
           _this196.scheduler = scheduler;
           _this196.delay = delay;
           return _this196;
         }
 
-        _createClass2(ObserveOnSubscriber, [{
+        _inherits(ObserveOnSubscriber, _Subscriber__WEBPACK_42);
+
+        return _createClass2(ObserveOnSubscriber, [{
           key: "scheduleMessage",
           value: function scheduleMessage(notification) {
             var destination = this.destination;
@@ -85467,8 +84512,6 @@
             this.unsubscribe();
           }
         }]);
-
-        return ObserveOnSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var ObserveOnMessage = /*#__PURE__*/_createClass2(function ObserveOnMessage(notification, destination) {
@@ -86404,7 +85447,7 @@
           }
         }
 
-        _createClass2(Subscription, [{
+        return _createClass2(Subscription, [{
           key: "unsubscribe",
           value: function unsubscribe() {
             var errors;
@@ -86544,8 +85587,6 @@
             }
           }
         }]);
-
-        return Subscription;
       }();
 
       Subscription.EMPTY = function (empty) {
@@ -86721,37 +85762,33 @@
           this.closingSelector = closingSelector;
         }
 
-        _createClass2(WindowToggleOperator, [{
+        return _createClass2(WindowToggleOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new WindowToggleSubscriber(subscriber, this.openings, this.closingSelector));
           }
         }]);
-
-        return WindowToggleOperator;
       }();
 
       var WindowToggleSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB6) {
-        _inherits(WindowToggleSubscriber, _OuterSubscriber__WEB6);
-
-        var _super147 = _createSuper(WindowToggleSubscriber);
-
         function WindowToggleSubscriber(destination, openings, closingSelector) {
           var _this197;
 
           _classCallCheck(this, WindowToggleSubscriber);
 
-          _this197 = _super147.call(this, destination);
+          _this197 = _callSuper(this, WindowToggleSubscriber, [destination]);
           _this197.openings = openings;
           _this197.closingSelector = closingSelector;
           _this197.contexts = [];
 
-          _this197.add(_this197.openSubscription = Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_3__["subscribeToResult"])(_assertThisInitialized(_this197), openings, openings));
+          _this197.add(_this197.openSubscription = Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_3__["subscribeToResult"])(_this197, openings, openings));
 
           return _this197;
         }
 
-        _createClass2(WindowToggleSubscriber, [{
+        _inherits(WindowToggleSubscriber, _OuterSubscriber__WEB6);
+
+        return _createClass2(WindowToggleSubscriber, [{
           key: "_next",
           value: function _next(value) {
             var contexts = this.contexts;
@@ -86781,7 +85818,7 @@
               }
             }
 
-            _get(_getPrototypeOf(WindowToggleSubscriber.prototype), "_error", this).call(this, err);
+            _superPropGet(WindowToggleSubscriber, "_error", this, 3)([err]);
           }
         }, {
           key: "_complete",
@@ -86800,7 +85837,7 @@
               }
             }
 
-            _get(_getPrototypeOf(WindowToggleSubscriber.prototype), "_complete", this).call(this);
+            _superPropGet(WindowToggleSubscriber, "_complete", this, 3)([]);
           }
         }, {
           key: "_unsubscribe",
@@ -86882,8 +85919,6 @@
             subscription.unsubscribe();
           }
         }]);
-
-        return WindowToggleSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_2__["OuterSubscriber"]); //# sourceMappingURL=windowToggle.js.map
 
       /***/
@@ -86984,27 +86019,21 @@
           this.scheduler = scheduler;
         }
 
-        _createClass2(TimeoutWithOperator, [{
+        return _createClass2(TimeoutWithOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new TimeoutWithSubscriber(subscriber, this.absoluteTimeout, this.waitFor, this.withObservable, this.scheduler));
           }
         }]);
-
-        return TimeoutWithOperator;
       }();
 
       var TimeoutWithSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP17) {
-        _inherits(TimeoutWithSubscriber, _innerSubscribe__WEBP17);
-
-        var _super148 = _createSuper(TimeoutWithSubscriber);
-
         function TimeoutWithSubscriber(destination, absoluteTimeout, waitFor, withObservable, scheduler) {
           var _this198;
 
           _classCallCheck(this, TimeoutWithSubscriber);
 
-          _this198 = _super148.call(this, destination);
+          _this198 = _callSuper(this, TimeoutWithSubscriber, [destination]);
           _this198.absoluteTimeout = absoluteTimeout;
           _this198.waitFor = waitFor;
           _this198.withObservable = withObservable;
@@ -87015,7 +86044,9 @@
           return _this198;
         }
 
-        _createClass2(TimeoutWithSubscriber, [{
+        _inherits(TimeoutWithSubscriber, _innerSubscribe__WEBP17);
+
+        return _createClass2(TimeoutWithSubscriber, [{
           key: "scheduleTimeout",
           value: function scheduleTimeout() {
             var action = this.action;
@@ -87033,7 +86064,7 @@
               this.scheduleTimeout();
             }
 
-            _get(_getPrototypeOf(TimeoutWithSubscriber.prototype), "_next", this).call(this, value);
+            _superPropGet(TimeoutWithSubscriber, "_next", this, 3)([value]);
           }
         }, {
           key: "_unsubscribe",
@@ -87052,8 +86083,6 @@
             subscriber.add(Object(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["innerSubscribe"])(withObservable, new _innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleInnerSubscriber"](subscriber)));
           }
         }]);
-
-        return TimeoutWithSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleOuterSubscriber"]); //# sourceMappingURL=timeoutWith.js.map
 
       /***/
@@ -87493,7 +86522,7 @@
           _classCallCheck(this, NoopAnimationDriver);
         }
 
-        _createClass2(NoopAnimationDriver, [{
+        return _createClass2(NoopAnimationDriver, [{
           key: "validateStyleProperty",
           value: function validateStyleProperty(prop) {
             return _validateStyleProperty(prop);
@@ -87526,8 +86555,6 @@
             return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"](duration, delay);
           }
         }]);
-
-        return NoopAnimationDriver;
       }();
 
       NoopAnimationDriver.ɵfac = function NoopAnimationDriver_Factory(t) {
@@ -88141,7 +87168,7 @@
           this._driver = _driver;
         }
 
-        _createClass2(AnimationAstBuilderVisitor, [{
+        return _createClass2(AnimationAstBuilderVisitor, [{
           key: "build",
           value: function build(metadata, errors) {
             var context = new AnimationAstBuilderContext(errors);
@@ -88625,8 +87652,6 @@
             };
           }
         }]);
-
-        return AnimationAstBuilderVisitor;
       }();
 
       function normalizeSelector(selector) {
@@ -88763,7 +87788,7 @@
           this._map = new Map();
         }
 
-        _createClass2(ElementInstructionMap, [{
+        return _createClass2(ElementInstructionMap, [{
           key: "consume",
           value: function consume(element) {
             var instructions = this._map.get(element);
@@ -88800,8 +87825,6 @@
             this._map.clear();
           }
         }]);
-
-        return ElementInstructionMap;
       }();
       /**
        * @license
@@ -88916,7 +87939,7 @@
           _classCallCheck(this, AnimationTimelineBuilderVisitor);
         }
 
-        _createClass2(AnimationTimelineBuilderVisitor, [{
+        return _createClass2(AnimationTimelineBuilderVisitor, [{
           key: "buildKeyframes",
           value: function buildKeyframes(driver, rootElement, ast, enterClassName, leaveClassName, startingStyles, finalStyles, options, subInstructions) {
             var errors = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : [];
@@ -89255,8 +88278,6 @@
             parentContext.currentStaggerTime = tl.currentTime - startingTime + (tl.startTime - parentContext.currentTimeline.startTime);
           }
         }]);
-
-        return AnimationTimelineBuilderVisitor;
       }();
 
       var DEFAULT_NOOP_PREVIOUS_NODE = {};
@@ -89284,7 +88305,7 @@
           timelines.push(this.currentTimeline);
         }
 
-        _createClass2(AnimationTimelineContext, [{
+        return _createClass2(AnimationTimelineContext, [{
           key: "params",
           get: function get() {
             return this.options.params;
@@ -89422,8 +88443,6 @@
             return results;
           }
         }]);
-
-        return AnimationTimelineContext;
       }();
 
       var TimelineBuilder = /*#__PURE__*/function () {
@@ -89459,7 +88478,7 @@
           this._loadKeyframe();
         }
 
-        _createClass2(TimelineBuilder, [{
+        return _createClass2(TimelineBuilder, [{
           key: "containsAnimation",
           value: function containsAnimation() {
             switch (this._keyframes.size) {
@@ -89701,15 +88720,9 @@
             return createTimelineInstruction(this.element, finalKeyframes, preProps, postProps, this.duration, this.startTime, this.easing, false);
           }
         }]);
-
-        return TimelineBuilder;
       }();
 
       var SubTimelineBuilder = /*#__PURE__*/function (_TimelineBuilder) {
-        _inherits(SubTimelineBuilder, _TimelineBuilder);
-
-        var _super149 = _createSuper(SubTimelineBuilder);
-
         function SubTimelineBuilder(driver, element, keyframes, preStyleProps, postStyleProps, timings) {
           var _this214;
 
@@ -89717,7 +88730,7 @@
 
           _classCallCheck(this, SubTimelineBuilder);
 
-          _this214 = _super149.call(this, driver, element, timings.delay);
+          _this214 = _callSuper(this, SubTimelineBuilder, [driver, element, timings.delay]);
           _this214.element = element;
           _this214.keyframes = keyframes;
           _this214.preStyleProps = preStyleProps;
@@ -89731,7 +88744,9 @@
           return _this214;
         }
 
-        _createClass2(SubTimelineBuilder, [{
+        _inherits(SubTimelineBuilder, _TimelineBuilder);
+
+        return _createClass2(SubTimelineBuilder, [{
           key: "containsAnimation",
           value: function containsAnimation() {
             return this.keyframes.length > 1;
@@ -89789,8 +88804,6 @@
             return createTimelineInstruction(this.element, keyframes, this.preStyleProps, this.postStyleProps, duration, delay, easing, true);
           }
         }]);
-
-        return SubTimelineBuilder;
       }(TimelineBuilder);
 
       function roundOffset(offset) {
@@ -89831,7 +88844,7 @@
           this._animationAst = ast;
         }
 
-        _createClass2(Animation, [{
+        return _createClass2(Animation, [{
           key: "buildTimelines",
           value: function buildTimelines(element, startingStyles, destinationStyles, options, subInstructions) {
             var start = Array.isArray(startingStyles) ? normalizeStyles(startingStyles) : startingStyles;
@@ -89848,8 +88861,6 @@
             return result;
           }
         }]);
-
-        return Animation;
       }();
       /**
        * @license
@@ -89877,7 +88888,7 @@
           _classCallCheck(this, NoopAnimationStyleNormalizer);
         }
 
-        _createClass2(NoopAnimationStyleNormalizer, [{
+        return _createClass2(NoopAnimationStyleNormalizer, [{
           key: "normalizePropertyName",
           value: function normalizePropertyName(propertyName, errors) {
             return propertyName;
@@ -89888,8 +88899,6 @@
             return value;
           }
         }]);
-
-        return NoopAnimationStyleNormalizer;
       }();
       /**
        * @license
@@ -89901,17 +88910,15 @@
 
 
       var WebAnimationsStyleNormalizer = /*#__PURE__*/function (_AnimationStyleNormal) {
-        _inherits(WebAnimationsStyleNormalizer, _AnimationStyleNormal);
-
-        var _super150 = _createSuper(WebAnimationsStyleNormalizer);
-
         function WebAnimationsStyleNormalizer() {
           _classCallCheck(this, WebAnimationsStyleNormalizer);
 
-          return _super150.apply(this, arguments);
+          return _callSuper(this, WebAnimationsStyleNormalizer, arguments);
         }
 
-        _createClass2(WebAnimationsStyleNormalizer, [{
+        _inherits(WebAnimationsStyleNormalizer, _AnimationStyleNormal);
+
+        return _createClass2(WebAnimationsStyleNormalizer, [{
           key: "normalizePropertyName",
           value: function normalizePropertyName(propertyName, errors) {
             return dashCaseToCamelCase(propertyName);
@@ -89937,8 +88944,6 @@
             return strVal + unit;
           }
         }]);
-
-        return WebAnimationsStyleNormalizer;
       }(AnimationStyleNormalizer);
 
       var ɵ0$1 = function ɵ0$1() {
@@ -89987,7 +88992,7 @@
           this._stateStyles = _stateStyles;
         }
 
-        _createClass2(AnimationTransitionFactory, [{
+        return _createClass2(AnimationTransitionFactory, [{
           key: "match",
           value: function match(currentState, nextState, element, params) {
             return oneOrMoreTransitionsMatch(this.ast.matchers, currentState, nextState, element, params);
@@ -90045,8 +89050,6 @@
             return createTransitionInstruction(element, this._triggerName, currentState, nextState, isRemoval, currentStateStyles, nextStateStyles, timelines, queriedElementsList, preStyleMap, postStyleMap, totalTime);
           }
         }]);
-
-        return AnimationTransitionFactory;
       }();
 
       function oneOrMoreTransitionsMatch(matchFns, currentState, nextState, element, params) {
@@ -90063,7 +89066,7 @@
           this.defaultParams = defaultParams;
         }
 
-        _createClass2(AnimationStateStyles, [{
+        return _createClass2(AnimationStateStyles, [{
           key: "buildStyles",
           value: function buildStyles(params, errors) {
             var finalStyles = {};
@@ -90092,8 +89095,6 @@
             return finalStyles;
           }
         }]);
-
-        return AnimationStateStyles;
       }();
       /**
        * @publicApi
@@ -90130,7 +89131,7 @@
           this.fallbackTransition = createFallbackTransition(name, this.states);
         }
 
-        _createClass2(AnimationTrigger, [{
+        return _createClass2(AnimationTrigger, [{
           key: "containsQueries",
           get: function get() {
             return this.ast.queryCount > 0;
@@ -90149,8 +89150,6 @@
             return this.fallbackTransition.buildStyles(currentState, params, errors);
           }
         }]);
-
-        return AnimationTrigger;
       }();
 
       function createFallbackTransition(triggerName, states) {
@@ -90209,7 +89208,7 @@
           this.players = [];
         }
 
-        _createClass2(TimelineAnimationEngine, [{
+        return _createClass2(TimelineAnimationEngine, [{
           key: "register",
           value: function register(id, metadata) {
             var errors = [];
@@ -90356,8 +89355,6 @@
             }
           }
         }]);
-
-        return TimelineAnimationEngine;
       }();
       /**
        * @license
@@ -90415,7 +89412,7 @@
           }
         }
 
-        _createClass2(StateValue, [{
+        return _createClass2(StateValue, [{
           key: "params",
           get: function get() {
             return this.options.params;
@@ -90435,8 +89432,6 @@
             }
           }
         }]);
-
-        return StateValue;
       }();
 
       var VOID_VALUE = 'void';
@@ -90457,7 +89452,7 @@
           addClass(hostElement, this._hostClassName);
         }
 
-        _createClass2(AnimationTransitionNamespace, [{
+        return _createClass2(AnimationTransitionNamespace, [{
           key: "listen",
           value: function listen(element, name, phase, callback) {
             var _this217 = this;
@@ -90924,8 +89919,6 @@
             return containsData;
           }
         }]);
-
-        return AnimationTransitionNamespace;
       }();
 
       var TransitionAnimationEngine = /*#__PURE__*/function () {
@@ -90956,7 +89949,7 @@
         /** @internal */
 
 
-        _createClass2(TransitionAnimationEngine, [{
+        return _createClass2(TransitionAnimationEngine, [{
           key: "_onRemovalComplete",
           value: function _onRemovalComplete(element, context) {
             this.onRemovalComplete(element, context);
@@ -91995,8 +90988,6 @@
             return new _angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"](instruction.duration, instruction.delay);
           }
         }]);
-
-        return TransitionAnimationEngine;
       }();
 
       var TransitionAnimationPlayer = /*#__PURE__*/function () {
@@ -92016,7 +91007,7 @@
           this.totalTime = 0;
         }
 
-        _createClass2(TransitionAnimationPlayer, [{
+        return _createClass2(TransitionAnimationPlayer, [{
           key: "setRealPlayer",
           value: function setRealPlayer(player) {
             var _this233 = this;
@@ -92161,8 +91152,6 @@
             }
           }
         }]);
-
-        return TransitionAnimationPlayer;
       }();
 
       function deleteOrUnsetInMap(map, key, value) {
@@ -92414,7 +91403,7 @@
           };
         }
 
-        _createClass2(AnimationEngine, [{
+        return _createClass2(AnimationEngine, [{
           key: "registerTrigger",
           value: function registerTrigger(componentId, namespaceId, hostElement, name, metadata) {
             var cacheKey = componentId + '-' + name;
@@ -92508,8 +91497,6 @@
             return this._transitionEngine.whenRenderingDone();
           }
         }]);
-
-        return AnimationEngine;
       }();
       /**
        * @license
@@ -92577,7 +91564,7 @@
           this._initialStyles = initialStyles;
         }
 
-        _createClass2(SpecialCasedStyles, [{
+        return _createClass2(SpecialCasedStyles, [{
           key: "start",
           value: function start() {
             if (this._state < 1
@@ -92639,8 +91626,6 @@
             }
           }
         }]);
-
-        return SpecialCasedStyles;
       }();
 
       SpecialCasedStyles.initialStylesByElement = new WeakMap();
@@ -92701,7 +91686,7 @@
           };
         }
 
-        _createClass2(ElementAnimationStyleHandler, [{
+        return _createClass2(ElementAnimationStyleHandler, [{
           key: "apply",
           value: function apply() {
             applyKeyframeAnimation(this._element, "".concat(this._duration, "ms ").concat(this._easing, " ").concat(this._delay, "ms 1 normal ").concat(this._fillMode, " ").concat(this._name));
@@ -92759,8 +91744,6 @@
             removeKeyframeAnimation(this._element, this._name);
           }
         }]);
-
-        return ElementAnimationStyleHandler;
       }();
 
       function playPauseAnimation(element, name, status) {
@@ -92875,7 +91858,7 @@
           this._buildStyler();
         }
 
-        _createClass2(CssKeyframesPlayer, [{
+        return _createClass2(CssKeyframesPlayer, [{
           key: "onStart",
           value: function onStart(fn) {
             this._onStartFns.push(fn);
@@ -93073,8 +92056,6 @@
             this.currentSnapshot = styles;
           }
         }]);
-
-        return CssKeyframesPlayer;
       }();
       /**
        * @license
@@ -93086,16 +92067,12 @@
 
 
       var DirectStylePlayer = /*#__PURE__*/function (_angular_animations__3) {
-        _inherits(DirectStylePlayer, _angular_animations__3);
-
-        var _super151 = _createSuper(DirectStylePlayer);
-
         function DirectStylePlayer(element, styles) {
           var _this239;
 
           _classCallCheck(this, DirectStylePlayer);
 
-          _this239 = _super151.call(this);
+          _this239 = _callSuper(this, DirectStylePlayer);
           _this239.element = element;
           _this239._startingStyles = {};
           _this239.__initialized = false;
@@ -93103,7 +92080,9 @@
           return _this239;
         }
 
-        _createClass2(DirectStylePlayer, [{
+        _inherits(DirectStylePlayer, _angular_animations__3);
+
+        return _createClass2(DirectStylePlayer, [{
           key: "init",
           value: function init() {
             var _this240 = this;
@@ -93114,7 +92093,7 @@
               _this240._startingStyles[prop] = _this240.element.style[prop];
             });
 
-            _get(_getPrototypeOf(DirectStylePlayer.prototype), "init", this).call(this);
+            _superPropGet(DirectStylePlayer, "init", this, 3)([]);
           }
         }, {
           key: "play",
@@ -93127,7 +92106,7 @@
               return _this241.element.style.setProperty(prop, _this241._styles[prop]);
             });
 
-            _get(_getPrototypeOf(DirectStylePlayer.prototype), "play", this).call(this);
+            _superPropGet(DirectStylePlayer, "play", this, 3)([]);
           }
         }, {
           key: "destroy",
@@ -93146,11 +92125,9 @@
             });
             this._startingStyles = null;
 
-            _get(_getPrototypeOf(DirectStylePlayer.prototype), "destroy", this).call(this);
+            _superPropGet(DirectStylePlayer, "destroy", this, 3)([]);
           }
         }]);
-
-        return DirectStylePlayer;
       }(_angular_animations__WEBPACK_IMPORTED_MODULE_0__["NoopAnimationPlayer"]);
 
       var KEYFRAMES_NAME_PREFIX = 'gen_css_kf_';
@@ -93165,7 +92142,7 @@
           this._warningIssued = false;
         }
 
-        _createClass2(CssKeyframesDriver, [{
+        return _createClass2(CssKeyframesDriver, [{
           key: "validateStyleProperty",
           value: function validateStyleProperty(prop) {
             return _validateStyleProperty(prop);
@@ -93282,8 +92259,6 @@
             }
           }
         }]);
-
-        return CssKeyframesDriver;
       }();
 
       function flattenKeyframesIntoStyles(keyframes) {
@@ -93329,7 +92304,7 @@
           this.time = this._duration + this._delay;
         }
 
-        _createClass2(WebAnimationsPlayer, [{
+        return _createClass2(WebAnimationsPlayer, [{
           key: "_onFinish",
           value: function _onFinish() {
             if (!this._finished) {
@@ -93528,8 +92503,6 @@
             methods.length = 0;
           }
         }]);
-
-        return WebAnimationsPlayer;
       }();
 
       var WebAnimationsDriver = /*#__PURE__*/function () {
@@ -93540,7 +92513,7 @@
           this._cssKeyframesDriver = new CssKeyframesDriver();
         }
 
-        _createClass2(WebAnimationsDriver, [{
+        return _createClass2(WebAnimationsDriver, [{
           key: "validateStyleProperty",
           value: function validateStyleProperty(prop) {
             return _validateStyleProperty(prop);
@@ -93615,8 +92588,6 @@
             return new WebAnimationsPlayer(element, keyframes, playerOptions, specialStyles);
           }
         }]);
-
-        return WebAnimationsDriver;
       }();
 
       function supportsWebAnimations() {
@@ -93761,14 +92732,12 @@
           this.delay = delay;
         }
 
-        _createClass2(SubscribeOnOperator, [{
+        return _createClass2(SubscribeOnOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return new _observable_SubscribeOnObservable__WEBPACK_IMPORTED_MODULE_0__["SubscribeOnObservable"](source, this.delay, this.scheduler).subscribe(subscriber);
           }
         }]);
-
-        return SubscribeOnOperator;
       }(); //# sourceMappingURL=subscribeOn.js.map
 
       /***/
@@ -93784,7 +92753,7 @@
     /*! exports provided: HTTP_INTERCEPTORS, HttpBackend, HttpClient, HttpClientJsonpModule, HttpClientModule, HttpClientXsrfModule, HttpErrorResponse, HttpEventType, HttpHandler, HttpHeaderResponse, HttpHeaders, HttpParams, HttpRequest, HttpResponse, HttpResponseBase, HttpUrlEncodingCodec, HttpXhrBackend, HttpXsrfTokenExtractor, JsonpClientBackend, JsonpInterceptor, XhrFactory, ɵHttpInterceptingHandler, ɵangular_packages_common_http_http_a, ɵangular_packages_common_http_http_b, ɵangular_packages_common_http_http_c, ɵangular_packages_common_http_http_d, ɵangular_packages_common_http_http_e, ɵangular_packages_common_http_http_f, ɵangular_packages_common_http_http_g, ɵangular_packages_common_http_http_h */
 
     /***/
-    function tk3(module, __webpack_exports__, __webpack_require__) {
+    function tk_3(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -94125,7 +93094,7 @@
          */
 
 
-        _createClass2(HttpHeaders, [{
+        return _createClass2(HttpHeaders, [{
           key: "has",
           value: function has(name) {
             this.init();
@@ -94345,8 +93314,6 @@
             });
           }
         }]);
-
-        return HttpHeaders;
       }();
       /**
        * @license
@@ -94373,7 +93340,7 @@
           _classCallCheck(this, HttpUrlEncodingCodec);
         }
 
-        _createClass2(HttpUrlEncodingCodec, [{
+        return _createClass2(HttpUrlEncodingCodec, [{
           key: "encodeKey",
           value:
           /**
@@ -94418,8 +93385,6 @@
             return decodeURIComponent(value);
           }
         }]);
-
-        return HttpUrlEncodingCodec;
       }();
 
       function paramParser(rawParams, codec) {
@@ -94494,7 +93459,7 @@
          */
 
 
-        _createClass2(HttpParams, [{
+        return _createClass2(HttpParams, [{
           key: "has",
           value: function has(param) {
             this.init();
@@ -94675,8 +93640,6 @@
             }
           }
         }]);
-
-        return HttpParams;
       }();
       /**
        * @license
@@ -94853,7 +93816,7 @@
          */
 
 
-        _createClass2(HttpRequest, [{
+        return _createClass2(HttpRequest, [{
           key: "serializeBody",
           value: function serializeBody() {
             // If no body is present, no need to serialize it.
@@ -94978,8 +93941,6 @@
             });
           }
         }]);
-
-        return HttpRequest;
       }();
       /**
        * @license
@@ -95070,10 +94031,6 @@
 
 
       var HttpHeaderResponse = /*#__PURE__*/function (_HttpResponseBase) {
-        _inherits(HttpHeaderResponse, _HttpResponseBase);
-
-        var _super152 = _createSuper(HttpHeaderResponse);
-
         /**
          * Create a new `HttpHeaderResponse` with the given parameters.
          */
@@ -95084,7 +94041,7 @@
 
           _classCallCheck(this, HttpHeaderResponse);
 
-          _this252 = _super152.call(this, init);
+          _this252 = _callSuper(this, HttpHeaderResponse, [init]);
           _this252.type = HttpEventType.ResponseHeader;
           return _this252;
         }
@@ -95094,7 +94051,9 @@
          */
 
 
-        _createClass2(HttpHeaderResponse, [{
+        _inherits(HttpHeaderResponse, _HttpResponseBase);
+
+        return _createClass2(HttpHeaderResponse, [{
           key: "clone",
           value: function clone() {
             var update = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -95108,8 +94067,6 @@
             });
           }
         }]);
-
-        return HttpHeaderResponse;
       }(HttpResponseBase);
       /**
        * A full HTTP response, including a typed response body (which may be `null`
@@ -95123,10 +94080,6 @@
 
 
       var HttpResponse = /*#__PURE__*/function (_HttpResponseBase2) {
-        _inherits(HttpResponse, _HttpResponseBase2);
-
-        var _super153 = _createSuper(HttpResponse);
-
         /**
          * Construct a new `HttpResponse`.
          */
@@ -95137,13 +94090,15 @@
 
           _classCallCheck(this, HttpResponse);
 
-          _this253 = _super153.call(this, init);
+          _this253 = _callSuper(this, HttpResponse, [init]);
           _this253.type = HttpEventType.Response;
           _this253.body = init.body !== undefined ? init.body : null;
           return _this253;
         }
 
-        _createClass2(HttpResponse, [{
+        _inherits(HttpResponse, _HttpResponseBase2);
+
+        return _createClass2(HttpResponse, [{
           key: "clone",
           value: function clone() {
             var update = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -95156,8 +94111,6 @@
             });
           }
         }]);
-
-        return HttpResponse;
       }(HttpResponseBase);
       /**
        * A response that represents an error or failure, either from a
@@ -95175,17 +94128,13 @@
 
 
       var HttpErrorResponse = /*#__PURE__*/function (_HttpResponseBase3) {
-        _inherits(HttpErrorResponse, _HttpResponseBase3);
-
-        var _super154 = _createSuper(HttpErrorResponse);
-
         function HttpErrorResponse(init) {
           var _this254;
 
           _classCallCheck(this, HttpErrorResponse);
 
           // Initialize with a default status of 0 / Unknown Error.
-          _this254 = _super154.call(this, init, 0, 'Unknown Error');
+          _this254 = _callSuper(this, HttpErrorResponse, [init, 0, 'Unknown Error']);
           _this254.name = 'HttpErrorResponse';
           /**
            * Errors are never okay, even when the status code is in the 2xx success range.
@@ -95204,6 +94153,8 @@
           _this254.error = init.error || null;
           return _this254;
         }
+
+        _inherits(HttpErrorResponse, _HttpResponseBase3);
 
         return _createClass2(HttpErrorResponse);
       }(HttpResponseBase);
@@ -95320,7 +94271,7 @@
          */
 
 
-        _createClass2(HttpClient, [{
+        return _createClass2(HttpClient, [{
           key: "request",
           value: function request(first, url) {
             var _this255 = this;
@@ -95569,8 +94520,6 @@
             return this.request('PUT', url, addBody(options, body));
           }
         }]);
-
-        return HttpClient;
       }();
 
       HttpClient.ɵfac = function HttpClient_Factory(t) {
@@ -95622,14 +94571,12 @@
           this.interceptor = interceptor;
         }
 
-        _createClass2(HttpInterceptorHandler, [{
+        return _createClass2(HttpInterceptorHandler, [{
           key: "handle",
           value: function handle(req) {
             return this.interceptor.intercept(req, this.next);
           }
         }]);
-
-        return HttpInterceptorHandler;
       }();
       /**
        * A multi-provider token that represents the array of registered
@@ -95646,14 +94593,12 @@
           _classCallCheck(this, NoopInterceptor);
         }
 
-        _createClass2(NoopInterceptor, [{
+        return _createClass2(NoopInterceptor, [{
           key: "intercept",
           value: function intercept(req, next) {
             return next.handle(req);
           }
         }]);
-
-        return NoopInterceptor;
       }();
 
       NoopInterceptor.ɵfac = function NoopInterceptor_Factory(t) {
@@ -95725,7 +94670,7 @@
          */
 
 
-        _createClass2(JsonpClientBackend, [{
+        return _createClass2(JsonpClientBackend, [{
           key: "nextCallback",
           value: function nextCallback() {
             return "ng_jsonp_callback_".concat(nextRequestId++);
@@ -95881,8 +94826,6 @@
             });
           }
         }]);
-
-        return JsonpClientBackend;
       }();
 
       JsonpClientBackend.ɵfac = function JsonpClientBackend_Factory(t) {
@@ -95948,7 +94891,7 @@
          */
 
 
-        _createClass2(JsonpInterceptor, [{
+        return _createClass2(JsonpInterceptor, [{
           key: "intercept",
           value: function intercept(req, next) {
             if (req.method === 'JSONP') {
@@ -95959,8 +94902,6 @@
             return next.handle(req);
           }
         }]);
-
-        return JsonpInterceptor;
       }();
 
       JsonpInterceptor.ɵfac = function JsonpInterceptor_Factory(t) {
@@ -96036,14 +94977,12 @@
           _classCallCheck(this, BrowserXhr);
         }
 
-        _createClass2(BrowserXhr, [{
+        return _createClass2(BrowserXhr, [{
           key: "build",
           value: function build() {
             return new XMLHttpRequest();
           }
         }]);
-
-        return BrowserXhr;
       }();
 
       BrowserXhr.ɵfac = function BrowserXhr_Factory(t) {
@@ -96090,7 +95029,7 @@
          */
 
 
-        _createClass2(HttpXhrBackend, [{
+        return _createClass2(HttpXhrBackend, [{
           key: "handle",
           value: function handle(req) {
             var _this257 = this;
@@ -96370,8 +95309,6 @@
             });
           }
         }]);
-
-        return HttpXhrBackend;
       }();
 
       HttpXhrBackend.ɵfac = function HttpXhrBackend_Factory(t) {
@@ -96441,7 +95378,7 @@
           this.parseCount = 0;
         }
 
-        _createClass2(HttpXsrfCookieExtractor, [{
+        return _createClass2(HttpXsrfCookieExtractor, [{
           key: "getToken",
           value: function getToken() {
             if (this.platform === 'server') {
@@ -96459,8 +95396,6 @@
             return this.lastToken;
           }
         }]);
-
-        return HttpXsrfCookieExtractor;
       }();
 
       HttpXsrfCookieExtractor.ɵfac = function HttpXsrfCookieExtractor_Factory(t) {
@@ -96534,7 +95469,7 @@
           this.headerName = headerName;
         }
 
-        _createClass2(HttpXsrfInterceptor, [{
+        return _createClass2(HttpXsrfInterceptor, [{
           key: "intercept",
           value: function intercept(req, next) {
             var lcUrl = req.url.toLowerCase(); // Skip both non-mutating requests and absolute URLs.
@@ -96557,8 +95492,6 @@
             return next.handle(req);
           }
         }]);
-
-        return HttpXsrfInterceptor;
       }();
 
       HttpXsrfInterceptor.ɵfac = function HttpXsrfInterceptor_Factory(t) {
@@ -96627,7 +95560,7 @@
           this.chain = null;
         }
 
-        _createClass2(HttpInterceptingHandler, [{
+        return _createClass2(HttpInterceptingHandler, [{
           key: "handle",
           value: function handle(req) {
             if (this.chain === null) {
@@ -96640,8 +95573,6 @@
             return this.chain.handle(req);
           }
         }]);
-
-        return HttpInterceptingHandler;
       }();
 
       HttpInterceptingHandler.ɵfac = function HttpInterceptingHandler_Factory(t) {
@@ -96731,7 +95662,7 @@
           _classCallCheck(this, HttpClientXsrfModule);
         }
 
-        _createClass2(HttpClientXsrfModule, null, [{
+        return _createClass2(HttpClientXsrfModule, null, [{
           key: "disable",
           value:
           /**
@@ -96771,8 +95702,6 @@
             };
           }
         }]);
-
-        return HttpClientXsrfModule;
       }();
 
       HttpClientXsrfModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({
@@ -97009,33 +95938,29 @@
           this.durationSelector = durationSelector;
         }
 
-        _createClass2(AuditOperator, [{
+        return _createClass2(AuditOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new AuditSubscriber(subscriber, this.durationSelector));
           }
         }]);
-
-        return AuditOperator;
       }();
 
       var AuditSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP18) {
-        _inherits(AuditSubscriber, _innerSubscribe__WEBP18);
-
-        var _super155 = _createSuper(AuditSubscriber);
-
         function AuditSubscriber(destination, durationSelector) {
           var _this258;
 
           _classCallCheck(this, AuditSubscriber);
 
-          _this258 = _super155.call(this, destination);
+          _this258 = _callSuper(this, AuditSubscriber, [destination]);
           _this258.durationSelector = durationSelector;
           _this258.hasValue = false;
           return _this258;
         }
 
-        _createClass2(AuditSubscriber, [{
+        _inherits(AuditSubscriber, _innerSubscribe__WEBP18);
+
+        return _createClass2(AuditSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.value = value;
@@ -97090,8 +96015,6 @@
             this.clearThrottle();
           }
         }]);
-
-        return AuditSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=audit.js.map
 
       /***/
@@ -97587,10 +96510,6 @@
 
 
       var NavigationStart = /*#__PURE__*/function (_RouterEvent) {
-        _inherits(NavigationStart, _RouterEvent);
-
-        var _super156 = _createSuper(NavigationStart);
-
         function NavigationStart(
         /** @docsNotRequired */
         id,
@@ -97603,7 +96522,7 @@
 
           _classCallCheck(this, NavigationStart);
 
-          _this259 = _super156.call(this, id, url);
+          _this259 = _callSuper(this, NavigationStart, [id, url]);
           _this259.navigationTrigger = navigationTrigger;
           _this259.restoredState = restoredState;
           return _this259;
@@ -97611,14 +96530,14 @@
         /** @docsNotRequired */
 
 
-        _createClass2(NavigationStart, [{
+        _inherits(NavigationStart, _RouterEvent);
+
+        return _createClass2(NavigationStart, [{
           key: "toString",
           value: function toString() {
             return "NavigationStart(id: ".concat(this.id, ", url: '").concat(this.url, "')");
           }
         }]);
-
-        return NavigationStart;
       }(RouterEvent);
       /**
        * An event triggered when a navigation ends successfully.
@@ -97632,10 +96551,6 @@
 
 
       var NavigationEnd = /*#__PURE__*/function (_RouterEvent2) {
-        _inherits(NavigationEnd, _RouterEvent2);
-
-        var _super157 = _createSuper(NavigationEnd);
-
         function NavigationEnd(
         /** @docsNotRequired */
         id,
@@ -97647,21 +96562,21 @@
 
           _classCallCheck(this, NavigationEnd);
 
-          _this260 = _super157.call(this, id, url);
+          _this260 = _callSuper(this, NavigationEnd, [id, url]);
           _this260.urlAfterRedirects = urlAfterRedirects;
           return _this260;
         }
         /** @docsNotRequired */
 
 
-        _createClass2(NavigationEnd, [{
+        _inherits(NavigationEnd, _RouterEvent2);
+
+        return _createClass2(NavigationEnd, [{
           key: "toString",
           value: function toString() {
             return "NavigationEnd(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "')");
           }
         }]);
-
-        return NavigationEnd;
       }(RouterEvent);
       /**
        * An event triggered when a navigation is canceled, directly or indirectly.
@@ -97677,10 +96592,6 @@
 
 
       var NavigationCancel = /*#__PURE__*/function (_RouterEvent3) {
-        _inherits(NavigationCancel, _RouterEvent3);
-
-        var _super158 = _createSuper(NavigationCancel);
-
         function NavigationCancel(
         /** @docsNotRequired */
         id,
@@ -97692,21 +96603,21 @@
 
           _classCallCheck(this, NavigationCancel);
 
-          _this261 = _super158.call(this, id, url);
+          _this261 = _callSuper(this, NavigationCancel, [id, url]);
           _this261.reason = reason;
           return _this261;
         }
         /** @docsNotRequired */
 
 
-        _createClass2(NavigationCancel, [{
+        _inherits(NavigationCancel, _RouterEvent3);
+
+        return _createClass2(NavigationCancel, [{
           key: "toString",
           value: function toString() {
             return "NavigationCancel(id: ".concat(this.id, ", url: '").concat(this.url, "')");
           }
         }]);
-
-        return NavigationCancel;
       }(RouterEvent);
       /**
        * An event triggered when a navigation fails due to an unexpected error.
@@ -97720,10 +96631,6 @@
 
 
       var NavigationError = /*#__PURE__*/function (_RouterEvent4) {
-        _inherits(NavigationError, _RouterEvent4);
-
-        var _super159 = _createSuper(NavigationError);
-
         function NavigationError(
         /** @docsNotRequired */
         id,
@@ -97735,21 +96642,21 @@
 
           _classCallCheck(this, NavigationError);
 
-          _this262 = _super159.call(this, id, url);
+          _this262 = _callSuper(this, NavigationError, [id, url]);
           _this262.error = error;
           return _this262;
         }
         /** @docsNotRequired */
 
 
-        _createClass2(NavigationError, [{
+        _inherits(NavigationError, _RouterEvent4);
+
+        return _createClass2(NavigationError, [{
           key: "toString",
           value: function toString() {
             return "NavigationError(id: ".concat(this.id, ", url: '").concat(this.url, "', error: ").concat(this.error, ")");
           }
         }]);
-
-        return NavigationError;
       }(RouterEvent);
       /**
        * An event triggered when routes are recognized.
@@ -97759,10 +96666,6 @@
 
 
       var RoutesRecognized = /*#__PURE__*/function (_RouterEvent5) {
-        _inherits(RoutesRecognized, _RouterEvent5);
-
-        var _super160 = _createSuper(RoutesRecognized);
-
         function RoutesRecognized(
         /** @docsNotRequired */
         id,
@@ -97776,7 +96679,7 @@
 
           _classCallCheck(this, RoutesRecognized);
 
-          _this263 = _super160.call(this, id, url);
+          _this263 = _callSuper(this, RoutesRecognized, [id, url]);
           _this263.urlAfterRedirects = urlAfterRedirects;
           _this263.state = state;
           return _this263;
@@ -97784,14 +96687,14 @@
         /** @docsNotRequired */
 
 
-        _createClass2(RoutesRecognized, [{
+        _inherits(RoutesRecognized, _RouterEvent5);
+
+        return _createClass2(RoutesRecognized, [{
           key: "toString",
           value: function toString() {
             return "RoutesRecognized(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "', state: ").concat(this.state, ")");
           }
         }]);
-
-        return RoutesRecognized;
       }(RouterEvent);
       /**
        * An event triggered at the start of the Guard phase of routing.
@@ -97803,10 +96706,6 @@
 
 
       var GuardsCheckStart = /*#__PURE__*/function (_RouterEvent6) {
-        _inherits(GuardsCheckStart, _RouterEvent6);
-
-        var _super161 = _createSuper(GuardsCheckStart);
-
         function GuardsCheckStart(
         /** @docsNotRequired */
         id,
@@ -97820,20 +96719,20 @@
 
           _classCallCheck(this, GuardsCheckStart);
 
-          _this264 = _super161.call(this, id, url);
+          _this264 = _callSuper(this, GuardsCheckStart, [id, url]);
           _this264.urlAfterRedirects = urlAfterRedirects;
           _this264.state = state;
           return _this264;
         }
 
-        _createClass2(GuardsCheckStart, [{
+        _inherits(GuardsCheckStart, _RouterEvent6);
+
+        return _createClass2(GuardsCheckStart, [{
           key: "toString",
           value: function toString() {
             return "GuardsCheckStart(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "', state: ").concat(this.state, ")");
           }
         }]);
-
-        return GuardsCheckStart;
       }(RouterEvent);
       /**
        * An event triggered at the end of the Guard phase of routing.
@@ -97845,10 +96744,6 @@
 
 
       var GuardsCheckEnd = /*#__PURE__*/function (_RouterEvent7) {
-        _inherits(GuardsCheckEnd, _RouterEvent7);
-
-        var _super162 = _createSuper(GuardsCheckEnd);
-
         function GuardsCheckEnd(
         /** @docsNotRequired */
         id,
@@ -97864,21 +96759,21 @@
 
           _classCallCheck(this, GuardsCheckEnd);
 
-          _this265 = _super162.call(this, id, url);
+          _this265 = _callSuper(this, GuardsCheckEnd, [id, url]);
           _this265.urlAfterRedirects = urlAfterRedirects;
           _this265.state = state;
           _this265.shouldActivate = shouldActivate;
           return _this265;
         }
 
-        _createClass2(GuardsCheckEnd, [{
+        _inherits(GuardsCheckEnd, _RouterEvent7);
+
+        return _createClass2(GuardsCheckEnd, [{
           key: "toString",
           value: function toString() {
             return "GuardsCheckEnd(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "', state: ").concat(this.state, ", shouldActivate: ").concat(this.shouldActivate, ")");
           }
         }]);
-
-        return GuardsCheckEnd;
       }(RouterEvent);
       /**
        * An event triggered at the the start of the Resolve phase of routing.
@@ -97893,10 +96788,6 @@
 
 
       var ResolveStart = /*#__PURE__*/function (_RouterEvent8) {
-        _inherits(ResolveStart, _RouterEvent8);
-
-        var _super163 = _createSuper(ResolveStart);
-
         function ResolveStart(
         /** @docsNotRequired */
         id,
@@ -97910,20 +96801,20 @@
 
           _classCallCheck(this, ResolveStart);
 
-          _this266 = _super163.call(this, id, url);
+          _this266 = _callSuper(this, ResolveStart, [id, url]);
           _this266.urlAfterRedirects = urlAfterRedirects;
           _this266.state = state;
           return _this266;
         }
 
-        _createClass2(ResolveStart, [{
+        _inherits(ResolveStart, _RouterEvent8);
+
+        return _createClass2(ResolveStart, [{
           key: "toString",
           value: function toString() {
             return "ResolveStart(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "', state: ").concat(this.state, ")");
           }
         }]);
-
-        return ResolveStart;
       }(RouterEvent);
       /**
        * An event triggered at the end of the Resolve phase of routing.
@@ -97934,10 +96825,6 @@
 
 
       var ResolveEnd = /*#__PURE__*/function (_RouterEvent9) {
-        _inherits(ResolveEnd, _RouterEvent9);
-
-        var _super164 = _createSuper(ResolveEnd);
-
         function ResolveEnd(
         /** @docsNotRequired */
         id,
@@ -97951,20 +96838,20 @@
 
           _classCallCheck(this, ResolveEnd);
 
-          _this267 = _super164.call(this, id, url);
+          _this267 = _callSuper(this, ResolveEnd, [id, url]);
           _this267.urlAfterRedirects = urlAfterRedirects;
           _this267.state = state;
           return _this267;
         }
 
-        _createClass2(ResolveEnd, [{
+        _inherits(ResolveEnd, _RouterEvent9);
+
+        return _createClass2(ResolveEnd, [{
           key: "toString",
           value: function toString() {
             return "ResolveEnd(id: ".concat(this.id, ", url: '").concat(this.url, "', urlAfterRedirects: '").concat(this.urlAfterRedirects, "', state: ").concat(this.state, ")");
           }
         }]);
-
-        return ResolveEnd;
       }(RouterEvent);
       /**
        * An event triggered before lazy loading a route configuration.
@@ -97984,14 +96871,12 @@
           this.route = route;
         }
 
-        _createClass2(RouteConfigLoadStart, [{
+        return _createClass2(RouteConfigLoadStart, [{
           key: "toString",
           value: function toString() {
             return "RouteConfigLoadStart(path: ".concat(this.route.path, ")");
           }
         }]);
-
-        return RouteConfigLoadStart;
       }();
       /**
        * An event triggered when a route has been lazy loaded.
@@ -98011,14 +96896,12 @@
           this.route = route;
         }
 
-        _createClass2(RouteConfigLoadEnd, [{
+        return _createClass2(RouteConfigLoadEnd, [{
           key: "toString",
           value: function toString() {
             return "RouteConfigLoadEnd(path: ".concat(this.route.path, ")");
           }
         }]);
-
-        return RouteConfigLoadEnd;
       }();
       /**
        * An event triggered at the start of the child-activation
@@ -98039,15 +96922,13 @@
           this.snapshot = snapshot;
         }
 
-        _createClass2(ChildActivationStart, [{
+        return _createClass2(ChildActivationStart, [{
           key: "toString",
           value: function toString() {
             var path = this.snapshot.routeConfig && this.snapshot.routeConfig.path || '';
             return "ChildActivationStart(path: '".concat(path, "')");
           }
         }]);
-
-        return ChildActivationStart;
       }();
       /**
        * An event triggered at the end of the child-activation part
@@ -98067,15 +96948,13 @@
           this.snapshot = snapshot;
         }
 
-        _createClass2(ChildActivationEnd, [{
+        return _createClass2(ChildActivationEnd, [{
           key: "toString",
           value: function toString() {
             var path = this.snapshot.routeConfig && this.snapshot.routeConfig.path || '';
             return "ChildActivationEnd(path: '".concat(path, "')");
           }
         }]);
-
-        return ChildActivationEnd;
       }();
       /**
        * An event triggered at the start of the activation part
@@ -98096,15 +96975,13 @@
           this.snapshot = snapshot;
         }
 
-        _createClass2(ActivationStart, [{
+        return _createClass2(ActivationStart, [{
           key: "toString",
           value: function toString() {
             var path = this.snapshot.routeConfig && this.snapshot.routeConfig.path || '';
             return "ActivationStart(path: '".concat(path, "')");
           }
         }]);
-
-        return ActivationStart;
       }();
       /**
        * An event triggered at the end of the activation part
@@ -98125,15 +97002,13 @@
           this.snapshot = snapshot;
         }
 
-        _createClass2(ActivationEnd, [{
+        return _createClass2(ActivationEnd, [{
           key: "toString",
           value: function toString() {
             var path = this.snapshot.routeConfig && this.snapshot.routeConfig.path || '';
             return "ActivationEnd(path: '".concat(path, "')");
           }
         }]);
-
-        return ActivationEnd;
       }();
       /**
        * An event triggered by scrolling.
@@ -98157,15 +97032,13 @@
           this.anchor = anchor;
         }
 
-        _createClass2(Scroll, [{
+        return _createClass2(Scroll, [{
           key: "toString",
           value: function toString() {
             var pos = this.position ? "".concat(this.position[0], ", ").concat(this.position[1]) : null;
             return "Scroll(anchor: '".concat(this.anchor, "', position: '").concat(pos, "')");
           }
         }]);
-
-        return Scroll;
       }();
       /**
        * @license
@@ -98191,7 +97064,7 @@
           this.params = params || {};
         }
 
-        _createClass2(ParamsAsMap, [{
+        return _createClass2(ParamsAsMap, [{
           key: "has",
           value: function has(name) {
             return Object.prototype.hasOwnProperty.call(this.params, name);
@@ -98222,8 +97095,6 @@
             return Object.keys(this.params);
           }
         }]);
-
-        return ParamsAsMap;
       }();
       /**
        * Converts a `Params` instance to a `ParamMap`.
@@ -98543,7 +97414,7 @@
           this.fragment = fragment;
         }
 
-        _createClass2(UrlTree, [{
+        return _createClass2(UrlTree, [{
           key: "queryParamMap",
           get: function get() {
             if (!this._queryParamMap) {
@@ -98560,8 +97431,6 @@
             return DEFAULT_SERIALIZER.serialize(this);
           }
         }]);
-
-        return UrlTree;
       }();
       /**
        * @description
@@ -98596,7 +97465,7 @@
         /** Whether the segment has child segments */
 
 
-        _createClass2(UrlSegmentGroup, [{
+        return _createClass2(UrlSegmentGroup, [{
           key: "hasChildren",
           value: function hasChildren() {
             return this.numberOfChildren > 0;
@@ -98616,8 +97485,6 @@
             return serializePaths(this);
           }
         }]);
-
-        return UrlSegmentGroup;
       }();
       /**
        * @description
@@ -98659,7 +97526,7 @@
           this.parameters = parameters;
         }
 
-        _createClass2(UrlSegment, [{
+        return _createClass2(UrlSegment, [{
           key: "parameterMap",
           get: function get() {
             if (!this._parameterMap) {
@@ -98676,8 +97543,6 @@
             return serializePath(this);
           }
         }]);
-
-        return UrlSegment;
       }();
 
       function equalSegments(as, bs) {
@@ -98749,7 +97614,7 @@
           _classCallCheck(this, DefaultUrlSerializer);
         }
 
-        _createClass2(DefaultUrlSerializer, [{
+        return _createClass2(DefaultUrlSerializer, [{
           key: "parse",
           value:
           /** Parses a url into a `UrlTree` */
@@ -98768,8 +97633,6 @@
             return "".concat(segment).concat(query).concat(fragment);
           }
         }]);
-
-        return DefaultUrlSerializer;
       }();
 
       var DEFAULT_SERIALIZER = new DefaultUrlSerializer();
@@ -98916,7 +97779,7 @@
           this.remaining = url;
         }
 
-        _createClass2(UrlParser, [{
+        return _createClass2(UrlParser, [{
           key: "parseRootSegment",
           value: function parseRootSegment() {
             this.consumeOptional('/');
@@ -99129,8 +97992,6 @@
             }
           }
         }]);
-
-        return UrlParser;
       }();
       /**
        * @license
@@ -99148,7 +98009,7 @@
           this._root = root;
         }
 
-        _createClass2(Tree, [{
+        return _createClass2(Tree, [{
           key: "root",
           get: function get() {
             return this._root.value;
@@ -99213,8 +98074,6 @@
             });
           }
         }]);
-
-        return Tree;
       }(); // DFS for the node matching the value
 
 
@@ -99275,14 +98134,12 @@
           this.children = children;
         }
 
-        _createClass2(TreeNode, [{
+        return _createClass2(TreeNode, [{
           key: "toString",
           value: function toString() {
             return "TreeNode(".concat(this.value, ")");
           }
         }]);
-
-        return TreeNode;
       }(); // Return the list of T indexed by outlet name
 
 
@@ -99339,10 +98196,6 @@
 
 
       var RouterState = /*#__PURE__*/function (_Tree) {
-        _inherits(RouterState, _Tree);
-
-        var _super165 = _createSuper(RouterState);
-
         /** @internal */
         function RouterState(root,
         /** The current snapshot of the router state */
@@ -99351,20 +98204,20 @@
 
           _classCallCheck(this, RouterState);
 
-          _this269 = _super165.call(this, root);
+          _this269 = _callSuper(this, RouterState, [root]);
           _this269.snapshot = snapshot;
-          setRouterState(_assertThisInitialized(_this269), root);
+          setRouterState(_this269, root);
           return _this269;
         }
 
-        _createClass2(RouterState, [{
+        _inherits(RouterState, _Tree);
+
+        return _createClass2(RouterState, [{
           key: "toString",
           value: function toString() {
             return this.snapshot.toString();
           }
         }]);
-
-        return RouterState;
       }(Tree);
 
       function createEmptyState(urlTree, rootComponent) {
@@ -99436,7 +98289,7 @@
         /** The configuration used to match this route. */
 
 
-        _createClass2(ActivatedRoute, [{
+        return _createClass2(ActivatedRoute, [{
           key: "routeConfig",
           get: function get() {
             return this._futureSnapshot.routeConfig;
@@ -99515,8 +98368,6 @@
             return this.snapshot ? this.snapshot.toString() : "Future(".concat(this._futureSnapshot, ")");
           }
         }]);
-
-        return ActivatedRoute;
       }();
       /**
        * Returns the inherited params, data, and resolve for a given route.
@@ -99627,7 +98478,7 @@
         /** The root of the router state */
 
 
-        _createClass2(ActivatedRouteSnapshot, [{
+        return _createClass2(ActivatedRouteSnapshot, [{
           key: "root",
           get: function get() {
             return this._routerState.root;
@@ -99688,8 +98539,6 @@
             return "Route(url:'".concat(url, "', path:'").concat(matched, "')");
           }
         }]);
-
-        return ActivatedRouteSnapshot;
       }();
       /**
        * @description
@@ -99721,10 +98570,6 @@
 
 
       var RouterStateSnapshot = /*#__PURE__*/function (_Tree2) {
-        _inherits(RouterStateSnapshot, _Tree2);
-
-        var _super166 = _createSuper(RouterStateSnapshot);
-
         /** @internal */
         function RouterStateSnapshot(
         /** The url from which this snapshot was created */
@@ -99733,20 +98578,20 @@
 
           _classCallCheck(this, RouterStateSnapshot);
 
-          _this270 = _super166.call(this, root);
+          _this270 = _callSuper(this, RouterStateSnapshot, [root]);
           _this270.url = url;
-          setRouterState(_assertThisInitialized(_this270), root);
+          setRouterState(_this270, root);
           return _this270;
         }
 
-        _createClass2(RouterStateSnapshot, [{
+        _inherits(RouterStateSnapshot, _Tree2);
+
+        return _createClass2(RouterStateSnapshot, [{
           key: "toString",
           value: function toString() {
             return serializeNode(this._root);
           }
         }]);
-
-        return RouterStateSnapshot;
       }(Tree);
 
       function setRouterState(state, node) {
@@ -99973,14 +98818,12 @@
           }
         }
 
-        _createClass2(Navigation, [{
+        return _createClass2(Navigation, [{
           key: "toRoot",
           value: function toRoot() {
             return this.isAbsolute && this.commands.length === 1 && this.commands[0] == '/';
           }
         }]);
-
-        return Navigation;
       }();
       /** Transforms commands to a normalized `Navigation` */
 
@@ -100259,7 +99102,7 @@
           this.forwardEvent = forwardEvent;
         }
 
-        _createClass2(ActivateRoutes, [{
+        return _createClass2(ActivateRoutes, [{
           key: "activate",
           value: function activate(parentContexts) {
             var futureRoot = this.futureState._root;
@@ -100435,8 +99278,6 @@
             }
           }
         }]);
-
-        return ActivateRoutes;
       }();
 
       function advanceActivatedRouteNodeAndItsChildren(node) {
@@ -100630,7 +99471,7 @@
           this.ngModule = moduleInjector.get(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModuleRef"]);
         }
 
-        _createClass2(ApplyRedirects, [{
+        return _createClass2(ApplyRedirects, [{
           key: "apply",
           value: function apply() {
             var _this274 = this;
@@ -101017,8 +99858,6 @@
             return redirectToUrlSegment;
           }
         }]);
-
-        return ApplyRedirects;
       }();
 
       function match(segmentGroup, route, segments) {
@@ -101070,10 +99909,10 @@
         }
 
         if (slicedSegments.length === 0 && containsEmptyPathRedirects(segmentGroup, slicedSegments, config)) {
-          var _s2 = new UrlSegmentGroup(segmentGroup.segments, addEmptySegmentsToChildrenIfNeeded(segmentGroup, slicedSegments, config, segmentGroup.children));
+          var _s = new UrlSegmentGroup(segmentGroup.segments, addEmptySegmentsToChildrenIfNeeded(segmentGroup, slicedSegments, config, segmentGroup.children));
 
           return {
-            segmentGroup: mergeTrivialChildren(_s2),
+            segmentGroup: mergeTrivialChildren(_s),
             slicedSegments: slicedSegments
           };
         }
@@ -101536,7 +100375,7 @@
           this.relativeLinkResolution = relativeLinkResolution;
         }
 
-        _createClass2(Recognizer, [{
+        return _createClass2(Recognizer, [{
           key: "recognize",
           value: function recognize() {
             try {
@@ -101659,8 +100498,6 @@
             return [new TreeNode(snapshot, children)];
           }
         }]);
-
-        return Recognizer;
       }();
 
       function sortActivatedRouteSnapshots(nodes) {
@@ -101754,23 +100591,23 @@
 
       function split$1(segmentGroup, consumedSegments, slicedSegments, config, relativeLinkResolution) {
         if (slicedSegments.length > 0 && containsEmptyPathMatchesWithNamedOutlets(segmentGroup, slicedSegments, config)) {
-          var _s3 = new UrlSegmentGroup(consumedSegments, createChildrenForEmptyPaths(segmentGroup, consumedSegments, config, new UrlSegmentGroup(slicedSegments, segmentGroup.children)));
+          var _s2 = new UrlSegmentGroup(consumedSegments, createChildrenForEmptyPaths(segmentGroup, consumedSegments, config, new UrlSegmentGroup(slicedSegments, segmentGroup.children)));
 
-          _s3._sourceSegment = segmentGroup;
-          _s3._segmentIndexShift = consumedSegments.length;
+          _s2._sourceSegment = segmentGroup;
+          _s2._segmentIndexShift = consumedSegments.length;
           return {
-            segmentGroup: _s3,
+            segmentGroup: _s2,
             slicedSegments: []
           };
         }
 
         if (slicedSegments.length === 0 && containsEmptyPathMatches(segmentGroup, slicedSegments, config)) {
-          var _s4 = new UrlSegmentGroup(segmentGroup.segments, addEmptyPathsToChildrenIfNeeded(segmentGroup, consumedSegments, slicedSegments, config, segmentGroup.children, relativeLinkResolution));
+          var _s3 = new UrlSegmentGroup(segmentGroup.segments, addEmptyPathsToChildrenIfNeeded(segmentGroup, consumedSegments, slicedSegments, config, segmentGroup.children, relativeLinkResolution));
 
-          _s4._sourceSegment = segmentGroup;
-          _s4._segmentIndexShift = consumedSegments.length;
+          _s3._sourceSegment = segmentGroup;
+          _s3._segmentIndexShift = consumedSegments.length;
           return {
-            segmentGroup: _s4,
+            segmentGroup: _s3,
             slicedSegments: slicedSegments
           };
         }
@@ -102038,7 +100875,7 @@
           _classCallCheck(this, BaseRouteReuseStrategy);
         }
 
-        _createClass2(BaseRouteReuseStrategy, [{
+        return _createClass2(BaseRouteReuseStrategy, [{
           key: "shouldDetach",
           value:
           /**
@@ -102081,20 +100918,16 @@
             return future.routeConfig === curr.routeConfig;
           }
         }]);
-
-        return BaseRouteReuseStrategy;
       }();
 
       var DefaultRouteReuseStrategy = /*#__PURE__*/function (_BaseRouteReuseStrate) {
-        _inherits(DefaultRouteReuseStrategy, _BaseRouteReuseStrate);
-
-        var _super167 = _createSuper(DefaultRouteReuseStrategy);
-
         function DefaultRouteReuseStrategy() {
           _classCallCheck(this, DefaultRouteReuseStrategy);
 
-          return _super167.apply(this, arguments);
+          return _callSuper(this, DefaultRouteReuseStrategy, arguments);
         }
+
+        _inherits(DefaultRouteReuseStrategy, _BaseRouteReuseStrate);
 
         return _createClass2(DefaultRouteReuseStrategy);
       }(BaseRouteReuseStrategy);
@@ -102288,7 +101121,7 @@
           this.onLoadEndListener = onLoadEndListener;
         }
 
-        _createClass2(RouterConfigLoader, [{
+        return _createClass2(RouterConfigLoader, [{
           key: "load",
           value: function load(parentInjector, route) {
             var _this287 = this;
@@ -102325,8 +101158,6 @@
             }
           }
         }]);
-
-        return RouterConfigLoader;
       }();
       /**
        * @license
@@ -102369,7 +101200,7 @@
         /** Called when a `RouterOutlet` directive is instantiated */
 
 
-        _createClass2(ChildrenOutletContexts, [{
+        return _createClass2(ChildrenOutletContexts, [{
           key: "onChildOutletCreated",
           value: function onChildOutletCreated(childName, outlet) {
             var context = this.getOrCreateContext(childName);
@@ -102426,8 +101257,6 @@
             return this.contexts.get(childName) || null;
           }
         }]);
-
-        return ChildrenOutletContexts;
       }();
       /**
        * @license
@@ -102459,7 +101288,7 @@
           _classCallCheck(this, DefaultUrlHandlingStrategy);
         }
 
-        _createClass2(DefaultUrlHandlingStrategy, [{
+        return _createClass2(DefaultUrlHandlingStrategy, [{
           key: "shouldProcessUrl",
           value: function shouldProcessUrl(url) {
             return true;
@@ -102475,8 +101304,6 @@
             return newUrlPart;
           }
         }]);
-
-        return DefaultUrlHandlingStrategy;
       }();
       /**
        * @license
@@ -102668,7 +101495,7 @@
           this.processNavigations();
         }
 
-        _createClass2(Router, [{
+        return _createClass2(Router, [{
           key: "setupNavigations",
           value: function setupNavigations(transitions) {
             var _this290 = this;
@@ -103516,8 +102343,6 @@
             });
           }
         }]);
-
-        return Router;
       }();
 
       Router.ɵfac = function Router_Factory(t) {
@@ -103709,7 +102534,7 @@
         /** @nodoc */
 
 
-        _createClass2(RouterLink, [{
+        return _createClass2(RouterLink, [{
           key: "ngOnChanges",
           value: function ngOnChanges(changes) {
             // This is subscribed to by `RouterLinkActive` so that it knows to update when there are changes
@@ -103772,8 +102597,6 @@
             });
           }
         }]);
-
-        return RouterLink;
       }();
 
       RouterLink.ɵfac = function RouterLink_Factory(t) {
@@ -103956,7 +102779,7 @@
          */
 
 
-        _createClass2(RouterLinkWithHref, [{
+        return _createClass2(RouterLinkWithHref, [{
           key: "routerLink",
           set: function set(commands) {
             if (commands != null) {
@@ -104032,8 +102855,6 @@
             });
           }
         }]);
-
-        return RouterLinkWithHref;
       }();
 
       RouterLinkWithHref.ɵfac = function RouterLinkWithHref_Factory(t) {
@@ -104284,7 +103105,7 @@
         /** @nodoc */
 
 
-        _createClass2(RouterLinkActive, [{
+        return _createClass2(RouterLinkActive, [{
           key: "ngAfterContentInit",
           value: function ngAfterContentInit() {
             var _this295 = this;
@@ -104380,8 +103201,6 @@
             return this.link && isActiveCheckFn(this.link) || this.linkWithHref && isActiveCheckFn(this.linkWithHref) || this.links.some(isActiveCheckFn) || this.linksWithHrefs.some(isActiveCheckFn);
           }
         }]);
-
-        return RouterLinkActive;
       }();
 
       RouterLinkActive.ɵfac = function RouterLinkActive_Factory(t) {
@@ -104579,7 +103398,7 @@
         /** @nodoc */
 
 
-        _createClass2(RouterOutlet, [{
+        return _createClass2(RouterOutlet, [{
           key: "ngOnDestroy",
           value: function ngOnDestroy() {
             this.parentContexts.onChildOutletDestroyed(this.name);
@@ -104688,8 +103507,6 @@
             this.activateEvents.emit(this.activated.instance);
           }
         }]);
-
-        return RouterOutlet;
       }();
 
       RouterOutlet.ɵfac = function RouterOutlet_Factory(t) {
@@ -104780,7 +103597,7 @@
           this.parent = parent;
         }
 
-        _createClass2(OutletInjector, [{
+        return _createClass2(OutletInjector, [{
           key: "get",
           value: function get(token, notFoundValue) {
             if (token === ActivatedRoute) {
@@ -104794,8 +103611,6 @@
             return this.parent.get(token, notFoundValue);
           }
         }]);
-
-        return OutletInjector;
       }();
       /**
        * @license
@@ -104835,7 +103650,7 @@
           _classCallCheck(this, PreloadAllModules);
         }
 
-        _createClass2(PreloadAllModules, [{
+        return _createClass2(PreloadAllModules, [{
           key: "preload",
           value: function preload(route, fn) {
             return fn().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(function () {
@@ -104843,8 +103658,6 @@
             }));
           }
         }]);
-
-        return PreloadAllModules;
       }();
       /**
        * @description
@@ -104862,14 +103675,12 @@
           _classCallCheck(this, NoPreloading);
         }
 
-        _createClass2(NoPreloading, [{
+        return _createClass2(NoPreloading, [{
           key: "preload",
           value: function preload(route, fn) {
             return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(null);
           }
         }]);
-
-        return NoPreloading;
       }();
       /**
        * The preloader optimistically loads all router configurations to
@@ -104904,7 +103715,7 @@
           this.loader = new RouterConfigLoader(moduleLoader, compiler, onStartLoad, onEndLoad);
         }
 
-        _createClass2(RouterPreloader, [{
+        return _createClass2(RouterPreloader, [{
           key: "setUpPreloading",
           value: function setUpPreloading() {
             var _this299 = this;
@@ -104977,8 +103788,6 @@
             });
           }
         }]);
-
-        return RouterPreloader;
       }();
 
       RouterPreloader.ɵfac = function RouterPreloader_Factory(t) {
@@ -105052,7 +103861,7 @@
           options.anchorScrolling = options.anchorScrolling || 'disabled';
         }
 
-        _createClass2(RouterScroller, [{
+        return _createClass2(RouterScroller, [{
           key: "init",
           value: function init() {
             // we want to disable the automatic scrolling because having two places
@@ -105126,8 +103935,6 @@
             }
           }
         }]);
-
-        return RouterScroller;
       }();
 
       RouterScroller.ɵfac = function RouterScroller_Factory(t) {
@@ -105263,7 +104070,7 @@
          */
 
 
-        _createClass2(RouterModule, null, [{
+        return _createClass2(RouterModule, null, [{
           key: "forRoot",
           value: function forRoot(routes, config) {
             return {
@@ -105319,8 +104126,6 @@
             };
           }
         }]);
-
-        return RouterModule;
       }();
 
       RouterModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
@@ -105510,7 +104315,7 @@
           this.resultOfPreactivationDone = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
         }
 
-        _createClass2(RouterInitializer, [{
+        return _createClass2(RouterInitializer, [{
           key: "appInitializer",
           value: function appInitializer() {
             var _this303 = this;
@@ -105587,8 +104392,6 @@
             return opts.initialNavigation === 'legacy_disabled' || opts.initialNavigation === false;
           }
         }]);
-
-        return RouterInitializer;
       }();
 
       RouterInitializer.ɵfac = function RouterInitializer_Factory(t) {
@@ -105786,33 +104589,29 @@
           this.nextSources = nextSources;
         }
 
-        _createClass2(OnErrorResumeNextOperator, [{
+        return _createClass2(OnErrorResumeNextOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new OnErrorResumeNextSubscriber(subscriber, this.nextSources));
           }
         }]);
-
-        return OnErrorResumeNextOperator;
       }();
 
       var OnErrorResumeNextSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP19) {
-        _inherits(OnErrorResumeNextSubscriber, _innerSubscribe__WEBP19);
-
-        var _super168 = _createSuper(OnErrorResumeNextSubscriber);
-
         function OnErrorResumeNextSubscriber(destination, nextSources) {
           var _this304;
 
           _classCallCheck(this, OnErrorResumeNextSubscriber);
 
-          _this304 = _super168.call(this, destination);
+          _this304 = _callSuper(this, OnErrorResumeNextSubscriber, [destination]);
           _this304.destination = destination;
           _this304.nextSources = nextSources;
           return _this304;
         }
 
-        _createClass2(OnErrorResumeNextSubscriber, [{
+        _inherits(OnErrorResumeNextSubscriber, _innerSubscribe__WEBP19);
+
+        return _createClass2(OnErrorResumeNextSubscriber, [{
           key: "notifyError",
           value: function notifyError() {
             this.subscribeToNextSource();
@@ -105853,8 +104652,6 @@
             }
           }
         }]);
-
-        return OnErrorResumeNextSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_2__["SimpleOuterSubscriber"]); //# sourceMappingURL=onErrorResumeNext.js.map
 
       /***/
@@ -105870,7 +104667,7 @@
     /*! exports provided: retry */
 
     /***/
-    function unA(module, __webpack_exports__, __webpack_require__) {
+    function un_a(module, __webpack_exports__, __webpack_require__) {
       "use strict";
 
       __webpack_require__.r(__webpack_exports__);
@@ -105902,33 +104699,29 @@
           this.source = source;
         }
 
-        _createClass2(RetryOperator, [{
+        return _createClass2(RetryOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new RetrySubscriber(subscriber, this.count, this.source));
           }
         }]);
-
-        return RetryOperator;
       }();
 
       var RetrySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_43) {
-        _inherits(RetrySubscriber, _Subscriber__WEBPACK_43);
-
-        var _super169 = _createSuper(RetrySubscriber);
-
         function RetrySubscriber(destination, count, source) {
           var _this305;
 
           _classCallCheck(this, RetrySubscriber);
 
-          _this305 = _super169.call(this, destination);
+          _this305 = _callSuper(this, RetrySubscriber, [destination]);
           _this305.count = count;
           _this305.source = source;
           return _this305;
         }
 
-        _createClass2(RetrySubscriber, [{
+        _inherits(RetrySubscriber, _Subscriber__WEBPACK_43);
+
+        return _createClass2(RetrySubscriber, [{
           key: "error",
           value: function error(err) {
             if (!this.isStopped) {
@@ -105936,7 +104729,7 @@
                   count = this.count;
 
               if (count === 0) {
-                return _get(_getPrototypeOf(RetrySubscriber.prototype), "error", this).call(this, err);
+                return _superPropGet(RetrySubscriber, "error", this, 3)([err]);
               } else if (count > -1) {
                 this.count = count - 1;
               }
@@ -105945,8 +104738,6 @@
             }
           }
         }]);
-
-        return RetrySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=retry.js.map
 
       /***/
@@ -106006,27 +104797,21 @@
           this.complete = complete;
         }
 
-        _createClass2(DoOperator, [{
+        return _createClass2(DoOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new TapSubscriber(subscriber, this.nextOrObserver, this.error, this.complete));
           }
         }]);
-
-        return DoOperator;
       }();
 
       var TapSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_44) {
-        _inherits(TapSubscriber, _Subscriber__WEBPACK_44);
-
-        var _super170 = _createSuper(TapSubscriber);
-
         function TapSubscriber(destination, observerOrNext, error, complete) {
           var _this306;
 
           _classCallCheck(this, TapSubscriber);
 
-          _this306 = _super170.call(this, destination);
+          _this306 = _callSuper(this, TapSubscriber, [destination]);
           _this306._tapNext = _util_noop__WEBPACK_IMPORTED_MODULE_1__["noop"];
           _this306._tapError = _util_noop__WEBPACK_IMPORTED_MODULE_1__["noop"];
           _this306._tapComplete = _util_noop__WEBPACK_IMPORTED_MODULE_1__["noop"];
@@ -106034,7 +104819,7 @@
           _this306._tapComplete = complete || _util_noop__WEBPACK_IMPORTED_MODULE_1__["noop"];
 
           if (Object(_util_isFunction__WEBPACK_IMPORTED_MODULE_2__["isFunction"])(observerOrNext)) {
-            _this306._context = _assertThisInitialized(_this306);
+            _this306._context = _this306;
             _this306._tapNext = observerOrNext;
           } else if (observerOrNext) {
             _this306._context = observerOrNext;
@@ -106046,7 +104831,9 @@
           return _this306;
         }
 
-        _createClass2(TapSubscriber, [{
+        _inherits(TapSubscriber, _Subscriber__WEBPACK_44);
+
+        return _createClass2(TapSubscriber, [{
           key: "_next",
           value: function _next(value) {
             try {
@@ -106083,8 +104870,6 @@
             return this.destination.complete();
           }
         }]);
-
-        return TapSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=tap.js.map
 
       /***/
@@ -106130,29 +104915,23 @@
           this.notifier = notifier;
         }
 
-        _createClass2(SkipUntilOperator, [{
+        return _createClass2(SkipUntilOperator, [{
           key: "call",
           value: function call(destination, source) {
             return source.subscribe(new SkipUntilSubscriber(destination, this.notifier));
           }
         }]);
-
-        return SkipUntilOperator;
       }();
 
       var SkipUntilSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP20) {
-        _inherits(SkipUntilSubscriber, _innerSubscribe__WEBP20);
-
-        var _super171 = _createSuper(SkipUntilSubscriber);
-
         function SkipUntilSubscriber(destination, notifier) {
           var _this307;
 
           _classCallCheck(this, SkipUntilSubscriber);
 
-          _this307 = _super171.call(this, destination);
+          _this307 = _callSuper(this, SkipUntilSubscriber, [destination]);
           _this307.hasValue = false;
-          var innerSubscriber = new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_assertThisInitialized(_this307));
+          var innerSubscriber = new _innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleInnerSubscriber"](_this307);
 
           _this307.add(innerSubscriber);
 
@@ -106168,11 +104947,13 @@
           return _this307;
         }
 
-        _createClass2(SkipUntilSubscriber, [{
+        _inherits(SkipUntilSubscriber, _innerSubscribe__WEBP20);
+
+        return _createClass2(SkipUntilSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (this.hasValue) {
-              _get(_getPrototypeOf(SkipUntilSubscriber.prototype), "_next", this).call(this, value);
+              _superPropGet(SkipUntilSubscriber, "_next", this, 3)([value]);
             }
           }
         }, {
@@ -106188,8 +104969,6 @@
           key: "notifyComplete",
           value: function notifyComplete() {}
         }]);
-
-        return SkipUntilSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=skipUntil.js.map
 
       /***/
@@ -106353,7 +105132,7 @@
           this.connectable = connectable;
         }
 
-        _createClass2(RefCountOperator, [{
+        return _createClass2(RefCountOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             var connectable = this.connectable;
@@ -106368,26 +105147,22 @@
             return subscription;
           }
         }]);
-
-        return RefCountOperator;
       }();
 
       var RefCountSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_45) {
-        _inherits(RefCountSubscriber, _Subscriber__WEBPACK_45);
-
-        var _super172 = _createSuper(RefCountSubscriber);
-
         function RefCountSubscriber(destination, connectable) {
           var _this308;
 
           _classCallCheck(this, RefCountSubscriber);
 
-          _this308 = _super172.call(this, destination);
+          _this308 = _callSuper(this, RefCountSubscriber, [destination]);
           _this308.connectable = connectable;
           return _this308;
         }
 
-        _createClass2(RefCountSubscriber, [{
+        _inherits(RefCountSubscriber, _Subscriber__WEBPACK_45);
+
+        return _createClass2(RefCountSubscriber, [{
           key: "_unsubscribe",
           value: function _unsubscribe() {
             var connectable = this.connectable;
@@ -106421,8 +105196,6 @@
             }
           }
         }]);
-
-        return RefCountSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=refCount.js.map
 
       /***/
@@ -106469,33 +105242,29 @@
           this.defaultValue = defaultValue;
         }
 
-        _createClass2(DefaultIfEmptyOperator, [{
+        return _createClass2(DefaultIfEmptyOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new DefaultIfEmptySubscriber(subscriber, this.defaultValue));
           }
         }]);
-
-        return DefaultIfEmptyOperator;
       }();
 
       var DefaultIfEmptySubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_46) {
-        _inherits(DefaultIfEmptySubscriber, _Subscriber__WEBPACK_46);
-
-        var _super173 = _createSuper(DefaultIfEmptySubscriber);
-
         function DefaultIfEmptySubscriber(destination, defaultValue) {
           var _this309;
 
           _classCallCheck(this, DefaultIfEmptySubscriber);
 
-          _this309 = _super173.call(this, destination);
+          _this309 = _callSuper(this, DefaultIfEmptySubscriber, [destination]);
           _this309.defaultValue = defaultValue;
           _this309.isEmpty = true;
           return _this309;
         }
 
-        _createClass2(DefaultIfEmptySubscriber, [{
+        _inherits(DefaultIfEmptySubscriber, _Subscriber__WEBPACK_46);
+
+        return _createClass2(DefaultIfEmptySubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.isEmpty = false;
@@ -106511,8 +105280,6 @@
             this.destination.complete();
           }
         }]);
-
-        return DefaultIfEmptySubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=defaultIfEmpty.js.map
 
       /***/
@@ -106785,27 +105552,21 @@
           this.trailing = trailing;
         }
 
-        _createClass2(ThrottleOperator, [{
+        return _createClass2(ThrottleOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new ThrottleSubscriber(subscriber, this.durationSelector, this.leading, this.trailing));
           }
         }]);
-
-        return ThrottleOperator;
       }();
 
       var ThrottleSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP21) {
-        _inherits(ThrottleSubscriber, _innerSubscribe__WEBP21);
-
-        var _super174 = _createSuper(ThrottleSubscriber);
-
         function ThrottleSubscriber(destination, durationSelector, _leading, _trailing) {
           var _this310;
 
           _classCallCheck(this, ThrottleSubscriber);
 
-          _this310 = _super174.call(this, destination);
+          _this310 = _callSuper(this, ThrottleSubscriber, [destination]);
           _this310.destination = destination;
           _this310.durationSelector = durationSelector;
           _this310._leading = _leading;
@@ -106814,7 +105575,9 @@
           return _this310;
         }
 
-        _createClass2(ThrottleSubscriber, [{
+        _inherits(ThrottleSubscriber, _innerSubscribe__WEBP21);
+
+        return _createClass2(ThrottleSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this._hasValue = true;
@@ -106888,8 +105651,6 @@
             this.throttlingDone();
           }
         }]);
-
-        return ThrottleSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=throttle.js.map
 
       /***/
@@ -107014,33 +105775,29 @@
           this.total = total;
         }
 
-        _createClass2(SkipOperator, [{
+        return _createClass2(SkipOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SkipSubscriber(subscriber, this.total));
           }
         }]);
-
-        return SkipOperator;
       }();
 
       var SkipSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_47) {
-        _inherits(SkipSubscriber, _Subscriber__WEBPACK_47);
-
-        var _super175 = _createSuper(SkipSubscriber);
-
         function SkipSubscriber(destination, total) {
           var _this311;
 
           _classCallCheck(this, SkipSubscriber);
 
-          _this311 = _super175.call(this, destination);
+          _this311 = _callSuper(this, SkipSubscriber, [destination]);
           _this311.total = total;
           _this311.count = 0;
           return _this311;
         }
 
-        _createClass2(SkipSubscriber, [{
+        _inherits(SkipSubscriber, _Subscriber__WEBPACK_47);
+
+        return _createClass2(SkipSubscriber, [{
           key: "_next",
           value: function _next(x) {
             if (++this.count > this.total) {
@@ -107048,8 +105805,6 @@
             }
           }
         }]);
-
-        return SkipSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]); //# sourceMappingURL=skip.js.map
 
       /***/
@@ -107083,17 +105838,15 @@
       "IjjT");
 
       var AnimationFrameScheduler = /*#__PURE__*/function (_AsyncScheduler__WEBP4) {
-        _inherits(AnimationFrameScheduler, _AsyncScheduler__WEBP4);
-
-        var _super176 = _createSuper(AnimationFrameScheduler);
-
         function AnimationFrameScheduler() {
           _classCallCheck(this, AnimationFrameScheduler);
 
-          return _super176.apply(this, arguments);
+          return _callSuper(this, AnimationFrameScheduler, arguments);
         }
 
-        _createClass2(AnimationFrameScheduler, [{
+        _inherits(AnimationFrameScheduler, _AsyncScheduler__WEBP4);
+
+        return _createClass2(AnimationFrameScheduler, [{
           key: "flush",
           value: function flush(action) {
             this.active = true;
@@ -107121,8 +105874,6 @@
             }
           }
         }]);
-
-        return AnimationFrameScheduler;
       }(_AsyncScheduler__WEBPACK_IMPORTED_MODULE_0__["AsyncScheduler"]); //# sourceMappingURL=AnimationFrameScheduler.js.map
 
       /***/
@@ -107186,27 +105937,21 @@
           this.project = project;
         }
 
-        _createClass2(WithLatestFromOperator, [{
+        return _createClass2(WithLatestFromOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new WithLatestFromSubscriber(subscriber, this.observables, this.project));
           }
         }]);
-
-        return WithLatestFromOperator;
       }();
 
       var WithLatestFromSubscriber = /*#__PURE__*/function (_OuterSubscriber__WEB7) {
-        _inherits(WithLatestFromSubscriber, _OuterSubscriber__WEB7);
-
-        var _super177 = _createSuper(WithLatestFromSubscriber);
-
         function WithLatestFromSubscriber(destination, observables, project) {
           var _this312;
 
           _classCallCheck(this, WithLatestFromSubscriber);
 
-          _this312 = _super177.call(this, destination);
+          _this312 = _callSuper(this, WithLatestFromSubscriber, [destination]);
           _this312.observables = observables;
           _this312.project = project;
           _this312.toRespond = [];
@@ -107220,13 +105965,15 @@
           for (var _i33 = 0; _i33 < len; _i33++) {
             var observable = observables[_i33];
 
-            _this312.add(Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_1__["subscribeToResult"])(_assertThisInitialized(_this312), observable, undefined, _i33));
+            _this312.add(Object(_util_subscribeToResult__WEBPACK_IMPORTED_MODULE_1__["subscribeToResult"])(_this312, observable, undefined, _i33));
           }
 
           return _this312;
         }
 
-        _createClass2(WithLatestFromSubscriber, [{
+        _inherits(WithLatestFromSubscriber, _OuterSubscriber__WEB7);
+
+        return _createClass2(WithLatestFromSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(_outerValue, innerValue, outerIndex) {
             this.values[outerIndex] = innerValue;
@@ -107271,8 +106018,6 @@
             this.destination.next(result);
           }
         }]);
-
-        return WithLatestFromSubscriber;
       }(_OuterSubscriber__WEBPACK_IMPORTED_MODULE_0__["OuterSubscriber"]); //# sourceMappingURL=withLatestFrom.js.map
 
       /***/
@@ -107316,33 +106061,29 @@
           _classCallCheck(this, SwitchFirstOperator);
         }
 
-        _createClass2(SwitchFirstOperator, [{
+        return _createClass2(SwitchFirstOperator, [{
           key: "call",
           value: function call(subscriber, source) {
             return source.subscribe(new SwitchFirstSubscriber(subscriber));
           }
         }]);
-
-        return SwitchFirstOperator;
       }();
 
       var SwitchFirstSubscriber = /*#__PURE__*/function (_innerSubscribe__WEBP22) {
-        _inherits(SwitchFirstSubscriber, _innerSubscribe__WEBP22);
-
-        var _super178 = _createSuper(SwitchFirstSubscriber);
-
         function SwitchFirstSubscriber(destination) {
           var _this313;
 
           _classCallCheck(this, SwitchFirstSubscriber);
 
-          _this313 = _super178.call(this, destination);
+          _this313 = _callSuper(this, SwitchFirstSubscriber, [destination]);
           _this313.hasCompleted = false;
           _this313.hasSubscription = false;
           return _this313;
         }
 
-        _createClass2(SwitchFirstSubscriber, [{
+        _inherits(SwitchFirstSubscriber, _innerSubscribe__WEBP22);
+
+        return _createClass2(SwitchFirstSubscriber, [{
           key: "_next",
           value: function _next(value) {
             if (!this.hasSubscription) {
@@ -107369,8 +106110,6 @@
             }
           }
         }]);
-
-        return SwitchFirstSubscriber;
       }(_innerSubscribe__WEBPACK_IMPORTED_MODULE_0__["SimpleOuterSubscriber"]); //# sourceMappingURL=exhaust.js.map
 
       /***/
@@ -107440,21 +106179,19 @@
       "SeVD");
 
       var SimpleInnerSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_48) {
-        _inherits(SimpleInnerSubscriber, _Subscriber__WEBPACK_48);
-
-        var _super179 = _createSuper(SimpleInnerSubscriber);
-
         function SimpleInnerSubscriber(parent) {
           var _this314;
 
           _classCallCheck(this, SimpleInnerSubscriber);
 
-          _this314 = _super179.call(this);
+          _this314 = _callSuper(this, SimpleInnerSubscriber);
           _this314.parent = parent;
           return _this314;
         }
 
-        _createClass2(SimpleInnerSubscriber, [{
+        _inherits(SimpleInnerSubscriber, _Subscriber__WEBPACK_48);
+
+        return _createClass2(SimpleInnerSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.parent.notifyNext(value);
@@ -107472,28 +106209,24 @@
             this.unsubscribe();
           }
         }]);
-
-        return SimpleInnerSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var ComplexInnerSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_49) {
-        _inherits(ComplexInnerSubscriber, _Subscriber__WEBPACK_49);
-
-        var _super180 = _createSuper(ComplexInnerSubscriber);
-
         function ComplexInnerSubscriber(parent, outerValue, outerIndex) {
           var _this315;
 
           _classCallCheck(this, ComplexInnerSubscriber);
 
-          _this315 = _super180.call(this);
+          _this315 = _callSuper(this, ComplexInnerSubscriber);
           _this315.parent = parent;
           _this315.outerValue = outerValue;
           _this315.outerIndex = outerIndex;
           return _this315;
         }
 
-        _createClass2(ComplexInnerSubscriber, [{
+        _inherits(ComplexInnerSubscriber, _Subscriber__WEBPACK_49);
+
+        return _createClass2(ComplexInnerSubscriber, [{
           key: "_next",
           value: function _next(value) {
             this.parent.notifyNext(this.outerValue, value, this.outerIndex, this);
@@ -107511,22 +106244,18 @@
             this.unsubscribe();
           }
         }]);
-
-        return ComplexInnerSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var SimpleOuterSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_50) {
-        _inherits(SimpleOuterSubscriber, _Subscriber__WEBPACK_50);
-
-        var _super181 = _createSuper(SimpleOuterSubscriber);
-
         function SimpleOuterSubscriber() {
           _classCallCheck(this, SimpleOuterSubscriber);
 
-          return _super181.apply(this, arguments);
+          return _callSuper(this, SimpleOuterSubscriber, arguments);
         }
 
-        _createClass2(SimpleOuterSubscriber, [{
+        _inherits(SimpleOuterSubscriber, _Subscriber__WEBPACK_50);
+
+        return _createClass2(SimpleOuterSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(innerValue) {
             this.destination.next(innerValue);
@@ -107542,22 +106271,18 @@
             this.destination.complete();
           }
         }]);
-
-        return SimpleOuterSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       var ComplexOuterSubscriber = /*#__PURE__*/function (_Subscriber__WEBPACK_51) {
-        _inherits(ComplexOuterSubscriber, _Subscriber__WEBPACK_51);
-
-        var _super182 = _createSuper(ComplexOuterSubscriber);
-
         function ComplexOuterSubscriber() {
           _classCallCheck(this, ComplexOuterSubscriber);
 
-          return _super182.apply(this, arguments);
+          return _callSuper(this, ComplexOuterSubscriber, arguments);
         }
 
-        _createClass2(ComplexOuterSubscriber, [{
+        _inherits(ComplexOuterSubscriber, _Subscriber__WEBPACK_51);
+
+        return _createClass2(ComplexOuterSubscriber, [{
           key: "notifyNext",
           value: function notifyNext(_outerValue, innerValue, _outerIndex, _innerSub) {
             this.destination.next(innerValue);
@@ -107573,8 +106298,6 @@
             this.destination.complete();
           }
         }]);
-
-        return ComplexOuterSubscriber;
       }(_Subscriber__WEBPACK_IMPORTED_MODULE_0__["Subscriber"]);
 
       function innerSubscribe(result, innerSubscriber) {
