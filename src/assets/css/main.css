@@ -3099,9 +3099,34 @@ img {
           box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
+.justified-text {
+  display: block; /* ensures justification applies correctly */
+  text-align: justify;
+}
+
 .card .card-body {
   min-height: 190px;
 }
+
+.card-body {
+  position: relative; /* to anchor absolute children inside */
+}
+
+.card-body .btn-container {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+
+  display: flex;
+  gap: 10px;        /* space between buttons */
+  justify-content: flex-start; /* or 'space-between' if needed */
+}
+
+.card-body .btn {
+  flex: 1;           /* optional: make buttons equal width */
+}
+
 
 .footer {
   padding: 24px 0;

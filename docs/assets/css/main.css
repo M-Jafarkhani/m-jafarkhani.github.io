@@ -3100,7 +3100,7 @@ img {
 }
 
 .card .card-body {
-  min-height: 190px;
+  height: 190px;
 }
 
 .footer {

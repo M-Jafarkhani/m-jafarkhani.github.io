@@ -17,8 +17,10 @@
 
                 <div class="timeline-label">
                   <h2>
-                    {{ exp.company
-                    }}<span
+                    <a [href]="exp.companyUrl" target="_blank" rel="noopener noreferrer">
+                    {{ exp.company }}
+                    </a>
+                    <span
                       >- &nbsp;{{ exp.timeline }}, {{ exp.location }}</span
                     >
                   </h2>

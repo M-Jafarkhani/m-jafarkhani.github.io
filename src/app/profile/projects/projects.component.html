@@ -5,40 +5,44 @@
       (pageChange)="pageChanged($event)"
     ></pagination-controls>
     <div class="row">
-      <ng-container *ngFor="let project of projects | paginate: config">
+      <ng-container *ngFor="let project of projects | paginate : config">
         <div
           class="col-md-4 col-sm-6 animate-box"
           data-animate-effect="fadeInLeft"
         >
           <div class="blog-entry">
             <div class="card">
-              <img
+              <!-- <img
                 class="card-img-top"
                 src="{{ project.imgUrl }}"
                 onerror="this.src = 'assets/images/gif.gif'"
                 alt="Card image"
                 style="width: 100%"
-              />
-              <div class="card-body">
-                <h4 class="card-title">{{ project.title }}</h4>
+              /> -->
+              <div class="card-body" style="height: 450px;">
+                <h3 class="card-title">{{ project.title }}</h3>
                 <h5 class="card-text">
                   <b>Technology :</b> {{ project.tech }}
                 </h5>
+                <h5 class="card-text"><b>Year :</b> {{ project.year }}</h5>
                 <h5 class="card-text">
-                  <a href="{{ project.mediumlink }}"
-                    >Read Blog on this Project</a
-                  >
+                  <b>Description :</b>
+                  <span class="justified-text">{{ project.desc }}</span>
                 </h5>
-                <a
-                  href="{{ project.livedemo }}"
-                  class="btn btn-primary stretched-link ml-2 mr-5"
-                  >Live Demo</a
-                >
-                <a
-                  href="{{ project.githurl }}"
-                  class="btn btn-primary stretched-link"
-                  >GithubLink</a
-                >
+                <div class="btn-container">
+                  <a
+                    href="{{ project.githubUrl }}"
+                    class="btn btn-primary"
+                    target="_blank"
+                    >Github Link</a
+                  >
+                  <a *ngIf="project.reportUrl"
+                    href="{{ project.reportUrl }}"
+                    class="btn btn-primary"
+                    target="_blank"
+                    >Report</a
+                  >
+                </div>
               </div>
             </div>
           </div>
