@@ -53,7 +53,8 @@ export class ProfileService {
       githubUrl: "https://github.com/M-Jafarkhani/Dynamic-Slicing",
       imgUrl: "assets/images/z1.png",
       tech: "Python",
-      year: "2023",
+      year: "2024",
+      reportUrl: "https://github.com/M-Jafarkhani/Dynamic-Slicing/blob/main/Report.pdf",
     },
     {
       id: 6,

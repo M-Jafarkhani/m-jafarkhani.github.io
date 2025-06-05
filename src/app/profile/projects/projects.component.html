@@ -4,7 +4,7 @@
     <pagination-controls
       (pageChange)="pageChanged($event)"
     ></pagination-controls>
-    <div class="row">
+    <div class="row" [@projectSlider]="animationState">
       <ng-container *ngFor="let project of projects | paginate : config">
         <div
           class="col-md-4 col-sm-6 animate-box"

@@ -3104,12 +3104,16 @@ img {
   text-align: justify;
 }
 
-.card .card-body {
-  min-height: 190px;
+.carousel-item {
+  justify-content: center;
 }
 
-.card-body {
-  position: relative; /* to anchor absolute children inside */
+.card {
+  height: 100%; /* or fixed height like 300px */
+}
+
+.carousel-inner {
+  height: 200px; /* adjust as needed */
 }
 
 .card-body .btn-container {
@@ -3190,7 +3194,7 @@ img {
 }
 
 .profile-page .page-header {
-  min-height: 550px;
+  min-height: 350px;
 }
 
 .profile-page .profile-container {
@@ -3330,7 +3334,7 @@ img {
 }
 
 .page-header.page-header-small {
-  height: 60vh;
+  height: 80vh;
   max-height: 440px;
 }
 
@@ -5022,6 +5026,22 @@ img {
     margin-bottom: 0;
   }
 }
+
+.carousel-indicators li {
+  width: 14px;
+  height: 14px;
+  background-color: #007bff; /* Change color */
+  border-radius: 50%;        /* Make them round */
+  border: none;
+  margin: 0 5px;
+  opacity: 0.5;
+}
+
+.carousel-indicators .active {
+  background-color: #0056b3; /* Active dot color */
+  opacity: 1;
+}
+
 
 /* Contact Information Style */
 .cc-contact-information {
