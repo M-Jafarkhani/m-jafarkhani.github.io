@@ -3,6 +3,8 @@
     <div class="h4 text-center mb-4 title">Projects</div>
     <pagination-controls
       (pageChange)="pageChanged($event)"
+      previousLabel=""
+      nextLabel=""
     ></pagination-controls>
     <div class="row" [@projectSlider]="animationState">
       <ng-container *ngFor="let project of projects | paginate : config">
@@ -12,15 +14,8 @@
         >
           <div class="blog-entry">
             <div class="card">
-              <!-- <img
-                class="card-img-top"
-                src="{{ project.imgUrl }}"
-                onerror="this.src = 'assets/images/gif.gif'"
-                alt="Card image"
-                style="width: 100%"
-              /> -->
-              <div class="card-body" style="height: 450px;">
-                <h3 class="card-title">{{ project.title }}</h3>
+              <div class="card-body" style="height: 400px;">
+                <h4 class="card-title">{{ project.title }}</h4>
                 <h5 class="card-text">
                   <b>Technology :</b> {{ project.tech }}
                 </h5>
@@ -51,6 +46,8 @@
     </div>
     <pagination-controls
       (pageChange)="pageChanged($event)"
+      previousLabel=""
+      nextLabel=""
     ></pagination-controls>
   </div>
 </div>

@@ -3231,7 +3231,7 @@ img {
 }
 
 .profile-page .content {
-  max-width: 450px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
@@ -4986,7 +4986,6 @@ img {
   color: #fff;
 }
 
-/* References Style */
 .cc-reference .card {
   padding: 40px;
 }
@@ -4995,8 +4994,6 @@ img {
   height: 150px;
   width: auto;
 }
-
-
 
 .cc-reference .h5 {
   margin: 0;

@@ -27,17 +27,18 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     ])
   ]
 })
+
 export class ProjectsComponent implements OnInit {
   config: any;
   projects: any = [];
-  animationState: 'left' | 'right' | '' = ''; // Initial state, or use 'left' or 'right' if you want an initial slide
+  animationState: 'left' | 'right' | '' = ''; 
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
     this.projects = this.profileService.getProjects();
     this.animationState = 'left';
     this.config = {
-      itemsPerPage: 3,
+      itemsPerPage: 6,
       currentPage: 1,
       totalItems: this.projects.length,
     };
@@ -47,17 +48,14 @@ export class ProjectsComponent implements OnInit {
     const oldPage = this.config.currentPage;
     this.config.currentPage = event;
 
-    // Determine direction of slide based on page change
     if (event > oldPage) {
-      this.animationState = 'right'; // Sliding in from right
+      this.animationState = 'right';
     } else {
-      this.animationState = 'left'; // Sliding in from left
+      this.animationState = 'left';
     }
 
-    // Reset the animation state after a short delay to trigger the animation again on next change
-    // This is important because the state needs to change for the animation to re-trigger for the same direction
     setTimeout(() => {
-      this.animationState = ''; // Reset state to allow next transition
-    }, 500); // Match animation duration
+      this.animationState = ''; 
+    }, 500);
   }
 }

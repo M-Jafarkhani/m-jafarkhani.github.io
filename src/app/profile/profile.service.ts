@@ -21,7 +21,7 @@ export class ProfileService {
     {
       id: 2,
       title: "MetaExtractIng",
-      desc: "CLI-based tool to extract important metadata from CSV, NetCDF, OpenDiHu and GROMACS files and storing it into a JSON-LD file, according to Metadata4Ing ontology.",
+      desc: "CLI-based tool to extract important metadata from CSV, NetCDF, OpenDiHu and GROMACS files and storing it into a JSON-LD file.",
       githubUrl: "https://github.com/MaRDI4NFDI/MetaExtractIng",
       imgUrl: "assets/images/z1.png",
       tech: "Python",
@@ -30,7 +30,7 @@ export class ProfileService {
     {
       id: 3,
       title: "Driver Activity Detection",
-      desc: "Sliding-window approach to detect driver activity using Drvie&Act benchmark.",
+      desc: "Sliding-window approach to detect driver activity using DrvieAndAct benchmark.",
       githubUrl: "https://github.com/M-Jafarkhani/DriveAndActInferenceDemo",
       imgUrl: "assets/images/z1.png",
       tech: "Python",
@@ -59,7 +59,7 @@ export class ProfileService {
     {
       id: 6,
       title: "Multimodal Emotion Recognition",
-      desc: "Emotion classification from multimodal data (image, audio and text) using different machine learning models.",
+      desc: "Recognition of emotion from multimodal data (like image, audio and text) using different machine learning models.",
       githubUrl: "https://github.com/M-Jafarkhani/Multimodal-Emotion-Recognition",
       imgUrl: "assets/images/z1.png",
       tech: "Python, Tensorflow",
