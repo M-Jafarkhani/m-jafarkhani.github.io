@@ -1354,11 +1354,11 @@ small {
 }
 
 a {
-  color: #378C3F;
+  color: #0045e6;
 }
 
 a:hover, a:focus {
-  color: #378C3F;
+  color: #0045e6;
 }
 
 h1, .h1 {
@@ -4988,6 +4988,10 @@ img {
 
 .cc-reference .card {
   padding: 40px;
+}
+
+.ngx-pagination {
+  padding-left: 0px;
 }
 
 .cc-reference img {
