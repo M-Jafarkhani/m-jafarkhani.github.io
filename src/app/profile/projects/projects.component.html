@@ -14,7 +14,7 @@
         >
           <div class="blog-entry">
             <div class="card">
-              <div class="card-body" style="height: 400px;">
+              <div class="card-body" style="height: 400px">
                 <h4 class="card-title">{{ project.title }}</h4>
                 <h5 class="card-text">
                   <b>Technology :</b> {{ project.tech }}
@@ -31,7 +31,8 @@
                     target="_blank"
                     >Github Link</a
                   >
-                  <a *ngIf="project.reportUrl"
+                  <a
+                    *ngIf="project.reportUrl"
                     href="{{ project.reportUrl }}"
                     class="btn btn-primary"
                     target="_blank"
